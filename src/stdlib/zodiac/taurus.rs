@@ -22,7 +22,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(module, stdlib, "first_get_ding", taurus_first_get_ding);
     register_stdlib_fn_0!(module, stdlib, "first_get_glue", taurus_first_get_glue);
     register_stdlib_fn_1!(module, stdlib, "first_mix", taurus_first_mix, part_index: i64);
-    register_stdlib_fn_0!(module, stdlib, "first_buy_pet", taurus_first_buy_pet);
+    register_stdlib_fn_0!(module, stdlib, "first_buy_spirit", taurus_first_buy_spirit);
     register_stdlib_fn_2!(
         module,
         stdlib,
@@ -37,8 +37,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "second_submit_game",
-        taurus_second_submit_game,
+        "submit_second_game",
+        taurus_submit_second_game,
         game_index: i64,
         score: i64
     );
@@ -67,12 +67,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     );
 
     register_stdlib_fn_0!(module, stdlib, "third_query", taurus_third_query);
-    register_stdlib_fn_0!(
-        module,
-        stdlib,
-        "third_settle_npc_fight",
-        taurus_third_settle_npc_fight
-    );
+    register_stdlib_fn_0!(module, stdlib, "submit_third_npc", taurus_submit_third_npc);
     register_stdlib_fn_2!(
         module,
         stdlib,

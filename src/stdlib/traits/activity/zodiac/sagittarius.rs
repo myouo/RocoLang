@@ -4,8 +4,8 @@ pub trait RocoSagittariusActivityStdLib: Send {
     fn sagittarius_first_query(&mut self) -> Result<SagittariusFirstInfo> {
         unsupported("sagittarius::first_query")
     }
-    fn sagittarius_first_submit(&mut self) -> Result<SagittariusFirstInfo> {
-        unsupported("sagittarius::first_submit")
+    fn sagittarius_submit_first(&mut self) -> Result<SagittariusFirstInfo> {
+        unsupported("sagittarius::submit_first")
     }
     fn sagittarius_first_query_scene(&mut self) -> Result<SagittariusFirstInfo> {
         unsupported("sagittarius::first_query_scene")
@@ -25,8 +25,8 @@ pub trait RocoSagittariusActivityStdLib: Send {
     fn sagittarius_first_complete(&mut self, _index: i64) -> Result<SagittariusFirstInfo> {
         unsupported("sagittarius::first_complete")
     }
-    fn sagittarius_first_get_pet(&mut self) -> Result<SagittariusFirstInfo> {
-        unsupported("sagittarius::first_get_pet")
+    fn sagittarius_first_claim_spirit(&mut self) -> Result<SagittariusFirstInfo> {
+        unsupported("sagittarius::first_claim_spirit")
     }
     fn sagittarius_second_query(&mut self) -> Result<SagittariusSecondInfo> {
         unsupported("sagittarius::second_query")
@@ -67,14 +67,11 @@ pub trait RocoSagittariusActivityStdLib: Send {
     fn sagittarius_third_query(&mut self) -> Result<SagittariusThirdInfo> {
         unsupported("sagittarius::third_query")
     }
-    fn sagittarius_third_settle_combat(
-        &mut self,
-        _boss_index: i64,
-    ) -> Result<SagittariusThirdInfo> {
-        unsupported("sagittarius::third_settle_combat")
+    fn sagittarius_submit_third(&mut self, _boss_index: i64) -> Result<SagittariusThirdInfo> {
+        unsupported("sagittarius::submit_third")
     }
-    fn sagittarius_third_buy_pet(&mut self) -> Result<SagittariusThirdInfo> {
-        unsupported("sagittarius::third_buy_pet")
+    fn sagittarius_third_buy_spirit(&mut self) -> Result<SagittariusThirdInfo> {
+        unsupported("sagittarius::third_buy_spirit")
     }
     fn sagittarius_third_buy_evolve(
         &mut self,

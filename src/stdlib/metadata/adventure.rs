@@ -13,12 +13,12 @@ pub(super) fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         stdlib_doc!(
             "adventure",
-            "begin",
+            "start",
             return_type: "()",
             "请求挑战指定冒险关卡；战斗需要由脚本另行发起。",
             params: ["point" => "关卡编号。"],
             returns: "服务器接受请求时正常返回，否则抛出结构化错误。",
-            examples: ["adventure::begin(1);"]
+            examples: ["adventure::start(1);"]
         ),
         stdlib_doc!(
             "adventure",
@@ -31,12 +31,12 @@ pub(super) fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         stdlib_doc!(
             "adventure",
-            "begin_auto",
+            "start_auto",
             return_type: "()",
             "开始自动挑战指定冒险关卡。",
             params: ["point" => "关卡编号。", "count" => "自动挑战次数。"],
             returns: "服务器接受请求时正常返回，否则抛出结构化错误。",
-            examples: ["adventure::begin_auto(1, 10);"]
+            examples: ["adventure::start_auto(1, 10);"]
         ),
         stdlib_doc!(
             "adventure",

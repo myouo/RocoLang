@@ -13,27 +13,27 @@ pub trait RocoLeoActivityStdLib: Send {
     fn leo_first_buy_wish(&mut self) -> Result<LeoFirstInfo> {
         unsupported("leo::first_buy_wish")
     }
-    fn leo_first_exchange_pet(&mut self) -> Result<LeoFirstInfo> {
-        unsupported("leo::first_exchange_pet")
+    fn leo_first_exchange_spirit(&mut self) -> Result<LeoFirstInfo> {
+        unsupported("leo::first_exchange_spirit")
     }
     fn leo_second_query(&mut self) -> Result<LeoSecondInfo> {
         unsupported("leo::second_query")
     }
-    fn leo_second_settle_combat(&mut self, _hunt_index: i64) -> Result<LeoSecondInfo> {
-        unsupported("leo::second_settle_combat")
+    fn leo_submit_second_combat(&mut self, _hunt_index: i64) -> Result<LeoSecondInfo> {
+        unsupported("leo::submit_second_combat")
     }
-    fn leo_second_submit_onekey(&mut self) -> Result<LeoSecondInfo> {
-        unsupported("leo::second_submit_onekey")
+    fn leo_submit_second_one_key(&mut self) -> Result<LeoSecondInfo> {
+        unsupported("leo::submit_second_one_key")
     }
     fn leo_second_query_spirit(&mut self) -> Result<LeoSecondInfo> {
         unsupported("leo::second_query_spirit")
     }
-    fn leo_second_submit_spirit(
+    fn leo_submit_second_spirit(
         &mut self,
         _spirit_id: i64,
         _catch_time: i64,
     ) -> Result<LeoSecondInfo> {
-        unsupported("leo::second_submit_spirit")
+        unsupported("leo::submit_second_spirit")
     }
     fn leo_second_buy_full_level(
         &mut self,
@@ -45,15 +45,11 @@ pub trait RocoLeoActivityStdLib: Send {
     fn leo_third_query(&mut self) -> Result<LeoThirdInfo> {
         unsupported("leo::third_query")
     }
-    fn leo_third_submit_combat(
-        &mut self,
-        _challenge_index: i64,
-        _win: bool,
-    ) -> Result<LeoThirdInfo> {
-        unsupported("leo::third_submit_combat")
+    fn leo_submit_third(&mut self, _challenge_index: i64, _win: bool) -> Result<LeoThirdInfo> {
+        unsupported("leo::submit_third")
     }
-    fn leo_third_get_reward(&mut self) -> Result<LeoThirdInfo> {
-        unsupported("leo::third_get_reward")
+    fn leo_third_claim_reward(&mut self) -> Result<LeoThirdInfo> {
+        unsupported("leo::third_claim_reward")
     }
     fn leo_third_full_level(&mut self) -> Result<LeoThirdInfo> {
         unsupported("leo::third_full_level")

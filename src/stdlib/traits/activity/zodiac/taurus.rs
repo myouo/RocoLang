@@ -19,8 +19,8 @@ pub trait RocoTaurusActivityStdLib: Send {
     fn taurus_first_mix(&mut self, _part_index: i64) -> Result<TaurusFirstInfo> {
         unsupported("taurus::first_mix")
     }
-    fn taurus_first_buy_pet(&mut self) -> Result<TaurusFirstInfo> {
-        unsupported("taurus::first_buy_pet")
+    fn taurus_first_buy_spirit(&mut self) -> Result<TaurusFirstInfo> {
+        unsupported("taurus::first_buy_spirit")
     }
     fn taurus_first_buy_item(&mut self, _item_index: i64, _count: i64) -> Result<TaurusFirstInfo> {
         unsupported("taurus::first_buy_item")
@@ -31,12 +31,12 @@ pub trait RocoTaurusActivityStdLib: Send {
     fn taurus_second_query_bag(&mut self) -> Result<TaurusSecondInfo> {
         unsupported("taurus::second_query_bag")
     }
-    fn taurus_second_submit_game(
+    fn taurus_submit_second_game(
         &mut self,
         _game_index: i64,
         _score: i64,
     ) -> Result<TaurusSecondInfo> {
-        unsupported("taurus::second_submit_game")
+        unsupported("taurus::submit_second_game")
     }
     fn taurus_second_buy_game(&mut self, _game_index: i64) -> Result<TaurusSecondInfo> {
         unsupported("taurus::second_buy_game")
@@ -58,8 +58,8 @@ pub trait RocoTaurusActivityStdLib: Send {
     fn taurus_third_query(&mut self) -> Result<TaurusThirdInfo> {
         unsupported("taurus::third_query")
     }
-    fn taurus_third_settle_npc_fight(&mut self) -> Result<TaurusThirdInfo> {
-        unsupported("taurus::third_settle_npc_fight")
+    fn taurus_submit_third_npc(&mut self) -> Result<TaurusThirdInfo> {
+        unsupported("taurus::submit_third_npc")
     }
     fn taurus_third_evolve(
         &mut self,

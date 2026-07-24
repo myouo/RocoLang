@@ -29,7 +29,6 @@ mod mountain_sea;
 mod multi_evolution;
 mod mystery_fusion;
 mod news;
-mod news_times;
 mod pet_egg;
 mod pet_training;
 mod pisces;

@@ -31,8 +31,8 @@ fn register_vanguard_lord<T: RocoStdLib + 'static>(module: &mut Module, stdlib: 
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "vanguard_lord_submit_combat",
-        magic_pioneer_vanguard_lord_submit_combat
+        "submit_vanguard_lord",
+        magic_pioneer_submit_vanguard_lord
     );
     register_stdlib_fn_0!(
         module,
@@ -49,8 +49,8 @@ fn register_vanguard_lord<T: RocoStdLib + 'static>(module: &mut Module, stdlib: 
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "vanguard_lord_get_reward",
-        magic_pioneer_vanguard_lord_get_reward
+        "vanguard_lord_claim_reward",
+        magic_pioneer_vanguard_lord_claim_reward
     );
     register_stdlib_fn_2!(
         module,
@@ -87,15 +87,15 @@ fn register_little_angel_angie<T: RocoStdLib + 'static>(
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "little_angel_angie_submit_combat",
-        magic_pioneer_little_angel_angie_submit_combat,
+        "submit_little_angel_angie",
+        magic_pioneer_submit_little_angel_angie,
         index: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "little_angel_angie_get_reward",
-        magic_pioneer_little_angel_angie_get_reward
+        "little_angel_angie_claim_reward",
+        magic_pioneer_little_angel_angie_claim_reward
     );
 }
 
@@ -115,27 +115,27 @@ fn register_red_lotus_beast<T: RocoStdLib + 'static>(module: &mut Module, stdlib
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "red_lotus_beast_submit",
-        magic_pioneer_red_lotus_beast_submit
+        "submit_red_lotus_beast",
+        magic_pioneer_submit_red_lotus_beast
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "red_lotus_beast_start_fight",
-        magic_pioneer_red_lotus_beast_start_fight,
+        "red_lotus_beast_start_combat",
+        magic_pioneer_red_lotus_beast_start_combat,
         index: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "red_lotus_beast_settle_fight",
-        magic_pioneer_red_lotus_beast_settle_fight
+        "submit_red_lotus_beast_combat",
+        magic_pioneer_submit_red_lotus_beast_combat
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "red_lotus_beast_get_gift",
-        magic_pioneer_red_lotus_beast_get_gift
+        "red_lotus_beast_claim_gift",
+        magic_pioneer_red_lotus_beast_claim_gift
     );
 }
 
@@ -161,21 +161,21 @@ fn register_blue_water_beast<T: RocoStdLib + 'static>(module: &mut Module, stdli
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "blue_water_beast_submit_game",
-        magic_pioneer_blue_water_beast_submit_game
+        "submit_blue_water_beast_game",
+        magic_pioneer_submit_blue_water_beast_game
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "blue_water_beast_submit_combat",
-        magic_pioneer_blue_water_beast_submit_combat,
+        "submit_blue_water_beast_combat",
+        magic_pioneer_submit_blue_water_beast_combat,
         index: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "blue_water_beast_get_gift",
-        magic_pioneer_blue_water_beast_get_gift
+        "blue_water_beast_claim_gift",
+        magic_pioneer_blue_water_beast_claim_gift
     );
 }
 
@@ -195,35 +195,35 @@ fn register_ice_crystal_tiger<T: RocoStdLib + 'static>(module: &mut Module, stdl
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "ice_crystal_tiger_submit_game",
-        magic_pioneer_ice_crystal_tiger_submit_game
+        "submit_ice_crystal_tiger_game",
+        magic_pioneer_submit_ice_crystal_tiger_game
     );
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "ice_crystal_tiger_submit_chain",
-        magic_pioneer_ice_crystal_tiger_submit_chain,
+        "submit_ice_crystal_tiger_chain",
+        magic_pioneer_submit_ice_crystal_tiger_chain,
         index: i64,
         number: i64
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "ice_crystal_tiger_start_indexed_fight",
-        magic_pioneer_ice_crystal_tiger_start_indexed_fight,
+        "ice_crystal_tiger_start_indexed_combat",
+        magic_pioneer_ice_crystal_tiger_start_indexed_combat,
         index: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "ice_crystal_tiger_report_fight",
-        magic_pioneer_ice_crystal_tiger_report_fight
+        "submit_ice_crystal_tiger_combat",
+        magic_pioneer_submit_ice_crystal_tiger_combat
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "ice_crystal_tiger_get_gift",
-        magic_pioneer_ice_crystal_tiger_get_gift
+        "ice_crystal_tiger_claim_gift",
+        magic_pioneer_ice_crystal_tiger_claim_gift
     );
 }
 
@@ -246,8 +246,8 @@ fn register_dark_pioneer_dragon<T: RocoStdLib + 'static>(
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "dark_pioneer_dragon_submit_combat",
-        magic_pioneer_dark_pioneer_dragon_submit_combat
+        "submit_dark_pioneer_dragon",
+        magic_pioneer_submit_dark_pioneer_dragon
     );
     register_stdlib_fn_0!(
         module,
@@ -258,8 +258,8 @@ fn register_dark_pioneer_dragon<T: RocoStdLib + 'static>(
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "dark_pioneer_dragon_get_reward",
-        magic_pioneer_dark_pioneer_dragon_get_reward
+        "dark_pioneer_dragon_claim_reward",
+        magic_pioneer_dark_pioneer_dragon_claim_reward
     );
 }
 
@@ -279,21 +279,21 @@ fn register_bat_prince<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "bat_prince_start_indexed_fight",
-        magic_pioneer_bat_prince_start_indexed_fight,
+        "bat_prince_start_indexed_combat",
+        magic_pioneer_bat_prince_start_indexed_combat,
         index: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "bat_prince_submit",
-        magic_pioneer_bat_prince_submit
+        "submit_bat_prince",
+        magic_pioneer_submit_bat_prince
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "bat_prince_get_gift",
-        magic_pioneer_bat_prince_get_gift
+        "bat_prince_claim_gift",
+        magic_pioneer_bat_prince_claim_gift
     );
 }
 
@@ -313,8 +313,8 @@ fn register_rock_armor_lord<T: RocoStdLib + 'static>(module: &mut Module, stdlib
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "rock_armor_lord_submit_combat",
-        magic_pioneer_rock_armor_lord_submit_combat,
+        "submit_rock_armor_lord",
+        magic_pioneer_submit_rock_armor_lord,
         index: i64,
         success: i64
     );
@@ -327,8 +327,8 @@ fn register_rock_armor_lord<T: RocoStdLib + 'static>(module: &mut Module, stdlib
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "rock_armor_lord_get_reward",
-        magic_pioneer_rock_armor_lord_get_reward
+        "rock_armor_lord_claim_reward",
+        magic_pioneer_rock_armor_lord_claim_reward
     );
 }
 
@@ -348,41 +348,41 @@ fn register_golden_mantis<T: RocoStdLib + 'static>(module: &mut Module, stdlib: 
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "golden_mantis_start_fight",
-        magic_pioneer_golden_mantis_start_fight
+        "golden_mantis_start_combat",
+        magic_pioneer_golden_mantis_start_combat
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "golden_mantis_settle_fight",
-        magic_pioneer_golden_mantis_settle_fight
+        "submit_golden_mantis_combat",
+        magic_pioneer_submit_golden_mantis_combat
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "golden_mantis_submit",
-        magic_pioneer_golden_mantis_submit,
+        "submit_golden_mantis",
+        magic_pioneer_submit_golden_mantis,
         index: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "golden_mantis_get_gift",
-        magic_pioneer_golden_mantis_get_gift
+        "golden_mantis_claim_gift",
+        magic_pioneer_golden_mantis_claim_gift
     );
 }
 
 fn register_loki<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(module, stdlib, "loki_query", magic_pioneer_loki_query);
     register_stdlib_fn_0!(module, stdlib, "loki_buy", magic_pioneer_loki_buy);
+    register_stdlib_fn_0!(module, stdlib, "submit_loki", magic_pioneer_submit_loki);
+    register_stdlib_fn_0!(module, stdlib, "loki_add", magic_pioneer_loki_add);
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "loki_submit_combat",
-        magic_pioneer_loki_submit_combat
+        "loki_claim_gift",
+        magic_pioneer_loki_claim_gift
     );
-    register_stdlib_fn_0!(module, stdlib, "loki_add", magic_pioneer_loki_add);
-    register_stdlib_fn_0!(module, stdlib, "loki_get_gift", magic_pioneer_loki_get_gift);
     register_stdlib_fn_0!(
         module,
         stdlib,
@@ -407,14 +407,14 @@ fn register_magic_tail_cat<T: RocoStdLib + 'static>(module: &mut Module, stdlib:
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "magic_tail_cat_start_fight",
-        magic_pioneer_magic_tail_cat_start_fight
+        "magic_tail_cat_start_combat",
+        magic_pioneer_magic_tail_cat_start_combat
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "magic_tail_cat_settle_fight",
-        magic_pioneer_magic_tail_cat_settle_fight
+        "submit_magic_tail_cat_combat",
+        magic_pioneer_submit_magic_tail_cat_combat
     );
     register_stdlib_fn_0!(
         module,
@@ -425,14 +425,14 @@ fn register_magic_tail_cat<T: RocoStdLib + 'static>(module: &mut Module, stdlib:
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "magic_tail_cat_submit",
-        magic_pioneer_magic_tail_cat_submit
+        "submit_magic_tail_cat",
+        magic_pioneer_submit_magic_tail_cat
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "magic_tail_cat_get_gift",
-        magic_pioneer_magic_tail_cat_get_gift
+        "magic_tail_cat_claim_gift",
+        magic_pioneer_magic_tail_cat_claim_gift
     );
 }
 
@@ -452,28 +452,28 @@ fn register_nether_fox<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "nether_fox_start_fight",
-        magic_pioneer_nether_fox_start_fight,
+        "nether_fox_start_combat",
+        magic_pioneer_nether_fox_start_combat,
         index: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "nether_fox_settle_fight",
-        magic_pioneer_nether_fox_settle_fight
+        "submit_nether_fox_combat",
+        magic_pioneer_submit_nether_fox_combat
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "nether_fox_submit",
-        magic_pioneer_nether_fox_submit,
+        "submit_nether_fox",
+        magic_pioneer_submit_nether_fox,
         number: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "nether_fox_get_gift",
-        magic_pioneer_nether_fox_get_gift
+        "nether_fox_claim_gift",
+        magic_pioneer_nether_fox_claim_gift
     );
 }
 
@@ -493,27 +493,27 @@ fn register_drill_man<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "drill_man_start_fight",
-        magic_pioneer_drill_man_start_fight
+        "drill_man_start_combat",
+        magic_pioneer_drill_man_start_combat
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "drill_man_report_fight",
-        magic_pioneer_drill_man_report_fight
+        "submit_drill_man_combat",
+        magic_pioneer_submit_drill_man_combat
     );
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "drill_man_submit",
-        magic_pioneer_drill_man_submit,
+        "submit_drill_man",
+        magic_pioneer_submit_drill_man,
         index: i64,
         success: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "drill_man_get_gift",
-        magic_pioneer_drill_man_get_gift
+        "drill_man_claim_gift",
+        magic_pioneer_drill_man_claim_gift
     );
 }

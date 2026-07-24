@@ -17,8 +17,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "submit_minigame",
-        four_seasons_submit_minigame
+        "submit_mini_game",
+        four_seasons_submit_mini_game
     );
     register_stdlib_fn_1!(
         module,

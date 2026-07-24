@@ -22,56 +22,56 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_battle_observed_started", move || {
+        module.set_native_fn("daily_combat_observed_started", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_battle_observed_started()
+            lib.memory_daily_combat_observed_started()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_battle_observed_completed", move || {
+        module.set_native_fn("daily_combat_observed_completed", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_battle_observed_completed()
+            lib.memory_daily_combat_observed_completed()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_battle_tracking_since", move || {
+        module.set_native_fn("daily_combat_tracking_since", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_battle_tracking_since()
+            lib.memory_daily_combat_tracking_since()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_battle_limit_reached", move || {
+        module.set_native_fn("daily_combat_limit_reached", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_battle_limit_reached()
+            lib.memory_daily_combat_limit_reached()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_battle_limit", move || {
+        module.set_native_fn("daily_combat_limit", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_battle_limit().map_err(to_rhai_error)
+            lib.memory_daily_combat_limit().map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_battle_limit_return_code", move || {
+        module.set_native_fn("daily_combat_limit_return_code", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_battle_limit_return_code()
+            lib.memory_daily_combat_limit_return_code()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_battle_limit_message", move || {
+        module.set_native_fn("daily_combat_limit_message", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_battle_limit_message()
+            lib.memory_daily_combat_limit_message()
                 .map_err(to_rhai_error)
         });
     }

@@ -1,5 +1,5 @@
 fn format_skill_requirements(required_skill_ids) {
-    const skill_infos = lookup::lookup_skills_info(required_skill_ids);
+    const skill_infos = lookup::skill_infos(required_skill_ids);
     let text = "";
     let is_first = true;
     for skill_info in skill_infos {

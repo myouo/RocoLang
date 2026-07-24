@@ -4,14 +4,14 @@ pub trait RocoAdventureActivityStdLib: Send {
     fn adventure_query_status(&mut self) -> Result<AdventureStatus> {
         unsupported("adventure::query_status")
     }
-    fn adventure_begin(&mut self, _point: i64) -> Result<()> {
-        unsupported("adventure::begin")
+    fn adventure_start(&mut self, _point: i64) -> Result<()> {
+        unsupported("adventure::start")
     }
     fn adventure_claim_reward(&mut self, _point: i64) -> Result<AdventureRewards> {
         unsupported("adventure::claim_reward")
     }
-    fn adventure_begin_auto(&mut self, _point: i64, _count: i64) -> Result<()> {
-        unsupported("adventure::begin_auto")
+    fn adventure_start_auto(&mut self, _point: i64, _count: i64) -> Result<()> {
+        unsupported("adventure::start_auto")
     }
     fn adventure_end_auto(&mut self, _point: i64) -> Result<()> {
         unsupported("adventure::end_auto")
@@ -26,14 +26,14 @@ pub trait RocoAdventureActivityStdLib: Send {
     fn dark_city_expedition_query(&mut self) -> Result<DarkCityExpeditionInfo> {
         unsupported("dark_city::expedition_query")
     }
-    fn dark_city_expedition_start_fight(
+    fn dark_city_expedition_start_combat(
         &mut self,
         _vip_boost: bool,
     ) -> Result<DarkCityExpeditionInfo> {
-        unsupported("dark_city::expedition_start_fight")
+        unsupported("dark_city::expedition_start_combat")
     }
-    fn dark_city_expedition_settle_fight(&mut self) -> Result<DarkCityExpeditionInfo> {
-        unsupported("dark_city::expedition_settle_fight")
+    fn dark_city_submit_expedition(&mut self) -> Result<DarkCityExpeditionInfo> {
+        unsupported("dark_city::submit_expedition")
     }
     fn dark_city_expedition_set_vip_pass(
         &mut self,
@@ -54,11 +54,11 @@ pub trait RocoAdventureActivityStdLib: Send {
     fn mystery_fusion_query(&mut self) -> Result<MysteryFusionInfo> {
         unsupported("mystery_fusion::query")
     }
-    fn mystery_fusion_prepare_battle(&mut self, _battle_index: i64) -> Result<MysteryFusionInfo> {
-        unsupported("mystery_fusion::prepare_battle")
+    fn mystery_fusion_prepare_combat(&mut self, _battle_index: i64) -> Result<MysteryFusionInfo> {
+        unsupported("mystery_fusion::prepare_combat")
     }
-    fn mystery_fusion_submit_battle(&mut self) -> Result<MysteryFusionInfo> {
-        unsupported("mystery_fusion::submit_battle")
+    fn mystery_fusion_submit(&mut self) -> Result<MysteryFusionInfo> {
+        unsupported("mystery_fusion::submit")
     }
     fn mystery_fusion_query_material_bag(
         &mut self,
@@ -89,14 +89,14 @@ pub trait RocoAdventureActivityStdLib: Send {
     fn treasure_realm_boost_by_vip(&mut self) -> Result<TreasureRealmInfo> {
         unsupported("treasure_realm::boost_by_vip")
     }
-    fn treasure_realm_start_battle(&mut self) -> Result<TreasureRealmInfo> {
-        unsupported("treasure_realm::start_battle")
+    fn treasure_realm_start_combat(&mut self) -> Result<TreasureRealmInfo> {
+        unsupported("treasure_realm::start_combat")
     }
-    fn treasure_realm_submit_battle(&mut self) -> Result<TreasureRealmInfo> {
-        unsupported("treasure_realm::submit_battle")
+    fn treasure_realm_submit(&mut self) -> Result<TreasureRealmInfo> {
+        unsupported("treasure_realm::submit")
     }
-    fn treasure_realm_get_gift(&mut self, _index: i64) -> Result<TreasureRealmInfo> {
-        unsupported("treasure_realm::get_gift")
+    fn treasure_realm_claim_gift(&mut self, _index: i64) -> Result<TreasureRealmInfo> {
+        unsupported("treasure_realm::claim_gift")
     }
     fn summon_query(&mut self) -> Result<SummonInfo> {
         unsupported("summon::query")

@@ -12,7 +12,7 @@ use crate::stdlib::RocoStdLib;
 // - third boss/score index: 0-based, matching ui1836 arrays.
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(module, stdlib, "first_query", sagittarius_first_query);
-    register_stdlib_fn_0!(module, stdlib, "first_submit", sagittarius_first_submit);
+    register_stdlib_fn_0!(module, stdlib, "submit_first", sagittarius_submit_first);
     register_stdlib_fn_0!(
         module,
         stdlib,
@@ -40,7 +40,12 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
         sagittarius_first_complete,
         index: i64
     );
-    register_stdlib_fn_0!(module, stdlib, "first_get_pet", sagittarius_first_get_pet);
+    register_stdlib_fn_0!(
+        module,
+        stdlib,
+        "first_claim_spirit",
+        sagittarius_first_claim_spirit
+    );
 
     register_stdlib_fn_0!(module, stdlib, "second_query", sagittarius_second_query);
     register_stdlib_fn_0!(module, stdlib, "second_start", sagittarius_second_start);
@@ -88,11 +93,16 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "third_settle_combat",
-        sagittarius_third_settle_combat,
+        "submit_third",
+        sagittarius_submit_third,
         boss_index: i64
     );
-    register_stdlib_fn_0!(module, stdlib, "third_buy_pet", sagittarius_third_buy_pet);
+    register_stdlib_fn_0!(
+        module,
+        stdlib,
+        "third_buy_spirit",
+        sagittarius_third_buy_spirit
+    );
     register_stdlib_fn_2!(
         module,
         stdlib,

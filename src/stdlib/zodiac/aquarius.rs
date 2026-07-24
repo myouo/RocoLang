@@ -6,7 +6,7 @@ use crate::stdlib::util::{register_stdlib_fn_0, register_stdlib_fn_1, register_s
 use crate::stdlib::RocoStdLib;
 
 // Index convention:
-// - first_settle_combat boss_index is 0-based, matching ui1879 btnCombat_0..5.
+// - submit_first boss_index is 0-based, matching ui1879 btnCombat_0..5.
 // - second_exchange_item exchange_position is 1-based, matching ui1890 excPos: 1=light, 2=tail.
 // - third_query_bag bag_type follows CGI directly; AS sends type=1 for evolve candidates.
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
@@ -14,8 +14,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "first_settle_combat",
-        aquarius_first_settle_combat,
+        "submit_first",
+        aquarius_submit_first,
         boss_index: i64
     );
     register_stdlib_fn_2!(
@@ -92,8 +92,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "second_exchange_pet",
-        aquarius_second_exchange_pet
+        "second_exchange_spirit",
+        aquarius_second_exchange_spirit
     );
     register_stdlib_fn_0!(
         module,
@@ -104,12 +104,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
 
     register_stdlib_fn_0!(module, stdlib, "third_query", aquarius_third_query);
     register_stdlib_fn_0!(module, stdlib, "third_random", aquarius_third_random);
-    register_stdlib_fn_0!(
-        module,
-        stdlib,
-        "third_settle_combat",
-        aquarius_third_settle_combat
-    );
+    register_stdlib_fn_0!(module, stdlib, "submit_third", aquarius_submit_third);
     register_stdlib_fn_0!(module, stdlib, "third_buy_level", aquarius_third_buy_level);
     register_stdlib_fn_2!(
         module,

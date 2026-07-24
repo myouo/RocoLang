@@ -110,31 +110,31 @@ impl RocoRuntimeStdLib for MockStdLib {
         Ok(vec![("task.count".to_string(), "integer".to_string())])
     }
 
-    fn memory_daily_battle_observed_started(&mut self) -> Result<i64> {
+    fn memory_daily_combat_observed_started(&mut self) -> Result<i64> {
         Ok(11)
     }
 
-    fn memory_daily_battle_observed_completed(&mut self) -> Result<i64> {
+    fn memory_daily_combat_observed_completed(&mut self) -> Result<i64> {
         Ok(9)
     }
 
-    fn memory_daily_battle_tracking_since(&mut self) -> Result<i64> {
+    fn memory_daily_combat_tracking_since(&mut self) -> Result<i64> {
         Ok(123_456)
     }
 
-    fn memory_daily_battle_limit_reached(&mut self) -> Result<bool> {
+    fn memory_daily_combat_limit_reached(&mut self) -> Result<bool> {
         Ok(true)
     }
 
-    fn memory_daily_battle_limit(&mut self) -> Result<i64> {
+    fn memory_daily_combat_limit(&mut self) -> Result<i64> {
         Ok(2_000)
     }
 
-    fn memory_daily_battle_limit_return_code(&mut self) -> Result<i64> {
+    fn memory_daily_combat_limit_return_code(&mut self) -> Result<i64> {
         Ok(41)
     }
 
-    fn memory_daily_battle_limit_message(&mut self) -> Result<String> {
+    fn memory_daily_combat_limit_message(&mut self) -> Result<String> {
         Ok("limit".to_string())
     }
 
@@ -408,13 +408,13 @@ fn persistent_daily_memory_apis_are_available_to_scripts() {
                 system::assert(memory::daily_clear(), "clear mismatch");
                 let keys = memory::daily_list_keys();
                 system::assert(keys["task.count"] == "integer", "key list mismatch");
-                system::assert(memory::daily_battle_observed_started() == 11, "started mismatch");
-                system::assert(memory::daily_battle_observed_completed() == 9, "completed mismatch");
-                system::assert(memory::daily_battle_tracking_since() == 123456, "tracking mismatch");
-                system::assert(memory::daily_battle_limit_reached(), "limit state mismatch");
-                system::assert(memory::daily_battle_limit() == 2000, "limit mismatch");
-                system::assert(memory::daily_battle_limit_return_code() == 41, "limit code mismatch");
-                system::assert(memory::daily_battle_limit_message() == "limit", "limit message mismatch");
+                system::assert(memory::daily_combat_observed_started() == 11, "started mismatch");
+                system::assert(memory::daily_combat_observed_completed() == 9, "completed mismatch");
+                system::assert(memory::daily_combat_tracking_since() == 123456, "tracking mismatch");
+                system::assert(memory::daily_combat_limit_reached(), "limit state mismatch");
+                system::assert(memory::daily_combat_limit() == 2000, "limit mismatch");
+                system::assert(memory::daily_combat_limit_return_code() == 41, "limit code mismatch");
+                system::assert(memory::daily_combat_limit_message() == "limit", "limit message mismatch");
             "#,
         )
         .expect("persistent daily memory APIs should be exposed to scripts");
@@ -496,7 +496,7 @@ fn spirit_book_apis_are_available_to_scripts() {
                 system::assert(summaries[0].id == 10, "summary id mismatch");
                 system::assert(summaries[0].spirit_count == 2, "summary count field mismatch");
 
-                let book = lookup::get_spirit_book(10);
+                let book = lookup::spirit_book(10);
                 system::assert(book.name == "All Spirits", book.name);
                 system::assert(len(book.groups) == 1, "group count mismatch");
                 system::assert(book.groups[0].template_id == 1, "template id mismatch");

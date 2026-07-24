@@ -16,8 +16,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "settle",
-        pet_training_settle,
+        "submit",
+        pet_training_submit,
         training_type: i64,
         pet_id: i64
     );

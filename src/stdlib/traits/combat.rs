@@ -3,11 +3,11 @@ use super::*;
 /// Combat action and combat state APIs.
 pub trait RocoCombatStdLib: Send {
     fn get_combat_lineup(&mut self) -> Result<[Option<SpiritInfo>; 6]> {
-        unsupported("combat::get_combat_lineup")
+        unsupported("combat::get_lineup")
     }
 
     fn get_combat_state(&mut self) -> Result<CombatState> {
-        unsupported("combat::get_combat_state")
+        unsupported("combat::get_state")
     }
 
     fn get_action_snapshot(&mut self) -> Result<CombatActionSnapshot> {
@@ -112,7 +112,7 @@ pub trait RocoCombatStdLib: Send {
     }
 
     fn combat_escape(&mut self) -> Result<bool> {
-        unsupported("combat::combat_escape")
+        unsupported("combat::escape")
     }
 
     fn try_combat_escape(&mut self) -> Result<ActionResult> {
@@ -152,7 +152,7 @@ pub trait RocoCombatStdLib: Send {
     }
 
     fn get_battle_result(&mut self) -> Result<BattleResult> {
-        unsupported("combat::get_battle_result")
+        unsupported("combat::get_result")
     }
 
     fn try_get_battle_result(&mut self) -> Result<BattleResultQueryResult> {
@@ -163,7 +163,7 @@ pub trait RocoCombatStdLib: Send {
     }
 
     fn get_combat_actions(&mut self) -> Result<CombatActions> {
-        unsupported("combat::get_combat_actions")
+        unsupported("combat::get_actions")
     }
 
     fn can_use_skill(&mut self, _skill_id: i64) -> Result<bool> {
@@ -183,7 +183,7 @@ pub trait RocoCombatStdLib: Send {
     }
 
     fn get_battle_history(&mut self) -> Result<String> {
-        unsupported("combat::get_battle_history")
+        unsupported("combat::get_history")
     }
 
     fn get_my_hp(&mut self) -> Result<i64> {
@@ -215,7 +215,7 @@ pub trait RocoCombatStdLib: Send {
     }
 
     fn is_combat_finished(&mut self) -> Result<bool> {
-        unsupported("combat::is_combat_finished")
+        unsupported("combat::is_finished")
     }
 
     fn get_current_round(&mut self) -> Result<i64> {

@@ -13,8 +13,8 @@ pub trait RocoAriesActivityStdLib: Send {
     fn aries_first_dice(&mut self) -> Result<AriesFirstInfo> {
         unsupported("aries::first_dice")
     }
-    fn aries_first_settle_battle(&mut self, _battle_type: i64) -> Result<AriesFirstInfo> {
-        unsupported("aries::first_settle_battle")
+    fn aries_submit_first(&mut self, _battle_type: i64) -> Result<AriesFirstInfo> {
+        unsupported("aries::submit_first")
     }
     fn aries_first_query_bag(&mut self) -> Result<AriesFirstInfo> {
         unsupported("aries::first_query_bag")
@@ -38,8 +38,8 @@ pub trait RocoAriesActivityStdLib: Send {
     fn aries_second_query(&mut self) -> Result<AriesSecondInfo> {
         unsupported("aries::second_query")
     }
-    fn aries_second_submit_game(&mut self, _power: i64) -> Result<AriesSecondInfo> {
-        unsupported("aries::second_submit_game")
+    fn aries_submit_second_game(&mut self, _power: i64) -> Result<AriesSecondInfo> {
+        unsupported("aries::submit_second_game")
     }
     fn aries_second_query_bag(&mut self) -> Result<AriesSecondInfo> {
         unsupported("aries::second_query_bag")
@@ -76,7 +76,7 @@ pub trait RocoAriesActivityStdLib: Send {
     fn aries_third_buy_wish(&mut self) -> Result<AriesThirdInfo> {
         unsupported("aries::third_buy_wish")
     }
-    fn aries_third_exchange_pet(&mut self) -> Result<AriesThirdInfo> {
-        unsupported("aries::third_exchange_pet")
+    fn aries_third_exchange_spirit(&mut self) -> Result<AriesThirdInfo> {
+        unsupported("aries::third_exchange_spirit")
     }
 }

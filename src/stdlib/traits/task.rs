@@ -25,8 +25,8 @@ pub trait RocoTaskStdLib: Send {
         unsupported("task::check_achievement_finish")
     }
 
-    fn task_query_magic_growup_info(&mut self) -> Result<MagicGrowupInfo> {
-        unsupported("task::query_magic_growup_info")
+    fn task_query_magic_grow_up_info(&mut self) -> Result<MagicGrowupInfo> {
+        unsupported("task::query_magic_grow_up_info")
     }
 
     fn task_condition_apply_complete(&mut self, _npc_id: i64) -> Result<TaskConditionApplyResult> {

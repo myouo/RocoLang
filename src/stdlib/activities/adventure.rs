@@ -7,7 +7,7 @@ use crate::stdlib::RocoStdLib;
 
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(module, stdlib, "query_status", adventure_query_status);
-    register_stdlib_fn_1!(module, stdlib, "begin", adventure_begin, point: i64);
+    register_stdlib_fn_1!(module, stdlib, "start", adventure_start, point: i64);
     register_stdlib_fn_1!(
         module,
         stdlib,
@@ -18,8 +18,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "begin_auto",
-        adventure_begin_auto,
+        "start_auto",
+        adventure_start_auto,
         point: i64,
         count: i64
     );

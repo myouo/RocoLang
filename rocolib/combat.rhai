@@ -71,11 +71,11 @@ fn assert_action_ready(action_result, label) {
 }
 
 fn escape_if_possible_and_wait(label) {
-    if combat::is_combat_finished() || !wait_until_escape_ready() {
+    if combat::is_finished() || !wait_until_escape_ready() {
         return true;
     }
 
-    let escape_result = combat::try_combat_escape_and_wait();
+    let escape_result = combat::try_escape_and_wait();
     assert_action_ready(escape_result, label);
     return escape_result.combat_finished;
 }

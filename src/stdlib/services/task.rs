@@ -26,8 +26,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "query_magic_growup_info",
-        task_query_magic_growup_info
+        "query_magic_grow_up_info",
+        task_query_magic_grow_up_info
     );
     register_stdlib_fn_1!(
         module,

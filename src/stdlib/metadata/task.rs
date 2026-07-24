@@ -58,12 +58,12 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "task",
-            "query_magic_growup_info",
+            "query_magic_grow_up_info",
             return_type: "MagicGrowupInfo",
             "查询魔法成长任务信息。",
             params: [],
             returns: "返回成长进度、能量和宠物等级信息。",
-            examples: ["let result = task::query_magic_growup_info();"]
+            examples: ["let result = task::query_magic_grow_up_info();"]
         ),
         super::stdlib_doc!(
             "task",

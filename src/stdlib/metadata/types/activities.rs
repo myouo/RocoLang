@@ -126,7 +126,7 @@ pub(super) fn doc(type_name: &str) -> Option<(&'static str, Vec<StdlibFieldDoc>)
             vec![
                 field("storey_index", "int", "楼层索引。"),
                 field("first", "int", "首通状态。"),
-                field("can_quick_fight", "bool", "是否可快速挑战。"),
+                field("can_quick_combat", "bool", "是否可快速挑战。"),
                 field("nodes", "StarTowerNode[]", "Boss 节点列表。"),
                 field(
                     "exchange_items",

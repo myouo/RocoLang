@@ -4,14 +4,14 @@ pub trait RocoLibraActivityStdLib: Send {
     fn libra_first_query(&mut self) -> Result<LibraFirstInfo> {
         unsupported("libra::first_query")
     }
-    fn libra_first_submit_game(&mut self) -> Result<LibraFirstInfo> {
-        unsupported("libra::first_submit_game")
+    fn libra_submit_first_game(&mut self) -> Result<LibraFirstInfo> {
+        unsupported("libra::submit_first_game")
     }
-    fn libra_first_settle_fight(&mut self, _prop_index: i64) -> Result<LibraFirstInfo> {
-        unsupported("libra::first_settle_fight")
+    fn libra_submit_first_combat(&mut self, _prop_index: i64) -> Result<LibraFirstInfo> {
+        unsupported("libra::submit_first_combat")
     }
-    fn libra_first_get_gift(&mut self) -> Result<LibraFirstInfo> {
-        unsupported("libra::first_get_gift")
+    fn libra_first_claim_gift(&mut self) -> Result<LibraFirstInfo> {
+        unsupported("libra::first_claim_gift")
     }
     fn libra_first_notify_full_level(
         &mut self,
@@ -29,8 +29,8 @@ pub trait RocoLibraActivityStdLib: Send {
     fn libra_second_query(&mut self) -> Result<LibraSecondInfo> {
         unsupported("libra::second_query")
     }
-    fn libra_second_settle_fight(&mut self, _npc_index: i64) -> Result<LibraSecondInfo> {
-        unsupported("libra::second_settle_fight")
+    fn libra_submit_second(&mut self, _npc_index: i64) -> Result<LibraSecondInfo> {
+        unsupported("libra::submit_second")
     }
     fn libra_second_awaken(&mut self) -> Result<LibraSecondInfo> {
         unsupported("libra::second_awaken")
@@ -70,7 +70,7 @@ pub trait RocoLibraActivityStdLib: Send {
     fn libra_third_buy_wish(&mut self) -> Result<LibraThirdInfo> {
         unsupported("libra::third_buy_wish")
     }
-    fn libra_third_exchange_pet(&mut self) -> Result<LibraThirdInfo> {
-        unsupported("libra::third_exchange_pet")
+    fn libra_third_exchange_spirit(&mut self) -> Result<LibraThirdInfo> {
+        unsupported("libra::third_exchange_spirit")
     }
 }

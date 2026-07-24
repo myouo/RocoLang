@@ -47,11 +47,11 @@ pub trait RocoRuntimeStdLib: Send {
     }
 
     fn get_pause(&mut self) -> Result<bool> {
-        unsupported("game::get_pause")
+        unsupported("game::is_paused")
     }
 
     fn set_pause(&mut self, _enabled: bool) -> Result<bool> {
-        unsupported("game::set_pause")
+        unsupported("game::set_paused")
     }
 
     fn start_mini_game(&mut self, _game_id: i64) -> Result<()> {
@@ -186,32 +186,32 @@ pub trait RocoRuntimeStdLib: Send {
         unsupported("memory::daily_list_keys")
     }
 
-    fn memory_daily_battle_observed_started(&mut self) -> Result<i64> {
-        unsupported("memory::daily_battle_observed_started")
+    fn memory_daily_combat_observed_started(&mut self) -> Result<i64> {
+        unsupported("memory::daily_combat_observed_started")
     }
 
-    fn memory_daily_battle_observed_completed(&mut self) -> Result<i64> {
-        unsupported("memory::daily_battle_observed_completed")
+    fn memory_daily_combat_observed_completed(&mut self) -> Result<i64> {
+        unsupported("memory::daily_combat_observed_completed")
     }
 
-    fn memory_daily_battle_tracking_since(&mut self) -> Result<i64> {
-        unsupported("memory::daily_battle_tracking_since")
+    fn memory_daily_combat_tracking_since(&mut self) -> Result<i64> {
+        unsupported("memory::daily_combat_tracking_since")
     }
 
-    fn memory_daily_battle_limit_reached(&mut self) -> Result<bool> {
-        unsupported("memory::daily_battle_limit_reached")
+    fn memory_daily_combat_limit_reached(&mut self) -> Result<bool> {
+        unsupported("memory::daily_combat_limit_reached")
     }
 
-    fn memory_daily_battle_limit(&mut self) -> Result<i64> {
-        unsupported("memory::daily_battle_limit")
+    fn memory_daily_combat_limit(&mut self) -> Result<i64> {
+        unsupported("memory::daily_combat_limit")
     }
 
-    fn memory_daily_battle_limit_return_code(&mut self) -> Result<i64> {
-        unsupported("memory::daily_battle_limit_return_code")
+    fn memory_daily_combat_limit_return_code(&mut self) -> Result<i64> {
+        unsupported("memory::daily_combat_limit_return_code")
     }
 
-    fn memory_daily_battle_limit_message(&mut self) -> Result<String> {
-        unsupported("memory::daily_battle_limit_message")
+    fn memory_daily_combat_limit_message(&mut self) -> Result<String> {
+        unsupported("memory::daily_combat_limit_message")
     }
 
     fn is_in_combat(&mut self) -> Result<bool> {

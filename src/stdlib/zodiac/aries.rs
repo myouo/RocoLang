@@ -6,7 +6,7 @@ use crate::stdlib::util::{register_stdlib_fn_0, register_stdlib_fn_1, register_s
 use crate::stdlib::RocoStdLib;
 
 // Index convention:
-// - first_settle_battle battle_type follows AS CGI directly: 1=sky soldier, 2=progress boss.
+// - submit_first combat_type follows AS CGI directly: 1=sky soldier, 2=progress boss.
 // - third_exchange_item exchange_position is 1-based, matching ui1213 excPos: 1=light, 2=tail.
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(module, stdlib, "first_query", aries_first_query);
@@ -16,9 +16,9 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "first_settle_battle",
-        aries_first_settle_battle,
-        battle_type: i64
+        "submit_first",
+        aries_submit_first,
+        combat_type: i64
     );
     register_stdlib_fn_0!(module, stdlib, "first_query_bag", aries_first_query_bag);
     register_stdlib_fn_2!(
@@ -44,8 +44,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "second_submit_game",
-        aries_second_submit_game,
+        "submit_second_game",
+        aries_submit_second_game,
         power: i64
     );
     register_stdlib_fn_0!(module, stdlib, "second_query_bag", aries_second_query_bag);
@@ -85,7 +85,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "third_exchange_pet",
-        aries_third_exchange_pet
+        "third_exchange_spirit",
+        aries_third_exchange_spirit
     );
 }

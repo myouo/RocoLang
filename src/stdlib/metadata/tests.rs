@@ -66,6 +66,81 @@ fn stdlib_function_docs_do_not_contain_duplicates() {
 }
 
 #[test]
+fn submission_functions_use_submit_prefix() {
+    let offenders = registered_stdlib_function_registrations()
+        .iter()
+        .filter(|registration| {
+            let name = registration.name;
+            name.contains("settle")
+                || name.contains("report_fight")
+                || name.contains("report_battle_win")
+                || name.contains("commit")
+                || (name.contains("submit")
+                    && (name.contains("_fight")
+                        || name.contains("_battle")
+                        || (name != "submit"
+                            && !name.starts_with("submit_")
+                            && !name.starts_with("try_submit_"))))
+        })
+        .map(|registration| format!("{}::{}", registration.module, registration.name))
+        .collect::<Vec<_>>();
+
+    assert!(
+        offenders.is_empty(),
+        "script submission functions must use a submit prefix: {offenders:?}"
+    );
+}
+
+#[test]
+fn stdlib_function_names_do_not_repeat_their_namespace_or_old_spellings() {
+    let offenders = registered_stdlib_function_registrations()
+        .iter()
+        .filter(|registration| {
+            let name = registration.name;
+            let repeats_namespace = match registration.module {
+                "lookup" => name.starts_with("lookup_"),
+                "session" => name.starts_with("session_"),
+                "combat" => matches!(
+                    name,
+                    "combat_escape"
+                        | "get_battle_history"
+                        | "get_battle_result"
+                        | "get_combat_actions"
+                        | "get_combat_lineup"
+                        | "get_combat_state"
+                        | "is_combat_finished"
+                        | "try_combat_escape"
+                        | "try_combat_escape_and_wait"
+                        | "try_get_battle_result"
+                ),
+                _ => false,
+            };
+            let old_spelling = name == "begin"
+                || name.starts_with("begin_")
+                || name.contains("minigame")
+                || name.contains("onekey")
+                || name.contains("growup")
+                || name.contains("_exc_")
+                || name.contains("fight")
+                || name.contains("battle")
+                || name.contains("_get_gift")
+                || name.contains("_get_reward")
+                || name == "get_prize"
+                || name == "get_gift"
+                || name == "get_floor_award"
+                || name == "get_top_reward";
+            repeats_namespace || old_spelling
+        })
+        .map(|registration| format!("{}::{}", registration.module, registration.name))
+        .collect::<Vec<_>>();
+
+    assert!(
+        offenders.is_empty(),
+        "stdlib functions contain redundant namespaces or old spellings: {offenders:?}"
+    );
+}
+
+#[test]
 fn stdlib_function_docs_do_not_expose_placeholder_copy() {
     let placeholders = ["待补充", "取决于具体接口", "详细参数语义"];
     let offenders = stdlib_function_docs()
@@ -128,7 +203,7 @@ fn pet_egg_functions_expose_result_struct_docs() {
     let expected = [
         ("query_info", "PetEggInfo"),
         ("vip_speed_up", "PetEggSpeedUpResult"),
-        ("begin", "PetEggBeginResult"),
+        ("start", "PetEggBeginResult"),
         ("cancel", "PetEggCancelResult"),
         ("preview", "PetEggPreviewResult"),
     ];
@@ -152,7 +227,7 @@ fn generated_rust_return_types_cover_pet_egg_registration() {
     for (name, return_type) in [
         ("query_info", "PetEggInfo"),
         ("vip_speed_up", "PetEggSpeedUpResult"),
-        ("begin", "PetEggBeginResult"),
+        ("start", "PetEggBeginResult"),
         ("cancel", "PetEggCancelResult"),
         ("preview", "PetEggPreviewResult"),
     ] {

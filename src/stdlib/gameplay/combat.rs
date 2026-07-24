@@ -53,27 +53,22 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
         try_change_spirit_and_wait,
         position: i64
     );
-    register_stdlib_fn_0!(module, stdlib, "combat_escape", combat_escape);
-    register_stdlib_fn_0!(module, stdlib, "try_combat_escape", try_combat_escape);
+    register_stdlib_fn_0!(module, stdlib, "escape", combat_escape);
+    register_stdlib_fn_0!(module, stdlib, "try_escape", try_combat_escape);
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "try_combat_escape_and_wait",
+        "try_escape_and_wait",
         try_combat_escape_and_wait
     );
     register_stdlib_fn_0!(module, stdlib, "wait_round_end", wait_round_end);
     register_stdlib_fn_0!(module, stdlib, "wait_next_action", wait_next_action);
-    register_stdlib_fn_0!(module, stdlib, "get_battle_result", get_battle_result);
-    register_stdlib_fn_0!(
-        module,
-        stdlib,
-        "try_get_battle_result",
-        try_get_battle_result
-    );
-    register_stdlib_fn_0!(module, stdlib, "get_combat_actions", get_combat_actions);
+    register_stdlib_fn_0!(module, stdlib, "get_result", get_battle_result);
+    register_stdlib_fn_0!(module, stdlib, "try_get_result", try_get_battle_result);
+    register_stdlib_fn_0!(module, stdlib, "get_actions", get_combat_actions);
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("get_combat_lineup", move || {
+        module.set_native_fn("get_lineup", move || {
             let mut lib = lock_stdlib(&stdlib)?;
             lib.get_combat_lineup()
                 .map(|spirits| {
@@ -89,7 +84,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
                 .map_err(to_rhai_error)
         });
     }
-    register_stdlib_fn_0!(module, stdlib, "get_combat_state", get_combat_state);
+    register_stdlib_fn_0!(module, stdlib, "get_state", get_combat_state);
     register_stdlib_fn_0!(module, stdlib, "get_action_snapshot", get_action_snapshot);
     register_stdlib_fn_1!(module, stdlib, "can_use_skill", can_use_skill, skill_id: i64);
     register_stdlib_fn_1!(module, stdlib, "can_use_item", can_use_item, item_id: i64);
@@ -101,7 +96,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
         position: i64
     );
     register_stdlib_fn_0!(module, stdlib, "can_capture", can_capture);
-    register_stdlib_fn_0!(module, stdlib, "get_battle_history", get_battle_history);
+    register_stdlib_fn_0!(module, stdlib, "get_history", get_battle_history);
     register_stdlib_fn_0!(module, stdlib, "get_my_hp", get_my_hp);
     register_stdlib_fn_0!(module, stdlib, "get_my_max_hp", get_my_max_hp);
     register_stdlib_fn_0!(module, stdlib, "get_rival_hp", get_rival_hp);
@@ -120,6 +115,6 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
         "get_rival_spirit_info",
         get_rival_spirit_info
     );
-    register_stdlib_fn_0!(module, stdlib, "is_combat_finished", is_combat_finished);
+    register_stdlib_fn_0!(module, stdlib, "is_finished", is_combat_finished);
     register_stdlib_fn_0!(module, stdlib, "get_current_round", get_current_round);
 }

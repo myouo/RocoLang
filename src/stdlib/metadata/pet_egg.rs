@@ -22,12 +22,12 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "pet_egg",
-            "begin",
+            "start",
             return_type: "PetEggBeginResult",
             "使用背包中的两只宠物开始培育宠物蛋。",
             params: ["male_index" => "父方宠物的背包索引。", "female_index" => "母方宠物的背包索引。"],
             returns: "PetEggBeginResult，包含操作结果和当前最大宠物蛋容量。",
-            examples: ["let result = pet_egg::begin(0, 1);"]
+            examples: ["let result = pet_egg::start(0, 1);"]
         ),
         super::stdlib_doc!(
             "pet_egg",

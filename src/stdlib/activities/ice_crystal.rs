@@ -14,12 +14,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
         ice_crystal_charge_with_item,
         item: i64
     );
-    register_stdlib_fn_0!(
-        module,
-        stdlib,
-        "report_battle_win",
-        ice_crystal_report_battle_win
-    );
+    register_stdlib_fn_0!(module, stdlib, "submit", ice_crystal_submit);
     register_stdlib_fn_1!(
         module,
         stdlib,

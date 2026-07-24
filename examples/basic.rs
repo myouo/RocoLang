@@ -404,7 +404,7 @@ fn main() -> Result<()> {
 
         // Battle loop.
         let round = 0;
-        while !combat::is_combat_finished() && round < 10 {
+        while !combat::is_finished() && round < 10 {
             system::log("Round " + round);
 
             let my_hp = combat::get_my_hp();
@@ -425,7 +425,7 @@ fn main() -> Result<()> {
         }
 
         system::log("Battle finished");
-        combat::is_combat_finished()
+        combat::is_finished()
     "#;
 
     let result = engine.eval(script)?;

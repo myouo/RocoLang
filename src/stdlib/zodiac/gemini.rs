@@ -48,11 +48,16 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "second_submit",
-        gemini_second_submit,
+        "submit_second",
+        gemini_submit_second,
         kind: i64
     );
-    register_stdlib_fn_0!(module, stdlib, "second_get_gift", gemini_second_get_gift);
+    register_stdlib_fn_0!(
+        module,
+        stdlib,
+        "second_claim_gift",
+        gemini_second_claim_gift
+    );
     register_stdlib_fn_2!(
         module,
         stdlib,
@@ -67,24 +72,24 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "third_settle_combat",
-        gemini_third_settle_combat,
+        "submit_third_combat",
+        gemini_submit_third_combat,
         side: i64,
         index: i64
     );
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "third_submit",
-        gemini_third_submit,
+        "submit_third",
+        gemini_submit_third,
         spirit_id: i64,
         catch_time: i64
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "third_submit_without_spirit",
-        gemini_third_submit_without_spirit
+        "submit_third_without_spirit",
+        gemini_submit_third_without_spirit
     );
     register_stdlib_fn_2!(
         module,

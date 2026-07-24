@@ -54,7 +54,6 @@ pub(crate) fn register_modules<T: RocoStdLib + 'static>(
     register_stdlib_module!(engine, stdlib, manor);
     register_stdlib_module!(engine, stdlib, pet_training);
     register_stdlib_module!(engine, stdlib, news);
-    register_stdlib_module!(engine, stdlib, news_times);
     register_stdlib_module!(engine, stdlib, task);
     register_stdlib_module!(engine, stdlib, incubative_machine);
     register_stdlib_module!(engine, stdlib, pet_egg);

@@ -8,7 +8,7 @@ use crate::stdlib::RocoStdLib;
 // Index convention:
 // - second_query_bag kind: 0=level-up candidates, 1=evolve candidates, matching CGI type.
 // - second_answer_quiz answer_index is 0-based, matching AS question=0/1.
-// - third_settle_battle boss_index is 0-based, matching ui1848 COMBAT_NPCID[index].
+// - submit_third boss_index is 0-based, matching ui1848 COMBAT_NPCID[index].
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(
         module,
@@ -51,8 +51,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "second_settle_battle_task",
-        capricorn_second_settle_battle_task
+        "submit_second_combat_task",
+        capricorn_submit_second_combat_task
     );
     register_stdlib_fn_0!(
         module,
@@ -109,8 +109,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "third_settle_battle",
-        capricorn_third_settle_battle,
+        "submit_third",
+        capricorn_submit_third,
         boss_index: i64
     );
     register_stdlib_fn_0!(

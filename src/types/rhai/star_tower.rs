@@ -38,7 +38,7 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
         StarTowerStorey,
         storey_index,
         first,
-        can_quick_fight
+        can_quick_combat
     );
     engine.register_get("nodes", |value: &mut StarTowerStorey| {
         to_array(&value.nodes)

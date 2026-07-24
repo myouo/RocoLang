@@ -16,8 +16,8 @@ pub trait RocoCancerActivityStdLib: Send {
     fn cancer_sharp_scorpion_buy_wish(&mut self) -> Result<CancerSharpScorpionInfo> {
         unsupported("cancer::sharp_scorpion_buy_wish")
     }
-    fn cancer_sharp_scorpion_exc_pet(&mut self) -> Result<CancerSharpScorpionInfo> {
-        unsupported("cancer::sharp_scorpion_exc_pet")
+    fn cancer_sharp_scorpion_exchange_spirit(&mut self) -> Result<CancerSharpScorpionInfo> {
+        unsupported("cancer::sharp_scorpion_exchange_spirit")
     }
     fn cancer_mend_shape_query(&mut self) -> Result<CancerMendShapeInfo> {
         unsupported("cancer::mend_shape_query")
@@ -55,8 +55,11 @@ pub trait RocoCancerActivityStdLib: Send {
     fn cancer_unseal_memories_start_game(&mut self) -> Result<CancerUnsealMemoriesInfo> {
         unsupported("cancer::unseal_memories_start_game")
     }
-    fn cancer_unseal_memories_commit(&mut self, _choice: i64) -> Result<CancerUnsealMemoriesInfo> {
-        unsupported("cancer::unseal_memories_commit")
+    fn cancer_submit_unseal_memories_choice(
+        &mut self,
+        _choice: i64,
+    ) -> Result<CancerUnsealMemoriesInfo> {
+        unsupported("cancer::submit_unseal_memories_choice")
     }
     fn cancer_unseal_memories_bag_query(&mut self) -> Result<CancerUnsealMemoriesBagInfo> {
         unsupported("cancer::unseal_memories_bag_query")

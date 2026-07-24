@@ -73,7 +73,6 @@ fn detailed_stdlib_function_details() -> Vec<StdlibFunctionDetails> {
     details.extend(pisces::docs());
     details.extend(play_guide::docs());
     details.extend(news::docs());
-    details.extend(news_times::docs());
     details.extend(spirit::docs());
     details.extend(combat::docs());
     details.extend(lookup::docs());

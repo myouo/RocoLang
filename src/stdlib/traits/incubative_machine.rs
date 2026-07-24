@@ -11,7 +11,7 @@ pub trait RocoIncubativeMachineStdLib: Send {
     fn incubative_machine_query_info(&mut self, _which: i64) -> Result<IncubativeMachineInfo> {
         unsupported("incubative_machine::query_info")
     }
-    fn incubative_machine_begin(
+    fn incubative_machine_start(
         &mut self,
         _which: i64,
         _egg_type: i64,
@@ -19,7 +19,7 @@ pub trait RocoIncubativeMachineStdLib: Send {
         _catch_time: i64,
         _egg_uin: i64,
     ) -> Result<IncubativeMachineIncubationResult> {
-        unsupported("incubative_machine::begin")
+        unsupported("incubative_machine::start")
     }
     fn incubative_machine_vip_speed_up(
         &mut self,
@@ -39,11 +39,11 @@ pub trait RocoIncubativeMachineStdLib: Send {
     ) -> Result<IncubativeMachineActionResult> {
         unsupported("incubative_machine::terminate")
     }
-    fn incubative_machine_get_spirit(
+    fn incubative_machine_claim_spirit(
         &mut self,
         _which: i64,
     ) -> Result<IncubativeMachineGetSpiritResult> {
-        unsupported("incubative_machine::get_spirit")
+        unsupported("incubative_machine::claim_spirit")
     }
     fn incubative_machine_set_complete_guide(&mut self) -> Result<IncubativeMachineActionResult> {
         unsupported("incubative_machine::set_complete_guide")

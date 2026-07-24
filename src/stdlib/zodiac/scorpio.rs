@@ -6,14 +6,14 @@ use crate::stdlib::util::{register_stdlib_fn_0, register_stdlib_fn_1, register_s
 use crate::stdlib::RocoStdLib;
 
 // Index convention:
-// - second_settle reward_source is the raw AS id: 0=first NPC, 1=second NPC, 2=mine.
+// - submit_second reward_source is the raw AS id: 0=first NPC, 1=second NPC, 2=mine.
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(module, stdlib, "first_query", scorpio_first_query);
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "first_submit_game",
-        scorpio_first_submit_game,
+        "submit_first_game",
+        scorpio_submit_first_game,
         score: i64
     );
     register_stdlib_fn_0!(module, stdlib, "first_query_bag", scorpio_first_query_bag);
@@ -39,8 +39,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "second_settle",
-        scorpio_second_settle,
+        "submit_second",
+        scorpio_submit_second,
         reward_source: i64
     );
     register_stdlib_fn_0!(module, stdlib, "second_query_bag", scorpio_second_query_bag);
@@ -77,15 +77,15 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "third_submit_game",
-        scorpio_third_submit_game,
+        "submit_third_game",
+        scorpio_submit_third_game,
         success: bool
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "third_exchange_pet",
-        scorpio_third_exchange_pet
+        "third_exchange_spirit",
+        scorpio_third_exchange_spirit
     );
     register_stdlib_fn_1!(
         module,

@@ -18,16 +18,11 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "prepare_battle",
-        mystery_fusion_prepare_battle,
+        "prepare_combat",
+        mystery_fusion_prepare_combat,
         battle_index: i64
     );
-    register_stdlib_fn_0!(
-        module,
-        stdlib,
-        "submit_battle",
-        mystery_fusion_submit_battle
-    );
+    register_stdlib_fn_0!(module, stdlib, "submit", mystery_fusion_submit);
     register_stdlib_fn_1!(
         module,
         stdlib,

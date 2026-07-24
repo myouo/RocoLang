@@ -25,7 +25,7 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "incubative_machine",
-            "begin",
+            "start",
             return_type: "IncubativeMachineIncubationResult",
             "将指定宠物蛋放入孵化槽开始孵化。",
             params: [
@@ -36,7 +36,7 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
                 "egg_uin" => "宠物蛋实例 UIN。"
             ],
             returns: "返回开始孵化后的槽位状态。",
-            examples: ["let result = incubative_machine::begin(1, 0, 67305577, 0, 0);"]
+            examples: ["let result = incubative_machine::start(1, 0, 67305577, 0, 0);"]
         ),
         super::stdlib_doc!(
             "incubative_machine",
@@ -67,12 +67,12 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "incubative_machine",
-            "get_spirit",
+            "claim_spirit",
             return_type: "IncubativeMachineGetSpiritResult",
             "领取指定孵化槽中已经孵化完成的宠物。",
             params: ["which" => "孵化槽编号。"],
             returns: "返回领取结果、宠物 ID 和宠物等级。",
-            examples: ["let result = incubative_machine::get_spirit(1);"]
+            examples: ["let result = incubative_machine::claim_spirit(1);"]
         ),
         super::stdlib_doc!(
             "incubative_machine",

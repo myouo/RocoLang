@@ -4,11 +4,11 @@ pub trait RocoPiscesActivityStdLib: Send {
     fn pisces_first_query(&mut self) -> Result<PiscesFirstInfo> {
         unsupported("pisces::first_query")
     }
-    fn pisces_first_submit(&mut self) -> Result<PiscesFirstInfo> {
-        unsupported("pisces::first_submit")
+    fn pisces_submit_first(&mut self) -> Result<PiscesFirstInfo> {
+        unsupported("pisces::submit_first")
     }
-    fn pisces_first_get_gift(&mut self) -> Result<PiscesFirstInfo> {
-        unsupported("pisces::first_get_gift")
+    fn pisces_first_claim_gift(&mut self) -> Result<PiscesFirstInfo> {
+        unsupported("pisces::first_claim_gift")
     }
     fn pisces_first_exchange(&mut self) -> Result<PiscesFirstInfo> {
         unsupported("pisces::first_exchange")
@@ -19,25 +19,25 @@ pub trait RocoPiscesActivityStdLib: Send {
     fn pisces_second_query(&mut self) -> Result<PiscesSecondInfo> {
         unsupported("pisces::second_query")
     }
-    fn pisces_second_submit(
+    fn pisces_submit_second(
         &mut self,
         _spirit_id: i64,
         _catch_time: i64,
     ) -> Result<PiscesSecondInfo> {
-        unsupported("pisces::second_submit")
+        unsupported("pisces::submit_second")
     }
-    fn pisces_second_submit_without_spirit(&mut self) -> Result<PiscesSecondInfo> {
-        unsupported("pisces::second_submit_without_spirit")
+    fn pisces_submit_second_without_spirit(&mut self) -> Result<PiscesSecondInfo> {
+        unsupported("pisces::submit_second_without_spirit")
     }
-    fn pisces_second_get_gift(
+    fn pisces_second_claim_gift(
         &mut self,
         _spirit_id: i64,
         _catch_time: i64,
     ) -> Result<PiscesSecondInfo> {
-        unsupported("pisces::second_get_gift")
+        unsupported("pisces::second_claim_gift")
     }
-    fn pisces_second_settle_fight(&mut self, _fight_index: i64) -> Result<PiscesSecondInfo> {
-        unsupported("pisces::second_settle_fight")
+    fn pisces_submit_second_combat(&mut self, _fight_index: i64) -> Result<PiscesSecondInfo> {
+        unsupported("pisces::submit_second_combat")
     }
     fn pisces_second_repair(&mut self, _repair_index: i64) -> Result<PiscesSecondInfo> {
         unsupported("pisces::second_repair")
@@ -55,8 +55,8 @@ pub trait RocoPiscesActivityStdLib: Send {
     fn pisces_third_query(&mut self) -> Result<PiscesThirdInfo> {
         unsupported("pisces::third_query")
     }
-    fn pisces_third_settle_fight(&mut self, _boss_index: i64) -> Result<PiscesThirdInfo> {
-        unsupported("pisces::third_settle_fight")
+    fn pisces_submit_third(&mut self, _boss_index: i64) -> Result<PiscesThirdInfo> {
+        unsupported("pisces::submit_third")
     }
     fn pisces_third_buy(
         &mut self,

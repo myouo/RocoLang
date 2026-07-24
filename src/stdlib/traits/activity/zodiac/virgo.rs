@@ -16,8 +16,8 @@ pub trait RocoVirgoActivityStdLib: Send {
     fn virgo_serve_god_buy_unlock(&mut self) -> Result<VirgoServeGodInfo> {
         unsupported("virgo::serve_god_buy_unlock")
     }
-    fn virgo_serve_god_settle_boss_combat(&mut self) -> Result<VirgoServeGodInfo> {
-        unsupported("virgo::serve_god_settle_boss_combat")
+    fn virgo_submit_serve_god_boss(&mut self) -> Result<VirgoServeGodInfo> {
+        unsupported("virgo::submit_serve_god_boss")
     }
     fn virgo_serve_god_query_bag(&mut self) -> Result<VirgoServeGodInfo> {
         unsupported("virgo::serve_god_query_bag")
@@ -42,15 +42,15 @@ pub trait RocoVirgoActivityStdLib: Send {
     fn virgo_find_halidom_clean(&mut self, _relic_index: i64) -> Result<VirgoFindHalidomInfo> {
         unsupported("virgo::find_halidom_clean")
     }
-    fn virgo_find_halidom_list_pet(&mut self) -> Result<VirgoFindHalidomInfo> {
-        unsupported("virgo::find_halidom_list_pet")
+    fn virgo_find_halidom_list_spirits(&mut self) -> Result<VirgoFindHalidomInfo> {
+        unsupported("virgo::find_halidom_list_spirits")
     }
-    fn virgo_find_halidom_put_pet(
+    fn virgo_find_halidom_put_spirit(
         &mut self,
         _spirit_id: i64,
         _catch_time: i64,
     ) -> Result<VirgoFindHalidomInfo> {
-        unsupported("virgo::find_halidom_put_pet")
+        unsupported("virgo::find_halidom_put_spirit")
     }
     fn virgo_find_halidom_buy_pass(&mut self) -> Result<VirgoFindHalidomInfo> {
         unsupported("virgo::find_halidom_buy_pass")
@@ -80,7 +80,7 @@ pub trait RocoVirgoActivityStdLib: Send {
     fn virgo_bell_fox_buy_wish(&mut self) -> Result<VirgoBellFoxInfo> {
         unsupported("virgo::bell_fox_buy_wish")
     }
-    fn virgo_bell_fox_exchange_pet(&mut self) -> Result<VirgoBellFoxInfo> {
-        unsupported("virgo::bell_fox_exchange_pet")
+    fn virgo_bell_fox_exchange_spirit(&mut self) -> Result<VirgoBellFoxInfo> {
+        unsupported("virgo::bell_fox_exchange_spirit")
     }
 }

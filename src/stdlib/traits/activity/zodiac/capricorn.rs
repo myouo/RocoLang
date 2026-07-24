@@ -37,8 +37,8 @@ pub trait RocoCapricornActivityStdLib: Send {
     fn capricorn_second_random_task(&mut self) -> Result<CapricornSecondInfo> {
         unsupported("capricorn::second_random_task")
     }
-    fn capricorn_second_settle_battle_task(&mut self) -> Result<CapricornSecondInfo> {
-        unsupported("capricorn::second_settle_battle_task")
+    fn capricorn_submit_second_combat_task(&mut self) -> Result<CapricornSecondInfo> {
+        unsupported("capricorn::submit_second_combat_task")
     }
     fn capricorn_second_give_up_task(&mut self) -> Result<CapricornSecondInfo> {
         unsupported("capricorn::second_give_up_task")
@@ -76,8 +76,8 @@ pub trait RocoCapricornActivityStdLib: Send {
     fn capricorn_third_query(&mut self) -> Result<CapricornThirdInfo> {
         unsupported("capricorn::third_query")
     }
-    fn capricorn_third_settle_battle(&mut self, _boss_index: i64) -> Result<CapricornThirdInfo> {
-        unsupported("capricorn::third_settle_battle")
+    fn capricorn_submit_third(&mut self, _boss_index: i64) -> Result<CapricornThirdInfo> {
+        unsupported("capricorn::submit_third")
     }
     fn capricorn_third_buy_star_item(&mut self) -> Result<CapricornThirdInfo> {
         unsupported("capricorn::third_buy_star_item")

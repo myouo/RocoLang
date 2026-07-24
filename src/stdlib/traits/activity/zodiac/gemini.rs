@@ -30,11 +30,11 @@ pub trait RocoGeminiActivityStdLib: Send {
     fn gemini_second_query(&mut self) -> Result<GeminiSecondInfo> {
         unsupported("gemini::second_query")
     }
-    fn gemini_second_submit(&mut self, _kind: i64) -> Result<GeminiSecondInfo> {
-        unsupported("gemini::second_submit")
+    fn gemini_submit_second(&mut self, _kind: i64) -> Result<GeminiSecondInfo> {
+        unsupported("gemini::submit_second")
     }
-    fn gemini_second_get_gift(&mut self) -> Result<GeminiSecondInfo> {
-        unsupported("gemini::second_get_gift")
+    fn gemini_second_claim_gift(&mut self) -> Result<GeminiSecondInfo> {
+        unsupported("gemini::second_claim_gift")
     }
     fn gemini_second_add_score(&mut self, _kind: i64, _score: i64) -> Result<GeminiSecondInfo> {
         unsupported("gemini::second_add_score")
@@ -45,18 +45,18 @@ pub trait RocoGeminiActivityStdLib: Send {
     fn gemini_third_query(&mut self) -> Result<GeminiThirdInfo> {
         unsupported("gemini::third_query")
     }
-    fn gemini_third_settle_combat(&mut self, _side: i64, _index: i64) -> Result<GeminiThirdInfo> {
-        unsupported("gemini::third_settle_combat")
+    fn gemini_submit_third_combat(&mut self, _side: i64, _index: i64) -> Result<GeminiThirdInfo> {
+        unsupported("gemini::submit_third_combat")
     }
-    fn gemini_third_submit(
+    fn gemini_submit_third(
         &mut self,
         _spirit_id: i64,
         _catch_time: i64,
     ) -> Result<GeminiThirdInfo> {
-        unsupported("gemini::third_submit")
+        unsupported("gemini::submit_third")
     }
-    fn gemini_third_submit_without_spirit(&mut self) -> Result<GeminiThirdInfo> {
-        unsupported("gemini::third_submit_without_spirit")
+    fn gemini_submit_third_without_spirit(&mut self) -> Result<GeminiThirdInfo> {
+        unsupported("gemini::submit_third_without_spirit")
     }
     fn gemini_third_buy_level(
         &mut self,

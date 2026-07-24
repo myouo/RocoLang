@@ -7,14 +7,14 @@ pub trait RocoEvolutionActivityStdLib: Send {
     fn unicorn_summon(&mut self) -> Result<UnicornInfo> {
         unsupported("unicorn::summon")
     }
-    fn unicorn_settle_summon_fight(&mut self, _slot: i64) -> Result<UnicornInfo> {
-        unsupported("unicorn::settle_summon_fight")
+    fn unicorn_submit_summon(&mut self, _slot: i64) -> Result<UnicornInfo> {
+        unsupported("unicorn::submit_summon")
     }
     fn unicorn_harvest(&mut self) -> Result<UnicornInfo> {
         unsupported("unicorn::harvest")
     }
-    fn unicorn_submit_minigame(&mut self) -> Result<UnicornInfo> {
-        unsupported("unicorn::submit_minigame")
+    fn unicorn_submit_mini_game(&mut self) -> Result<UnicornInfo> {
+        unsupported("unicorn::submit_mini_game")
     }
     fn unicorn_start_cultivation(&mut self) -> Result<UnicornInfo> {
         unsupported("unicorn::start_cultivation")
@@ -47,8 +47,8 @@ pub trait RocoEvolutionActivityStdLib: Send {
     fn four_seasons_roll_dice(&mut self, _vip: bool) -> Result<FourSeasonsInfo> {
         unsupported("four_seasons::roll_dice")
     }
-    fn four_seasons_submit_minigame(&mut self) -> Result<FourSeasonsInfo> {
-        unsupported("four_seasons::submit_minigame")
+    fn four_seasons_submit_mini_game(&mut self) -> Result<FourSeasonsInfo> {
+        unsupported("four_seasons::submit_mini_game")
     }
     fn four_seasons_upgrade_box(&mut self, _position: i64) -> Result<FourSeasonsInfo> {
         unsupported("four_seasons::upgrade_box")
@@ -71,8 +71,8 @@ pub trait RocoEvolutionActivityStdLib: Send {
     fn diamond_tear_query(&mut self) -> Result<DiamondTearInfo> {
         unsupported("diamond_tear::query")
     }
-    fn diamond_tear_buy_pet(&mut self) -> Result<DiamondTearInfo> {
-        unsupported("diamond_tear::buy_pet")
+    fn diamond_tear_buy_spirit(&mut self) -> Result<DiamondTearInfo> {
+        unsupported("diamond_tear::buy_spirit")
     }
     fn diamond_tear_freeze(&mut self) -> Result<DiamondTearInfo> {
         unsupported("diamond_tear::freeze")
@@ -86,8 +86,8 @@ pub trait RocoEvolutionActivityStdLib: Send {
     fn ice_crystal_charge_with_item(&mut self, _item: i64) -> Result<IceCrystalInfo> {
         unsupported("ice_crystal::charge_with_item")
     }
-    fn ice_crystal_report_battle_win(&mut self) -> Result<IceCrystalInfo> {
-        unsupported("ice_crystal::report_battle_win")
+    fn ice_crystal_submit(&mut self) -> Result<IceCrystalInfo> {
+        unsupported("ice_crystal::submit")
     }
     fn ice_crystal_condense_crystal(&mut self, _crystal: i64) -> Result<IceCrystalInfo> {
         unsupported("ice_crystal::condense_crystal")

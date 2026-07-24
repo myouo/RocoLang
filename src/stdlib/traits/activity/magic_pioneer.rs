@@ -4,8 +4,8 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_vanguard_lord_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::vanguard_lord_query")
     }
-    fn magic_pioneer_vanguard_lord_submit_combat(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::vanguard_lord_submit_combat")
+    fn magic_pioneer_submit_vanguard_lord(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_vanguard_lord")
     }
     fn magic_pioneer_vanguard_lord_put(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::vanguard_lord_put")
@@ -13,8 +13,8 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_vanguard_lord_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::vanguard_lord_buy")
     }
-    fn magic_pioneer_vanguard_lord_get_reward(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::vanguard_lord_get_reward")
+    fn magic_pioneer_vanguard_lord_claim_reward(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::vanguard_lord_claim_reward")
     }
     fn magic_pioneer_vanguard_lord_exchange(
         &mut self,
@@ -32,14 +32,11 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_little_angel_angie_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::little_angel_angie_buy")
     }
-    fn magic_pioneer_little_angel_angie_submit_combat(
-        &mut self,
-        _index: i64,
-    ) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::little_angel_angie_submit_combat")
+    fn magic_pioneer_submit_little_angel_angie(&mut self, _index: i64) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_little_angel_angie")
     }
-    fn magic_pioneer_little_angel_angie_get_reward(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::little_angel_angie_get_reward")
+    fn magic_pioneer_little_angel_angie_claim_reward(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::little_angel_angie_claim_reward")
     }
     fn magic_pioneer_red_lotus_beast_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::red_lotus_beast_query")
@@ -47,20 +44,20 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_red_lotus_beast_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::red_lotus_beast_buy")
     }
-    fn magic_pioneer_red_lotus_beast_submit(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::red_lotus_beast_submit")
+    fn magic_pioneer_submit_red_lotus_beast(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_red_lotus_beast")
     }
-    fn magic_pioneer_red_lotus_beast_start_fight(
+    fn magic_pioneer_red_lotus_beast_start_combat(
         &mut self,
         _index: i64,
     ) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::red_lotus_beast_start_fight")
+        unsupported("magic_pioneer::red_lotus_beast_start_combat")
     }
-    fn magic_pioneer_red_lotus_beast_settle_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::red_lotus_beast_settle_fight")
+    fn magic_pioneer_submit_red_lotus_beast_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_red_lotus_beast_combat")
     }
-    fn magic_pioneer_red_lotus_beast_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::red_lotus_beast_get_gift")
+    fn magic_pioneer_red_lotus_beast_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::red_lotus_beast_claim_gift")
     }
     fn magic_pioneer_blue_water_beast_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::blue_water_beast_query")
@@ -71,17 +68,17 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_blue_water_beast_check(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::blue_water_beast_check")
     }
-    fn magic_pioneer_blue_water_beast_submit_game(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::blue_water_beast_submit_game")
+    fn magic_pioneer_submit_blue_water_beast_game(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_blue_water_beast_game")
     }
-    fn magic_pioneer_blue_water_beast_submit_combat(
+    fn magic_pioneer_submit_blue_water_beast_combat(
         &mut self,
         _index: i64,
     ) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::blue_water_beast_submit_combat")
+        unsupported("magic_pioneer::submit_blue_water_beast_combat")
     }
-    fn magic_pioneer_blue_water_beast_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::blue_water_beast_get_gift")
+    fn magic_pioneer_blue_water_beast_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::blue_water_beast_claim_gift")
     }
     fn magic_pioneer_ice_crystal_tiger_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::ice_crystal_tiger_query")
@@ -89,27 +86,27 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_ice_crystal_tiger_one_key(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::ice_crystal_tiger_one_key")
     }
-    fn magic_pioneer_ice_crystal_tiger_submit_game(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::ice_crystal_tiger_submit_game")
+    fn magic_pioneer_submit_ice_crystal_tiger_game(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_ice_crystal_tiger_game")
     }
-    fn magic_pioneer_ice_crystal_tiger_submit_chain(
+    fn magic_pioneer_submit_ice_crystal_tiger_chain(
         &mut self,
         _index: i64,
         _number: i64,
     ) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::ice_crystal_tiger_submit_chain")
+        unsupported("magic_pioneer::submit_ice_crystal_tiger_chain")
     }
-    fn magic_pioneer_ice_crystal_tiger_start_indexed_fight(
+    fn magic_pioneer_ice_crystal_tiger_start_indexed_combat(
         &mut self,
         _index: i64,
     ) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::ice_crystal_tiger_start_indexed_fight")
+        unsupported("magic_pioneer::ice_crystal_tiger_start_indexed_combat")
     }
-    fn magic_pioneer_ice_crystal_tiger_report_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::ice_crystal_tiger_report_fight")
+    fn magic_pioneer_submit_ice_crystal_tiger_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_ice_crystal_tiger_combat")
     }
-    fn magic_pioneer_ice_crystal_tiger_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::ice_crystal_tiger_get_gift")
+    fn magic_pioneer_ice_crystal_tiger_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::ice_crystal_tiger_claim_gift")
     }
     fn magic_pioneer_dark_pioneer_dragon_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::dark_pioneer_dragon_query")
@@ -117,14 +114,14 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_dark_pioneer_dragon_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::dark_pioneer_dragon_buy")
     }
-    fn magic_pioneer_dark_pioneer_dragon_submit_combat(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::dark_pioneer_dragon_submit_combat")
+    fn magic_pioneer_submit_dark_pioneer_dragon(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_dark_pioneer_dragon")
     }
     fn magic_pioneer_dark_pioneer_dragon_add(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::dark_pioneer_dragon_add")
     }
-    fn magic_pioneer_dark_pioneer_dragon_get_reward(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::dark_pioneer_dragon_get_reward")
+    fn magic_pioneer_dark_pioneer_dragon_claim_reward(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::dark_pioneer_dragon_claim_reward")
     }
     fn magic_pioneer_bat_prince_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::bat_prince_query")
@@ -132,17 +129,17 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_bat_prince_one_key(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::bat_prince_one_key")
     }
-    fn magic_pioneer_bat_prince_start_indexed_fight(
+    fn magic_pioneer_bat_prince_start_indexed_combat(
         &mut self,
         _index: i64,
     ) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::bat_prince_start_indexed_fight")
+        unsupported("magic_pioneer::bat_prince_start_indexed_combat")
     }
-    fn magic_pioneer_bat_prince_submit(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::bat_prince_submit")
+    fn magic_pioneer_submit_bat_prince(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_bat_prince")
     }
-    fn magic_pioneer_bat_prince_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::bat_prince_get_gift")
+    fn magic_pioneer_bat_prince_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::bat_prince_claim_gift")
     }
     fn magic_pioneer_rock_armor_lord_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::rock_armor_lord_query")
@@ -150,18 +147,18 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_rock_armor_lord_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::rock_armor_lord_buy")
     }
-    fn magic_pioneer_rock_armor_lord_submit_combat(
+    fn magic_pioneer_submit_rock_armor_lord(
         &mut self,
         _index: i64,
         _success: i64,
     ) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::rock_armor_lord_submit_combat")
+        unsupported("magic_pioneer::submit_rock_armor_lord")
     }
     fn magic_pioneer_rock_armor_lord_add(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::rock_armor_lord_add")
     }
-    fn magic_pioneer_rock_armor_lord_get_reward(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::rock_armor_lord_get_reward")
+    fn magic_pioneer_rock_armor_lord_claim_reward(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::rock_armor_lord_claim_reward")
     }
     fn magic_pioneer_golden_mantis_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::golden_mantis_query")
@@ -169,17 +166,17 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_golden_mantis_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::golden_mantis_buy")
     }
-    fn magic_pioneer_golden_mantis_start_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::golden_mantis_start_fight")
+    fn magic_pioneer_golden_mantis_start_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::golden_mantis_start_combat")
     }
-    fn magic_pioneer_golden_mantis_settle_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::golden_mantis_settle_fight")
+    fn magic_pioneer_submit_golden_mantis_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_golden_mantis_combat")
     }
-    fn magic_pioneer_golden_mantis_submit(&mut self, _index: i64) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::golden_mantis_submit")
+    fn magic_pioneer_submit_golden_mantis(&mut self, _index: i64) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_golden_mantis")
     }
-    fn magic_pioneer_golden_mantis_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::golden_mantis_get_gift")
+    fn magic_pioneer_golden_mantis_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::golden_mantis_claim_gift")
     }
     fn magic_pioneer_loki_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::loki_query")
@@ -187,14 +184,14 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_loki_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::loki_buy")
     }
-    fn magic_pioneer_loki_submit_combat(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::loki_submit_combat")
+    fn magic_pioneer_submit_loki(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_loki")
     }
     fn magic_pioneer_loki_add(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::loki_add")
     }
-    fn magic_pioneer_loki_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::loki_get_gift")
+    fn magic_pioneer_loki_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::loki_claim_gift")
     }
     fn magic_pioneer_loki_query_all(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::loki_query_all")
@@ -205,20 +202,20 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_magic_tail_cat_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::magic_tail_cat_buy")
     }
-    fn magic_pioneer_magic_tail_cat_start_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::magic_tail_cat_start_fight")
+    fn magic_pioneer_magic_tail_cat_start_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::magic_tail_cat_start_combat")
     }
-    fn magic_pioneer_magic_tail_cat_settle_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::magic_tail_cat_settle_fight")
+    fn magic_pioneer_submit_magic_tail_cat_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_magic_tail_cat_combat")
     }
     fn magic_pioneer_magic_tail_cat_learn(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::magic_tail_cat_learn")
     }
-    fn magic_pioneer_magic_tail_cat_submit(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::magic_tail_cat_submit")
+    fn magic_pioneer_submit_magic_tail_cat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_magic_tail_cat")
     }
-    fn magic_pioneer_magic_tail_cat_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::magic_tail_cat_get_gift")
+    fn magic_pioneer_magic_tail_cat_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::magic_tail_cat_claim_gift")
     }
     fn magic_pioneer_nether_fox_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::nether_fox_query")
@@ -226,17 +223,17 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_nether_fox_buy(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::nether_fox_buy")
     }
-    fn magic_pioneer_nether_fox_start_fight(&mut self, _index: i64) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::nether_fox_start_fight")
+    fn magic_pioneer_nether_fox_start_combat(&mut self, _index: i64) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::nether_fox_start_combat")
     }
-    fn magic_pioneer_nether_fox_settle_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::nether_fox_settle_fight")
+    fn magic_pioneer_submit_nether_fox_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_nether_fox_combat")
     }
-    fn magic_pioneer_nether_fox_submit(&mut self, _number: i64) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::nether_fox_submit")
+    fn magic_pioneer_submit_nether_fox(&mut self, _number: i64) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_nether_fox")
     }
-    fn magic_pioneer_nether_fox_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::nether_fox_get_gift")
+    fn magic_pioneer_nether_fox_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::nether_fox_claim_gift")
     }
     fn magic_pioneer_drill_man_query(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::drill_man_query")
@@ -244,20 +241,20 @@ pub trait RocoMagicPioneerActivityStdLib: Send {
     fn magic_pioneer_drill_man_one_key(&mut self) -> Result<MagicPioneerInfo> {
         unsupported("magic_pioneer::drill_man_one_key")
     }
-    fn magic_pioneer_drill_man_start_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::drill_man_start_fight")
+    fn magic_pioneer_drill_man_start_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::drill_man_start_combat")
     }
-    fn magic_pioneer_drill_man_report_fight(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::drill_man_report_fight")
+    fn magic_pioneer_submit_drill_man_combat(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::submit_drill_man_combat")
     }
-    fn magic_pioneer_drill_man_submit(
+    fn magic_pioneer_submit_drill_man(
         &mut self,
         _index: i64,
         _success: i64,
     ) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::drill_man_submit")
+        unsupported("magic_pioneer::submit_drill_man")
     }
-    fn magic_pioneer_drill_man_get_gift(&mut self) -> Result<MagicPioneerInfo> {
-        unsupported("magic_pioneer::drill_man_get_gift")
+    fn magic_pioneer_drill_man_claim_gift(&mut self) -> Result<MagicPioneerInfo> {
+        unsupported("magic_pioneer::drill_man_claim_gift")
     }
 }

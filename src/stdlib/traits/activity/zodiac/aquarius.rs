@@ -4,8 +4,8 @@ pub trait RocoAquariusActivityStdLib: Send {
     fn aquarius_first_query(&mut self) -> Result<AquariusFirstInfo> {
         unsupported("aquarius::first_query")
     }
-    fn aquarius_first_settle_combat(&mut self, _boss_index: i64) -> Result<AquariusFirstInfo> {
-        unsupported("aquarius::first_settle_combat")
+    fn aquarius_submit_first(&mut self, _boss_index: i64) -> Result<AquariusFirstInfo> {
+        unsupported("aquarius::submit_first")
     }
     fn aquarius_first_buy_evolve_access(
         &mut self,
@@ -58,8 +58,8 @@ pub trait RocoAquariusActivityStdLib: Send {
     fn aquarius_second_buy_wish(&mut self) -> Result<AquariusSecondInfo> {
         unsupported("aquarius::second_buy_wish")
     }
-    fn aquarius_second_exchange_pet(&mut self) -> Result<AquariusSecondInfo> {
-        unsupported("aquarius::second_exchange_pet")
+    fn aquarius_second_exchange_spirit(&mut self) -> Result<AquariusSecondInfo> {
+        unsupported("aquarius::second_exchange_spirit")
     }
     fn aquarius_second_buy_spirit(&mut self) -> Result<AquariusSecondInfo> {
         unsupported("aquarius::second_buy_spirit")
@@ -70,8 +70,8 @@ pub trait RocoAquariusActivityStdLib: Send {
     fn aquarius_third_random(&mut self) -> Result<AquariusThirdInfo> {
         unsupported("aquarius::third_random")
     }
-    fn aquarius_third_settle_combat(&mut self) -> Result<AquariusThirdInfo> {
-        unsupported("aquarius::third_settle_combat")
+    fn aquarius_submit_third(&mut self) -> Result<AquariusThirdInfo> {
+        unsupported("aquarius::submit_third")
     }
     fn aquarius_third_buy_level(&mut self) -> Result<AquariusThirdInfo> {
         unsupported("aquarius::third_buy_level")

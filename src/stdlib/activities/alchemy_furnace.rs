@@ -17,14 +17,14 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "monkey_cultivation_submit_default",
-        alchemy_furnace_monkey_cultivation_submit_default
+        "submit_monkey_cultivation_default",
+        alchemy_furnace_submit_monkey_cultivation_default
     );
     register_stdlib_fn_3!(
         module,
         stdlib,
-        "monkey_cultivation_submit_pills",
-        alchemy_furnace_monkey_cultivation_submit_pills,
+        "submit_monkey_cultivation_pills",
+        alchemy_furnace_submit_monkey_cultivation_pills,
         dragon_tiger: bool,
         cultivate_origin: bool,
         nine_turn: bool
@@ -32,8 +32,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "monkey_cultivation_get_gift",
-        alchemy_furnace_monkey_cultivation_get_gift
+        "monkey_cultivation_claim_gift",
+        alchemy_furnace_monkey_cultivation_claim_gift
     );
 
     register_stdlib_fn_0!(
@@ -45,9 +45,9 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "monkey_evo_report_fight",
-        alchemy_furnace_monkey_evo_report_fight,
-        fight_type: i64
+        "submit_monkey_evo_combat",
+        alchemy_furnace_submit_monkey_evo_combat,
+        combat_type: i64
     );
     register_stdlib_fn_0!(
         module,
@@ -58,14 +58,14 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "monkey_evo_submit_default",
-        alchemy_furnace_monkey_evo_submit_default
+        "submit_monkey_evo_default",
+        alchemy_furnace_submit_monkey_evo_default
     );
     register_stdlib_fn_3!(
         module,
         stdlib,
-        "monkey_evo_submit_pills",
-        alchemy_furnace_monkey_evo_submit_pills,
+        "submit_monkey_evo_pills",
+        alchemy_furnace_submit_monkey_evo_pills,
         dragon_tiger: bool,
         cultivate_origin: bool,
         nine_turn: bool
@@ -86,8 +86,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "monkey_evo_get_gift",
-        alchemy_furnace_monkey_evo_get_gift
+        "monkey_evo_claim_gift",
+        alchemy_furnace_monkey_evo_claim_gift
     );
 
     register_stdlib_fn_0!(
@@ -99,15 +99,15 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "raging_fire_submit_stone",
-        alchemy_furnace_raging_fire_submit_stone,
+        "submit_raging_fire_stone",
+        alchemy_furnace_submit_raging_fire_stone,
         count: i64
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "raging_fire_report_fight",
-        alchemy_furnace_raging_fire_report_fight,
+        "submit_raging_fire_combat",
+        alchemy_furnace_submit_raging_fire_combat,
         target: i64
     );
     register_stdlib_fn_2!(
@@ -127,8 +127,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "raging_fire_get_gift",
-        alchemy_furnace_raging_fire_get_gift,
+        "raging_fire_claim_gift",
+        alchemy_furnace_raging_fire_claim_gift,
         spirit_id: i64,
         catch_time: i64
     );

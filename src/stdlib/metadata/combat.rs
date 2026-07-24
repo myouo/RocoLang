@@ -112,30 +112,30 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "combat",
-            "combat_escape",
+            "escape",
             return_type: "bool",
             "从当前战斗逃跑。",
             params: [],
             returns: "提交成功返回 true。",
-            examples: ["combat::combat_escape();"]
+            examples: ["combat::escape();"]
         ),
         super::stdlib_doc!(
             "combat",
-            "try_combat_escape",
+            "try_escape",
             return_type: "ActionResult",
             "尝试逃跑，失败时返回结构化结果。",
             params: [],
             returns: "结构化操作结果。",
-            examples: ["let result = combat::try_combat_escape();"]
+            examples: ["let result = combat::try_escape();"]
         ),
         super::stdlib_doc!(
             "combat",
-            "try_combat_escape_and_wait",
+            "try_escape_and_wait",
             return_type: "CombatActionResult",
             "尝试逃跑，并等待战斗进入下一次状态或结束。",
             params: [],
             returns: "包含战斗是否结束、是否进入下一次行动的结构化结果。",
-            examples: ["let result = combat::try_combat_escape_and_wait();"]
+            examples: ["let result = combat::try_escape_and_wait();"]
         ),
         super::stdlib_doc!(
             "combat",
@@ -157,48 +157,48 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "combat",
-            "get_battle_result",
+            "get_result",
             return_type: "BattleResult",
             "查询最近一次战斗结果。",
             params: [],
             returns: "战斗结果。",
-            examples: ["let result = combat::get_battle_result();"]
+            examples: ["let result = combat::get_result();"]
         ),
         super::stdlib_doc!(
             "combat",
-            "try_get_battle_result",
+            "try_get_result",
             return_type: "BattleResultQueryResult",
             "尝试查询战斗结果，战斗结果暂不可用时返回结构化结果。",
             params: [],
             returns: "战斗结果查询结果。",
-            examples: ["let result = combat::try_get_battle_result();"]
+            examples: ["let result = combat::try_get_result();"]
         ),
         super::stdlib_doc!(
             "combat",
-            "get_combat_actions",
+            "get_actions",
             return_type: "CombatActions",
             "获取当前可用战斗动作。",
             params: [],
             returns: "当前可用战斗动作。",
-            examples: ["let actions = combat::get_combat_actions();"]
+            examples: ["let actions = combat::get_actions();"]
         ),
         super::stdlib_doc!(
             "combat",
-            "get_combat_lineup",
+            "get_lineup",
             return_type: "SpiritInfo[]",
             "获取当前战斗队伍中已有精灵信息。",
             params: [],
             returns: "战斗队伍精灵数组。",
-            examples: ["let lineup = combat::get_combat_lineup();"]
+            examples: ["let lineup = combat::get_lineup();"]
         ),
         super::stdlib_doc!(
             "combat",
-            "get_combat_state",
+            "get_state",
             return_type: "CombatState",
             "获取底层战斗状态机快照。",
             params: [],
             returns: "战斗状态快照。",
-            examples: ["let state = combat::get_combat_state();"]
+            examples: ["let state = combat::get_state();"]
         ),
         super::stdlib_doc!(
             "combat",
@@ -247,12 +247,12 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "combat",
-            "get_battle_history",
+            "get_history",
             return_type: "string",
             "获取当前或最近战斗的历史记录文本。",
             params: [],
             returns: "战斗历史文本。",
-            examples: ["system::log(combat::get_battle_history());"]
+            examples: ["system::log(combat::get_history());"]
         ),
         super::stdlib_doc!(
             "combat",
@@ -319,12 +319,12 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "combat",
-            "is_combat_finished",
+            "is_finished",
             return_type: "bool",
             "判断当前战斗是否已经结束。",
             params: [],
             returns: "战斗结束返回 true。",
-            examples: ["if combat::is_combat_finished() { break; }"]
+            examples: ["if combat::is_finished() { break; }"]
         ),
         super::stdlib_doc!(
             "combat",

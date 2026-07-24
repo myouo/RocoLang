@@ -11,12 +11,12 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "settle_summon_fight",
-        unicorn_settle_summon_fight,
+        "submit_summon",
+        unicorn_submit_summon,
         slot: i64
     );
     register_stdlib_fn_0!(module, stdlib, "harvest", unicorn_harvest);
-    register_stdlib_fn_0!(module, stdlib, "submit_minigame", unicorn_submit_minigame);
+    register_stdlib_fn_0!(module, stdlib, "submit_mini_game", unicorn_submit_mini_game);
     register_stdlib_fn_0!(
         module,
         stdlib,

@@ -4,30 +4,30 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
     vec![
         super::stdlib_doc!(
             "game",
-            "get_pause",
+            "is_paused",
             return_type: "bool",
             "查询当前游戏暂停状态。",
             params: [],
             returns: "已暂停返回 true。",
-            examples: ["let paused = game::get_pause();"]
+            examples: ["let paused = game::is_paused();"]
         ),
         super::stdlib_doc!(
             "game",
-            "set_pause",
+            "set_paused",
             return_type: "bool",
             "设置游戏暂停状态。",
             params: ["enabled" => "true 表示暂停，false 表示恢复。"],
             returns: "设置成功返回 true。",
-            examples: ["game::set_pause(true);"]
+            examples: ["game::set_paused(true);"]
         ),
         super::stdlib_doc!(
             "game",
-            "try_set_pause",
+            "try_set_paused",
             return_type: "ActionResult",
             "尝试设置游戏暂停状态，失败时返回结构化结果。",
             params: ["enabled" => "true 表示暂停，false 表示恢复。"],
             returns: "结构化操作结果。",
-            examples: ["let result = game::try_set_pause(false);"]
+            examples: ["let result = game::try_set_paused(false);"]
         ),
         super::stdlib_doc!(
             "game",

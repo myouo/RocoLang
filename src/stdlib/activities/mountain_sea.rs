@@ -20,7 +20,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
         mountain_sea_enter_boss,
         boss_index: i64
     );
-    register_stdlib_fn_0!(module, stdlib, "settle_fight", mountain_sea_settle_fight);
+    register_stdlib_fn_0!(module, stdlib, "submit", mountain_sea_submit);
     register_stdlib_fn_3!(
         module,
         stdlib,

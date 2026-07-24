@@ -7,8 +7,8 @@ pub trait RocoPetEggStdLib: Send {
     fn pet_egg_vip_speed_up(&mut self) -> Result<PetEggSpeedUpResult> {
         unsupported("pet_egg::vip_speed_up")
     }
-    fn pet_egg_begin(&mut self, _male_index: i64, _female_index: i64) -> Result<PetEggBeginResult> {
-        unsupported("pet_egg::begin")
+    fn pet_egg_start(&mut self, _male_index: i64, _female_index: i64) -> Result<PetEggBeginResult> {
+        unsupported("pet_egg::start")
     }
     fn pet_egg_cancel(&mut self) -> Result<PetEggCancelResult> {
         unsupported("pet_egg::cancel")

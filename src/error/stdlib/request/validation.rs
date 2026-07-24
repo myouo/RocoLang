@@ -87,7 +87,7 @@ impl fmt::Display for ScriptCombatActionValidationKind {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::CannotSubmitAction => {
-                f.write_str("cannot submit combat action in current combat runtime phase")
+                f.write_str("cannot commit combat action in current combat runtime phase")
             }
             Self::BattleFactsUnavailable => f.write_str("combat battle facts unavailable"),
             Self::InvalidActivePosition { position } => {

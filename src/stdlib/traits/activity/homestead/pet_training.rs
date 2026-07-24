@@ -5,11 +5,11 @@ pub trait RocoPetTrainingActivityStdLib: Send {
         unsupported("pet_training::query")
     }
 
-    fn pet_training_settle(
+    fn pet_training_submit(
         &mut self,
         _training_type: i64,
         _pet_id: i64,
     ) -> Result<PetTrainingResult> {
-        unsupported("pet_training::settle")
+        unsupported("pet_training::submit")
     }
 }

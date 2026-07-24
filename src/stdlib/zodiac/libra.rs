@@ -6,20 +6,20 @@ use crate::stdlib::util::{register_stdlib_fn_0, register_stdlib_fn_1, register_s
 use crate::stdlib::RocoStdLib;
 
 // Index convention:
-// - first_settle_fight prop_index is 0-based, matching ui1468 AS id: 0..3.
-// - second_settle_fight npc_index is 0-based, matching ui1469 AS id: 0..4.
+// - submit_first_combat prop_index is 0-based, matching ui1468 AS id: 0..3.
+// - submit_second npc_index is 0-based, matching ui1469 AS id: 0..4.
 // - third_exchange_item exchange_position is 1-based, matching ui1471 excPos: 1=light, 2=tail.
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(module, stdlib, "first_query", libra_first_query);
-    register_stdlib_fn_0!(module, stdlib, "first_submit_game", libra_first_submit_game);
+    register_stdlib_fn_0!(module, stdlib, "submit_first_game", libra_submit_first_game);
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "first_settle_fight",
-        libra_first_settle_fight,
+        "submit_first_combat",
+        libra_submit_first_combat,
         prop_index: i64
     );
-    register_stdlib_fn_0!(module, stdlib, "first_get_gift", libra_first_get_gift);
+    register_stdlib_fn_0!(module, stdlib, "first_claim_gift", libra_first_claim_gift);
     register_stdlib_fn_2!(
         module,
         stdlib,
@@ -42,8 +42,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "second_settle_fight",
-        libra_second_settle_fight,
+        "submit_second",
+        libra_submit_second,
         npc_index: i64
     );
     register_stdlib_fn_0!(module, stdlib, "second_awaken", libra_second_awaken);
@@ -89,7 +89,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "third_exchange_pet",
-        libra_third_exchange_pet
+        "third_exchange_spirit",
+        libra_third_exchange_spirit
     );
 }

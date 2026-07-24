@@ -4,30 +4,30 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
     vec![
         super::stdlib_doc!(
             "lookup",
-            "lookup_item_info",
+            "item_info",
             return_type: "StaticItemInfo",
             "查询静态道具资料。",
             params: ["item_id" => "道具 ID。"],
             returns: "道具静态资料。",
-            examples: ["let item = lookup::lookup_item_info(300000);"]
+            examples: ["let item = lookup::item_info(300000);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_items_info",
+            "item_infos",
             return_type: "StaticItemInfo[]",
             "批量查询静态道具资料。",
             params: ["item_ids" => "道具 ID 数组。"],
             returns: "道具静态资料数组。",
-            examples: ["let items = lookup::lookup_items_info([300000, 300001]);"]
+            examples: ["let items = lookup::item_infos([300000, 300001]);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_strive_item_info",
+            "strive_item_info",
             return_type: "StaticStriveItemInfo",
             "查询努力值道具静态资料。",
             params: ["item_id" => "道具 ID。"],
             returns: "努力值道具资料。",
-            examples: ["let item = lookup::lookup_strive_item_info(300000);"]
+            examples: ["let item = lookup::strive_item_info(300000);"]
         ),
         super::stdlib_doc!(
             "lookup",
@@ -40,48 +40,48 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "lookup",
-            "list_features_name",
+            "list_feature_names",
             return_type: "string[]",
             "列出全部特性名称。",
             params: [],
             returns: "特性名称数组。",
-            examples: ["let names = lookup::list_features_name();"]
+            examples: ["let names = lookup::list_feature_names();"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_guardian_pet_property_info",
+            "guardian_pet_property_info",
             return_type: "StaticGuardianPetPropertyInfo",
             "查询守护兽指定等级属性资料。",
             params: ["level" => "守护兽等级。"],
             returns: "守护兽属性资料。",
-            examples: ["let info = lookup::lookup_guardian_pet_property_info(100);"]
+            examples: ["let info = lookup::guardian_pet_property_info(100);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_title_info",
+            "title_info",
             return_type: "StaticTitleInfo",
             "查询称号静态资料。",
             params: ["title_id" => "称号 ID。"],
             returns: "称号静态资料。",
-            examples: ["let title = lookup::lookup_title_info(1);"]
+            examples: ["let title = lookup::title_info(1);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_magic_info",
+            "magic_info",
             return_type: "StaticMagicInfo",
             "查询魔法静态资料。",
             params: ["magic_id" => "魔法 ID。"],
             returns: "魔法静态资料。",
-            examples: ["let magic = lookup::lookup_magic_info(1);"]
+            examples: ["let magic = lookup::magic_info(1);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_plugin_info",
+            "plugin_info",
             return_type: "StaticPluginInfo",
             "按插件名查询静态插件资料。",
             params: ["plugin_name" => "插件名称。"],
             returns: "插件静态资料。",
-            examples: ["let plugin = lookup::lookup_plugin_info(\"foo\");"]
+            examples: ["let plugin = lookup::plugin_info(\"foo\");"]
         ),
         super::stdlib_doc!(
             "lookup",
@@ -94,21 +94,21 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "lookup",
-            "get_ladder_match_config",
+            "ladder_match_config",
             return_type: "LadderMatchConfig",
             "查询天梯匹配静态配置。",
             params: [],
             returns: "天梯匹配配置。",
-            examples: ["let config = lookup::get_ladder_match_config();"]
+            examples: ["let config = lookup::ladder_match_config();"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_talent_info",
+            "talent_info",
             return_type: "StaticTalentInfo",
             "查询天赋静态资料。",
             params: ["talent_type" => "天赋类型。"],
             returns: "天赋静态资料。",
-            examples: ["let talent = lookup::lookup_talent_info(1);"]
+            examples: ["let talent = lookup::talent_info(1);"]
         ),
         super::stdlib_doc!(
             "lookup",
@@ -121,48 +121,48 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_skill_info",
+            "skill_info",
             return_type: "StaticSkillInfo",
             "查询静态技能资料。",
             params: ["skill_id" => "技能 ID。"],
             returns: "技能静态资料。",
-            examples: ["let skill = lookup::lookup_skill_info(497);"]
+            examples: ["let skill = lookup::skill_info(497);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_skills_info",
+            "skill_infos",
             return_type: "StaticSkillInfo[]",
             "批量查询静态技能资料。",
             params: ["skill_ids" => "技能 ID 数组。"],
             returns: "技能静态资料数组。",
-            examples: ["let skills = lookup::lookup_skills_info([497, 498]);"]
+            examples: ["let skills = lookup::skill_infos([497, 498]);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_spirit_info",
+            "spirit_info",
             return_type: "StaticSpiritInfo",
             "查询静态宠物资料；不存在时抛出结构化错误。",
             params: ["spirit_id" => "宠物 ID。"],
             returns: "宠物静态资料。",
-            examples: ["let info = lookup::lookup_spirit_info(1);"]
+            examples: ["let info = lookup::spirit_info(1);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "try_lookup_spirit_info",
+            "try_spirit_info",
             return_type: "StaticSpiritInfoLookupResult",
             "尝试查询静态宠物资料；不存在时返回 unknown 结果。",
             params: ["spirit_id" => "宠物 ID。"],
             returns: "宠物资料查询结果。",
-            examples: ["let result = lookup::try_lookup_spirit_info(1);"]
+            examples: ["let result = lookup::try_spirit_info(1);"]
         ),
         super::stdlib_doc!(
             "lookup",
-            "lookup_spirits_info",
+            "spirit_infos",
             return_type: "StaticSpiritInfo[]",
             "批量查询静态宠物资料。",
             params: ["spirit_ids" => "宠物 ID 数组。"],
             returns: "宠物静态资料数组。",
-            examples: ["let infos = lookup::lookup_spirits_info([1, 4, 7]);"]
+            examples: ["let infos = lookup::spirit_infos([1, 4, 7]);"]
         ),
         super::stdlib_doc!(
             "lookup",
@@ -175,12 +175,12 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "lookup",
-            "get_spirit_book",
+            "spirit_book",
             return_type: "SpiritBookInfo",
             "查询指定图鉴册详情。",
             params: ["book_id" => "图鉴册 ID。宠物大全为 10。"],
             returns: "图鉴册详情。",
-            examples: ["let book = lookup::get_spirit_book(10);"]
+            examples: ["let book = lookup::spirit_book(10);"]
         ),
         super::stdlib_doc!(
             "lookup",

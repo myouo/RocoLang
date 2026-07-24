@@ -34,8 +34,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "serve_god_settle_boss_combat",
-        virgo_serve_god_settle_boss_combat
+        "submit_serve_god_boss",
+        virgo_submit_serve_god_boss
     );
     register_stdlib_fn_0!(
         module,
@@ -76,14 +76,14 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "find_halidom_list_pet",
-        virgo_find_halidom_list_pet
+        "find_halidom_list_spirits",
+        virgo_find_halidom_list_spirits
     );
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "find_halidom_put_pet",
-        virgo_find_halidom_put_pet,
+        "find_halidom_put_spirit",
+        virgo_find_halidom_put_spirit,
         spirit_id: i64,
         catch_time: i64
     );
@@ -131,7 +131,7 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "bell_fox_exchange_pet",
-        virgo_bell_fox_exchange_pet
+        "bell_fox_exchange_spirit",
+        virgo_bell_fox_exchange_spirit
     );
 }

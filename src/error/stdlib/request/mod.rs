@@ -143,7 +143,7 @@ impl fmt::Display for ScriptRequestError {
                 f.write_str("script combat command submitted while no script is running")
             }
             Self::PauseStateUnknown => f.write_str(
-                "pause state is unknown; call game::try_set_pause or game::set_pause first",
+                "pause state is unknown; call game::try_set_paused or game::set_paused first",
             ),
             Self::EquipItemPositionMustBeOneBased => {
                 f.write_str("equip_item position must be 1-based")

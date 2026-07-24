@@ -15,16 +15,11 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "start_fight",
-        sentinel_intelligence_start_fight,
+        "start_combat",
+        sentinel_intelligence_start_combat,
         boss_index: i64
     );
-    register_stdlib_fn_0!(
-        module,
-        stdlib,
-        "settle_fight",
-        sentinel_intelligence_settle_fight
-    );
+    register_stdlib_fn_0!(module, stdlib, "submit", sentinel_intelligence_submit);
     register_stdlib_fn_0!(
         module,
         stdlib,
@@ -69,8 +64,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "get_prize",
-        sentinel_intelligence_get_prize,
+        "claim_prize",
+        sentinel_intelligence_claim_prize,
         boss_index: i64
     );
     register_stdlib_fn_1!(

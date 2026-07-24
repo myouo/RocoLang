@@ -13,12 +13,12 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "pet_training",
-            "settle",
+            "submit",
             return_type: "PetTrainingResult",
             "结算家园宠物锻炼并返回奖励列表。",
             params: ["training_type" => "锻炼类型，必须与 query 使用的 type 一致。", "pet_id" => "query 返回的宠物 ID。"],
             returns: "PetTrainingResult。rewards 包含奖励道具 ID 和数量。",
-            examples: ["let result = pet_training::settle(1, query.pet_id);"]
+            examples: ["let result = pet_training::submit(1, query.pet_id);"]
         ),
     ]
 }

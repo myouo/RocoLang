@@ -35,8 +35,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "sharp_scorpion_exc_pet",
-        cancer_sharp_scorpion_exc_pet
+        "sharp_scorpion_exchange_spirit",
+        cancer_sharp_scorpion_exchange_spirit
     );
     register_stdlib_fn_0!(module, stdlib, "mend_shape_query", cancer_mend_shape_query);
     register_stdlib_fn_2!(
@@ -91,8 +91,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "unseal_memories_commit",
-        cancer_unseal_memories_commit,
+        "submit_unseal_memories_choice",
+        cancer_submit_unseal_memories_choice,
         choice: i64
     );
     register_stdlib_fn_0!(

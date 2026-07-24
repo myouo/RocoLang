@@ -70,39 +70,39 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
             params: [], returns: "键名到值类型的映射。", examples: ["print(memory::daily_list_keys());"]
         ),
         super::stdlib_doc!(
-            "memory", "daily_battle_observed_started", return_type: "int",
+            "memory", "daily_combat_observed_started", return_type: "int",
             "返回本地今日观察到的服务器已接受战斗开始次数。",
-            params: [], returns: "观察到的开始次数。", examples: ["print(memory::daily_battle_observed_started());"]
+            params: [], returns: "观察到的开始次数。", examples: ["print(memory::daily_combat_observed_started());"]
         ),
         super::stdlib_doc!(
-            "memory", "daily_battle_observed_completed", return_type: "int",
+            "memory", "daily_combat_observed_completed", return_type: "int",
             "返回本地今日观察到的完整战斗结算次数。",
-            params: [], returns: "观察到的结算次数。", examples: ["print(memory::daily_battle_observed_completed());"]
+            params: [], returns: "观察到的结算次数。", examples: ["print(memory::daily_combat_observed_completed());"]
         ),
         super::stdlib_doc!(
-            "memory", "daily_battle_tracking_since", return_type: "int",
+            "memory", "daily_combat_tracking_since", return_type: "int",
             "返回今日首个本地战斗观察事件的 Unix 毫秒时间戳。",
-            params: [], returns: "Unix 毫秒时间戳；尚未观察到事件时为 0。", examples: ["print(memory::daily_battle_tracking_since());"]
+            params: [], returns: "Unix 毫秒时间戳；尚未观察到事件时为 0。", examples: ["print(memory::daily_combat_tracking_since());"]
         ),
         super::stdlib_doc!(
-            "memory", "daily_battle_limit_reached", return_type: "bool",
+            "memory", "daily_combat_limit_reached", return_type: "bool",
             "返回服务器是否已明确拒绝今日继续战斗。",
-            params: [], returns: "已达到服务器每日战斗上限时返回 true。", examples: ["if memory::daily_battle_limit_reached() { print(\"limit reached\"); }"]
+            params: [], returns: "已达到服务器每日战斗上限时返回 true。", examples: ["if memory::daily_combat_limit_reached() { print(\"limit reached\"); }"]
         ),
         super::stdlib_doc!(
-            "memory", "daily_battle_limit", return_type: "int",
+            "memory", "daily_combat_limit", return_type: "int",
             "返回服务器明确触发的每日战斗上限。",
-            params: [], returns: "每日战斗上限；未触发时为 0。", examples: ["print(memory::daily_battle_limit());"]
+            params: [], returns: "每日战斗上限；未触发时为 0。", examples: ["print(memory::daily_combat_limit());"]
         ),
         super::stdlib_doc!(
-            "memory", "daily_battle_limit_return_code", return_type: "int",
+            "memory", "daily_combat_limit_return_code", return_type: "int",
             "返回服务器每日战斗上限拒绝码。",
-            params: [], returns: "拒绝码；未触发时为 0。", examples: ["print(memory::daily_battle_limit_return_code());"]
+            params: [], returns: "拒绝码；未触发时为 0。", examples: ["print(memory::daily_combat_limit_return_code());"]
         ),
         super::stdlib_doc!(
-            "memory", "daily_battle_limit_message", return_type: "string",
+            "memory", "daily_combat_limit_message", return_type: "string",
             "返回服务器每日战斗上限拒绝消息。",
-            params: [], returns: "拒绝消息；未触发时为空字符串。", examples: ["print(memory::daily_battle_limit_message());"]
+            params: [], returns: "拒绝消息；未触发时为空字符串。", examples: ["print(memory::daily_combat_limit_message());"]
         ),
     ]
 }

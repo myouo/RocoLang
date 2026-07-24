@@ -76,5 +76,5 @@ Query APIs should normally return typed values directly and raise errors on miss
 - `scene::try_move_to_scene(scene_id: i64, timeout_ms: i64) -> ActionResult` is the non-throwing operation form.
 - Query methods return typed values directly.
 - Action methods return `bool` when the operation has no richer result yet.
-- `lookup::lookup_skills_info([ids])` and `lookup::lookup_spirits_info([ids])` preserve input order and raise if any id is missing.
+- `lookup::skill_infos([ids])` and `lookup::spirit_infos([ids])` preserve input order and raise if any id is missing.
 - `spirit::get_storage_spirit_detail(spirit_id, catch_time)` returns full storage spirit details, including skills.

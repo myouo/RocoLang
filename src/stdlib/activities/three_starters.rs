@@ -19,15 +19,15 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "water_settle_fight",
-        three_starters_water_settle_fight
+        "submit_water_combat",
+        three_starters_submit_water_combat
     );
-    register_stdlib_fn_0!(module, stdlib, "water_submit", three_starters_water_submit);
+    register_stdlib_fn_0!(module, stdlib, "submit_water", three_starters_submit_water);
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "water_get_gift",
-        three_starters_water_get_gift,
+        "water_claim_gift",
+        three_starters_water_claim_gift,
         catch_time: i64
     );
     register_stdlib_fn_0!(
@@ -55,15 +55,15 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "fire_submit_battle",
-        three_starters_fire_submit_battle,
+        "submit_fire_combat",
+        three_starters_submit_fire_combat,
         index: i64
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "fire_submit_direct",
-        three_starters_fire_submit_direct,
+        "submit_fire_direct",
+        three_starters_submit_fire_direct,
         index: i64
     );
     register_stdlib_fn_1!(
@@ -76,8 +76,8 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "fire_get_gift",
-        three_starters_fire_get_gift,
+        "fire_claim_gift",
+        three_starters_fire_claim_gift,
         catch_time: i64
     );
     register_stdlib_fn_0!(
@@ -98,14 +98,14 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "sun_start_fight",
-        three_starters_sun_start_fight
+        "sun_start_combat",
+        three_starters_sun_start_combat
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "sun_settle_fight",
-        three_starters_sun_settle_fight
+        "submit_sun_combat",
+        three_starters_submit_sun_combat
     );
     register_stdlib_fn_0!(
         module,
@@ -113,12 +113,12 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
         "sun_start_collect",
         three_starters_sun_start_collect
     );
-    register_stdlib_fn_0!(module, stdlib, "sun_submit", three_starters_sun_submit);
+    register_stdlib_fn_0!(module, stdlib, "submit_sun", three_starters_submit_sun);
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "sun_get_gift",
-        three_starters_sun_get_gift,
+        "sun_claim_gift",
+        three_starters_sun_claim_gift,
         catch_time: i64
     );
     register_stdlib_fn_0!(

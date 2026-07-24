@@ -8,7 +8,7 @@ use crate::stdlib::RocoStdLib;
 // Index convention:
 // - reputation exchange index is 0-based, matching repu_get CGI and the
 //   DarkCityExchangeItem.index returned by reputation_query_exchange().
-// - expedition_start_fight only prepares the NPC combat and returns fight_id;
+// - expedition_start_combat only prepares the NPC combat and returns fight_id;
 //   scripts should start the combat separately with combat::start_combat.
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(
@@ -20,15 +20,15 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "expedition_start_fight",
-        dark_city_expedition_start_fight,
+        "expedition_start_combat",
+        dark_city_expedition_start_combat,
         vip_boost: bool
     );
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "expedition_settle_fight",
-        dark_city_expedition_settle_fight
+        "submit_expedition",
+        dark_city_submit_expedition
     );
     register_stdlib_fn_1!(
         module,

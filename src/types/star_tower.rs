@@ -20,7 +20,7 @@ pub struct StarTowerInfo {
 pub struct StarTowerStorey {
     pub storey_index: i64,
     pub first: i64,
-    pub can_quick_fight: bool,
+    pub can_quick_combat: bool,
     pub nodes: Vec<StarTowerNode>,
     pub exchange_items: Vec<StarTowerExchangeItem>,
 }

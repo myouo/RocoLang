@@ -16,23 +16,23 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_2!(
         module,
         stdlib,
-        "settle_floor_fight",
-        star_tower_settle_floor_fight,
+        "submit_floor",
+        star_tower_submit_floor,
         storey_index: i64,
         node_index: i64
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "get_floor_award",
-        star_tower_get_floor_award,
+        "claim_floor_reward",
+        star_tower_claim_floor_reward,
         storey_index: i64
     );
     register_stdlib_fn_3!(
         module,
         stdlib,
-        "quick_fight",
-        star_tower_quick_fight,
+        "quick_combat",
+        star_tower_quick_combat,
         storey: i64,
         storey1: i64,
         sell: bool
@@ -46,14 +46,14 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
     register_stdlib_fn_0!(
         module,
         stdlib,
-        "settle_top_boss_fight",
-        star_tower_settle_top_boss_fight
+        "submit_top_boss",
+        star_tower_submit_top_boss
     );
     register_stdlib_fn_1!(
         module,
         stdlib,
-        "get_top_reward",
-        star_tower_get_top_reward,
+        "claim_top_reward",
+        star_tower_claim_top_reward,
         reward_index: i64
     );
     register_stdlib_fn_0!(module, stdlib, "query_bag", star_tower_query_bag);
