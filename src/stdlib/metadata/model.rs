@@ -11,6 +11,21 @@ pub struct StdlibFunctionDoc {
     pub returns: String,
     pub return_doc: Option<StdlibReturnDoc>,
     pub examples: Vec<String>,
+    pub context: StdlibFunctionContext,
+}
+
+/// Runtime state required by a standard-library function.
+///
+/// This is deliberately part of the public metadata contract: script editors,
+/// generated teaching material, and external documentation must describe the
+/// same guard that the backend enforces.
+#[derive(Debug, Clone, Copy, Serialize, Eq, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub enum StdlibFunctionContext {
+    Any,
+    ActiveCombat,
+    CombatActiveOrTerminal,
+    OutOfCombat,
 }
 
 #[derive(Debug, Clone, Serialize)]

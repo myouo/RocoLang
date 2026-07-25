@@ -141,6 +141,7 @@ fn detailed_stdlib_function_doc(
         returns: details.returns,
         return_doc: None,
         examples: details.examples,
+        context: context::classify_function_context(&registration),
     }
 }
 

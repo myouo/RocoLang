@@ -43,6 +43,46 @@ fn registered_stdlib_functions_have_exactly_one_doc() {
 }
 
 #[test]
+fn every_registered_stdlib_function_has_runtime_context_metadata() {
+    let docs = stdlib_function_docs();
+    assert_eq!(docs.len(), registered_stdlib_function_registrations().len());
+    for doc in &docs {
+        assert_eq!(
+            stdlib_function_context(&doc.module, &doc.name),
+            Some(doc.context),
+            "context lookup differs for {}::{}",
+            doc.module,
+            doc.name
+        );
+    }
+    assert_eq!(stdlib_function_context("missing", "function"), None);
+    assert_eq!(
+        find_stdlib_function_doc("combat", "use_skill")
+            .expect("combat::use_skill should be documented")
+            .context,
+        StdlibFunctionContext::ActiveCombat
+    );
+    assert_eq!(
+        find_stdlib_function_doc("combat", "try_use_skill_and_wait")
+            .expect("combat::try_use_skill_and_wait should be documented")
+            .context,
+        StdlibFunctionContext::CombatActiveOrTerminal
+    );
+    assert_eq!(
+        find_stdlib_function_doc("combat", "get_result")
+            .expect("combat::get_result should be documented")
+            .context,
+        StdlibFunctionContext::OutOfCombat
+    );
+    assert_eq!(
+        find_stdlib_function_doc("combat", "get_action_snapshot")
+            .expect("combat::get_action_snapshot should be documented")
+            .context,
+        StdlibFunctionContext::Any
+    );
+}
+
+#[test]
 fn every_registered_stdlib_function_has_explicit_details() {
     let details = super::docs::detailed_stdlib_function_details_by_key();
     let registered = registered_stdlib_function_registrations()

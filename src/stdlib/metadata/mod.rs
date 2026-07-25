@@ -5,6 +5,7 @@ mod aries;
 mod cancer;
 mod capricorn;
 mod combat;
+mod context;
 mod dark_city;
 mod diamond_tear;
 mod docs;
@@ -56,12 +57,14 @@ mod types;
 mod unicorn;
 mod virgo;
 
+pub use context::stdlib_function_context;
 pub use docs::{
     find_stdlib_function_doc, registered_stdlib_function_registrations, stdlib_function_docs,
     stdlib_type_docs,
 };
 pub use model::{
-    StdlibFieldDoc, StdlibFunctionDoc, StdlibFunctionRegistration, StdlibParamDoc, StdlibReturnDoc,
+    StdlibFieldDoc, StdlibFunctionContext, StdlibFunctionDoc, StdlibFunctionRegistration,
+    StdlibParamDoc, StdlibReturnDoc,
 };
 
 include!(concat!(env!("OUT_DIR"), "/roco_stdlib_return_types.rs"));

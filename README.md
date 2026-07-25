@@ -71,6 +71,8 @@ Query APIs should normally return typed values directly and raise errors on miss
 
 ## API Notes
 
+`stdlib_function_docs()` exposes a `context` field for every registered function. Its values are `any`, `activeCombat`, `combatActiveOrTerminal`, and `outOfCombat`; embedding hosts should enforce the same `StdlibFunctionContext` and documentation consumers should display it. `combatActiveOrTerminal` is intended for action-and-wait APIs that must tolerate the action settling the battle before the call returns.
+
 - Native APIs are exposed under namespaces such as `scene::`, `combat::`, `spirit::`, `lookup::`, `profile::`, `game::`, `session::`, and `system::`.
 - `scene::move_to_scene(scene_id: i64, timeout_ms: i64) -> i64` switches scene and returns the confirmed scene id. Failures are raised as script errors.
 - `scene::try_move_to_scene(scene_id: i64, timeout_ms: i64) -> ActionResult` is the non-throwing operation form.
