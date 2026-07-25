@@ -14,13 +14,13 @@ use roco_lang::{
     RocoManorActivityStdLib, RocoNetResponseParseSource, RocoNetResponseParseTarget,
     RocoNetworkError, RocoNewsActivityStdLib, RocoPetEggStdLib, RocoPetTrainingActivityStdLib,
     RocoPiscesActivityStdLib, RocoProtocolParseErrorType, RocoProtocolParseFailureKind,
-    RocoRemoteStateStdLib, RocoRequestContext, RocoReturnCodeKind, RocoReturnCodeRejection,
-    RocoRewardKind, RocoRuntimeStdLib, RocoSagittariusActivityStdLib, RocoScorpioActivityStdLib,
-    RocoScriptErrorKind, RocoScriptLocation, RocoServerRejectedError, RocoSpiritBookStdLib,
-    RocoSpiritStdLib, RocoSystemStdLib, RocoTaskStdLib, RocoTaurusActivityStdLib,
-    RocoThreeStartersActivityStdLib, RocoTowerActivityStdLib, RocoVirgoActivityStdLib,
-    SceneRoleInfo, ScriptActivityName, ScriptActivityOperationError, ScriptActivityOptionField,
-    ScriptBridgeError, ScriptBridgeFailure, ScriptCombatActionError,
+    RocoReclaimGoodsStdLib, RocoRemoteStateStdLib, RocoRequestContext, RocoReturnCodeKind,
+    RocoReturnCodeRejection, RocoRewardKind, RocoRuntimeStdLib, RocoSagittariusActivityStdLib,
+    RocoScorpioActivityStdLib, RocoScriptErrorKind, RocoScriptLocation, RocoServerRejectedError,
+    RocoSpiritBookStdLib, RocoSpiritStdLib, RocoSystemStdLib, RocoTaskStdLib,
+    RocoTaurusActivityStdLib, RocoThreeStartersActivityStdLib, RocoTowerActivityStdLib,
+    RocoVirgoActivityStdLib, SceneRoleInfo, ScriptActivityName, ScriptActivityOperationError,
+    ScriptActivityOptionField, ScriptBridgeError, ScriptBridgeFailure, ScriptCombatActionError,
     ScriptCombatCommandFailureKind, ScriptCombatIntentKind, ScriptCombatPhase,
     ScriptCombatProtocolError, ScriptCombatRuntimeError, ScriptCombatWaitError,
     ScriptFunctionContextError, ScriptHttpResponseName, ScriptLookupEntity, ScriptLookupError,
@@ -43,6 +43,7 @@ struct MockStdLib {
     restored_positions: Vec<i64>,
     swapped_positions: Vec<(i64, i64)>,
     fail_server_time: bool,
+    reclaim_goods_batches: Vec<(i64, usize)>,
 }
 
 impl MockStdLib {
@@ -1701,6 +1702,55 @@ fn task_results_expose_domain_getters() {
 impl RocoIncubativeMachineStdLib for MockStdLib {}
 
 impl RocoPetEggStdLib for MockStdLib {}
+impl RocoReclaimGoodsStdLib for MockStdLib {
+    fn reclaim_goods_query_goods(
+        &mut self,
+        goods_type: i64,
+    ) -> Result<roco_lang::ReclaimGoodsListResult> {
+        Ok(roco_lang::ReclaimGoodsListResult {
+            balance: roco_lang::RocoOptionalI64::present(100),
+            tips: String::new(),
+            safe_code_open: false,
+            safe_code_required: false,
+            items: vec![roco_lang::ReclaimGoodsItem {
+                item_id: 1001,
+                count: 2,
+                unit_price: goods_type,
+                previous_price: 0,
+                status: 0,
+            }],
+        })
+    }
+
+    fn reclaim_goods_sell_goods_batch(
+        &mut self,
+        goods_type: i64,
+        items: Vec<roco_lang::ReclaimGoodsItem>,
+    ) -> Result<roco_lang::ReclaimGoodsSellResult> {
+        self.reclaim_goods_batches.push((goods_type, items.len()));
+        Ok(roco_lang::ReclaimGoodsSellResult {
+            balance: roco_lang::RocoOptionalI64::present(102),
+            tips: String::new(),
+        })
+    }
+}
+
+#[test]
+fn reclaim_goods_batch_accepts_the_typed_query_result_array() {
+    let stdlib = Arc::new(Mutex::new(MockStdLib::default()));
+    let mut engine = RocoEngine::new(stdlib.clone());
+
+    let _ = engine
+        .eval(
+            r#"
+                let goods = reclaim_goods::query_goods(7);
+                reclaim_goods::sell_goods_batch(1, goods.items);
+            "#,
+        )
+        .expect("reclaim goods query array should pass into batch sale");
+
+    assert_eq!(stdlib.lock().unwrap().reclaim_goods_batches, vec![(1, 1)]);
+}
 
 impl RocoRemoteStateStdLib for MockStdLib {}
 

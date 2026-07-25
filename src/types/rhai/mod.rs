@@ -85,6 +85,7 @@ mod news;
 mod pet_training;
 mod play_guide;
 mod profile;
+mod reclaim_goods;
 mod scene;
 mod spirit;
 mod spirit_book;
@@ -111,6 +112,7 @@ pub(crate) fn register_rhai_getters(engine: &mut Engine) {
     pet_training::register_rhai_getters(engine);
     play_guide::register_rhai_getters(engine);
     profile::register_rhai_getters(engine);
+    reclaim_goods::register_rhai_getters(engine);
     scene::register_rhai_getters(engine);
     spirit_book::register_rhai_getters(engine);
     spirit::register_rhai_getters(engine);

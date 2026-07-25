@@ -49,6 +49,7 @@ fn detailed_stdlib_function_details() -> Vec<StdlibFunctionDetails> {
     details.extend(diamond_tear::docs());
     details.extend(system::docs());
     details.extend(profile::docs());
+    details.extend(reclaim_goods::docs());
     details.extend(scene::docs());
     details.extend(remote_state::docs());
     details.extend(game::docs());
@@ -134,6 +135,7 @@ fn detailed_stdlib_function_doc(
     );
     StdlibFunctionDoc {
         module: registration.module.to_string(),
+        module_label: namespace::label(registration.module).to_string(),
         name: registration.name.to_string(),
         signature: format!("{} -> {}", registration.signature, return_type),
         description: details.description,

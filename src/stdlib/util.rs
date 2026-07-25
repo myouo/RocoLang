@@ -72,6 +72,41 @@ pub fn parse_i64_array_at(
         .collect()
 }
 
+pub fn parse_typed_array<T: Clone + Send + Sync + 'static>(
+    name: &str,
+    values: Array,
+    context: &NativeCallContext<'_>,
+) -> Result<Vec<T>, Box<EvalAltResult>> {
+    parse_typed_array_at(name, values, context.call_position())
+}
+
+fn parse_typed_array_at<T: Clone + Send + Sync + 'static>(
+    name: &str,
+    values: Array,
+    position: Position,
+) -> Result<Vec<T>, Box<EvalAltResult>> {
+    values
+        .into_iter()
+        .map(|value| {
+            let actual = value.type_name().to_string();
+            value.try_cast::<T>().ok_or_else(|| {
+                to_rhai_error_at(
+                    RocoError::InvalidParam(
+                        crate::error::RocoInvalidParamError::RhaiTypeMismatch {
+                            name: name.to_string(),
+                            message: format!(
+                                "expected {}, got {actual}",
+                                std::any::type_name::<T>()
+                            ),
+                        },
+                    ),
+                    position,
+                )
+            })
+        })
+        .collect()
+}
+
 macro_rules! register_stdlib_fn_0 {
     ($module:expr, $stdlib:expr, $name:literal, $method:ident) => {{
         let stdlib = $stdlib.clone();
@@ -203,5 +238,15 @@ mod tests {
 
         assert_eq!(error.position(), position);
         assert!(error.to_string().contains("values[]"));
+    }
+
+    #[test]
+    fn parse_typed_array_reports_the_element_name_and_call_position() {
+        let position = Position::new(4, 2);
+        let error = parse_typed_array_at::<i64>("items[]", vec![Dynamic::from("bad")], position)
+            .expect_err("string element should be rejected");
+
+        assert_eq!(error.position(), position);
+        assert!(error.to_string().contains("items[]"));
     }
 }

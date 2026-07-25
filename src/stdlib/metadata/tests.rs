@@ -389,6 +389,24 @@ fn stdlib_docs_do_not_contain_mojibake_or_replacement_text() {
     assert!(bad.is_empty(), "corrupted stdlib docs found: {bad:?}");
 }
 
+#[test]
+fn stdlib_docs_expose_namespace_labels_without_removed_compatibility_apis() {
+    let docs = stdlib_function_docs();
+    assert!(docs.iter().all(|doc| !doc.module_label.trim().is_empty()));
+
+    let reclaim_docs = docs
+        .iter()
+        .filter(|doc| doc.module == "reclaim_goods")
+        .collect::<Vec<_>>();
+    assert!(!reclaim_docs.is_empty());
+    assert!(reclaim_docs
+        .iter()
+        .all(|doc| doc.module_label == "物品回收命令"));
+    assert!(reclaim_docs
+        .iter()
+        .all(|doc| !doc.name.ends_with("with_safe_code")));
+}
+
 fn looks_corrupted(value: &str) -> bool {
     value.contains("????") || value.contains('�') || value.contains('鍙') || value.contains('杩')
 }

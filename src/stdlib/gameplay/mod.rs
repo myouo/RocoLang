@@ -3,6 +3,7 @@ pub mod game;
 pub mod incubative_machine;
 pub mod ladder;
 pub mod pet_egg;
+pub mod reclaim_goods;
 pub mod scene;
 pub mod spirit;
 pub mod spirit_book;

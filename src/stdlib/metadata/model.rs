@@ -4,6 +4,7 @@ use serde::Serialize;
 #[serde(rename_all = "camelCase")]
 pub struct StdlibFunctionDoc {
     pub module: String,
+    pub module_label: String,
     pub name: String,
     pub signature: String,
     pub description: String,

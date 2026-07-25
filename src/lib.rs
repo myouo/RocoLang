@@ -58,11 +58,12 @@ pub use stdlib::{
     RocoHomeActivityStdLib, RocoIncubativeMachineStdLib, RocoLeoActivityStdLib,
     RocoLibraActivityStdLib, RocoLookupStdLib, RocoMagicPioneerActivityStdLib,
     RocoManorActivityStdLib, RocoNewsActivityStdLib, RocoPetEggStdLib,
-    RocoPetTrainingActivityStdLib, RocoPiscesActivityStdLib, RocoRemoteStateStdLib,
-    RocoRuntimeStdLib, RocoSagittariusActivityStdLib, RocoScorpioActivityStdLib,
-    RocoSpiritBookStdLib, RocoSpiritStdLib, RocoStdLib, RocoSystemStdLib, RocoTaskStdLib,
-    RocoTaurusActivityStdLib, RocoThreeStartersActivityStdLib, RocoTowerActivityStdLib,
-    RocoVirgoActivityStdLib, RocoZodiacActivityStdLib, StdlibFieldDoc, StdlibFunctionContext,
-    StdlibFunctionDoc, StdlibFunctionRegistration, StdlibParamDoc, StdlibReturnDoc,
+    RocoPetTrainingActivityStdLib, RocoPiscesActivityStdLib, RocoReclaimGoodsStdLib,
+    RocoRemoteStateStdLib, RocoRuntimeStdLib, RocoSagittariusActivityStdLib,
+    RocoScorpioActivityStdLib, RocoSpiritBookStdLib, RocoSpiritStdLib, RocoStdLib,
+    RocoSystemStdLib, RocoTaskStdLib, RocoTaurusActivityStdLib, RocoThreeStartersActivityStdLib,
+    RocoTowerActivityStdLib, RocoVirgoActivityStdLib, RocoZodiacActivityStdLib, StdlibFieldDoc,
+    StdlibFunctionContext, StdlibFunctionDoc, StdlibFunctionRegistration, StdlibParamDoc,
+    StdlibReturnDoc,
 };
 pub use types::*;

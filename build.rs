@@ -1,4 +1,7 @@
-use std::{env, fs, path::PathBuf};
+use std::{
+    env, fs,
+    path::{Path, PathBuf},
+};
 
 fn main() {
     println!("cargo:rerun-if-changed=src/types.rs");
@@ -100,9 +103,9 @@ fn render_struct_docs(docs: &[(String, Vec<(String, String)>)]) -> String {
     output
 }
 
-fn rust_sources_recursive(root: &PathBuf) -> Vec<PathBuf> {
+fn rust_sources_recursive(root: &Path) -> Vec<PathBuf> {
     let mut sources = Vec::new();
-    let mut pending = vec![root.clone()];
+    let mut pending = vec![root.to_path_buf()];
     while let Some(path) = pending.pop() {
         for entry in fs::read_dir(path).unwrap() {
             let path = entry.unwrap().path();

@@ -6,11 +6,11 @@ use roco_lang::{
     RocoIncubativeMachineStdLib, RocoLeoActivityStdLib, RocoLibraActivityStdLib, RocoLookupStdLib,
     RocoMagicPioneerActivityStdLib, RocoManorActivityStdLib, RocoNewsActivityStdLib,
     RocoOptionalI64, RocoPetEggStdLib, RocoPetTrainingActivityStdLib, RocoPiscesActivityStdLib,
-    RocoRemoteStateStdLib, RocoRuntimeStdLib, RocoSagittariusActivityStdLib,
-    RocoScorpioActivityStdLib, RocoSpiritBookStdLib, RocoSpiritStdLib, RocoSystemStdLib,
-    RocoTaskStdLib, RocoTaurusActivityStdLib, RocoThreeStartersActivityStdLib,
-    RocoTowerActivityStdLib, RocoVirgoActivityStdLib, RoundResult, SkillInfo, SpiritBagInfo,
-    SpiritInfo, StaticItemInfo, StaticSkillInfo, StaticSpiritInfo,
+    RocoReclaimGoodsStdLib, RocoRemoteStateStdLib, RocoRuntimeStdLib,
+    RocoSagittariusActivityStdLib, RocoScorpioActivityStdLib, RocoSpiritBookStdLib,
+    RocoSpiritStdLib, RocoSystemStdLib, RocoTaskStdLib, RocoTaurusActivityStdLib,
+    RocoThreeStartersActivityStdLib, RocoTowerActivityStdLib, RocoVirgoActivityStdLib, RoundResult,
+    SkillInfo, SpiritBagInfo, SpiritInfo, StaticItemInfo, StaticSkillInfo, StaticSpiritInfo,
 };
 use std::sync::{Arc, Mutex};
 
@@ -447,6 +447,7 @@ impl RocoTaskStdLib for MockStdLib {}
 impl RocoIncubativeMachineStdLib for MockStdLib {}
 
 impl RocoPetEggStdLib for MockStdLib {}
+impl RocoReclaimGoodsStdLib for MockStdLib {}
 
 impl RocoRemoteStateStdLib for MockStdLib {}
 

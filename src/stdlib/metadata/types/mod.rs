@@ -34,6 +34,7 @@ mod friend;
 mod gameplay;
 mod homestead;
 mod network;
+mod reclaim_goods;
 mod spirit;
 mod static_data;
 
@@ -50,6 +51,7 @@ pub fn return_doc_for(type_name: &str) -> Option<StdlibReturnDoc> {
         .or_else(|| spirit::doc(&normalized))
         .or_else(|| homestead::doc(&normalized))
         .or_else(|| friend::doc(&normalized))
+        .or_else(|| reclaim_goods::doc(&normalized))
         .or_else(|| static_data::doc(&normalized))
         .or_else(|| extended::doc(&normalized))
         .or_else(|| generated_struct_doc(&normalized));
