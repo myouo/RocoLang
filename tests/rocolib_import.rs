@@ -1322,6 +1322,49 @@ fn built_in_spirit_recovery_helpers_are_try_style() {
 }
 
 #[test]
+fn low_frequency_recovery_pp_is_averaged_per_spirit() {
+    let stdlib = Arc::new(Mutex::new(MockStdLib::default()));
+    let mut engine = RocoEngine::new(stdlib);
+
+    let _ = engine
+        .eval(
+            r#"
+                import "roco/spirit" as roco_spirit;
+
+                let power = #{ id: 1, power: "80", pp_max: 10 };
+                let status = #{ id: 2, power: "--", pp_max: 20 };
+                let full = #{ hp: 100, skills: [#{ skill_id: 1, pp: 10, max_pp: 10 }] };
+                let empty = #{ hp: 100, skills: [#{ skill_id: 1, pp: 0, max_pp: 10 }] };
+                let dead = #{ hp: 0, skills: [#{ skill_id: 1, pp: 10, max_pp: 10 }] };
+                let no_power = #{ hp: 100, skills: [#{ skill_id: 2, pp: 20, max_pp: 20 }] };
+                let fallback = #{ hp: 100, skills: [#{ skill_id: 1, pp: 2, max_pp: 0 }] };
+
+                system::assert(
+                    roco_spirit::low_frequency_spirit_power_pp_basis_points(full, [power]) == 10000,
+                    "full PP mismatch"
+                );
+                system::assert(
+                    roco_spirit::low_frequency_spirit_power_pp_basis_points(dead, [power]) == 0,
+                    "dead spirit must be zero"
+                );
+                system::assert(
+                    roco_spirit::low_frequency_spirit_power_pp_basis_points(no_power, [status]) == 0,
+                    "spirit without power skill must be zero"
+                );
+                system::assert(
+                    roco_spirit::low_frequency_spirit_power_pp_basis_points(fallback, [power]) == 2000,
+                    "static max PP fallback mismatch"
+                );
+                system::assert(
+                    roco_spirit::low_frequency_team_power_pp_basis_points([full, empty], [power]) == 5000,
+                    "team percentage must average spirit percentages"
+                );
+            "#,
+        )
+        .expect("low-frequency recovery PP helpers should be deterministic");
+}
+
+#[test]
 fn built_in_spirit_ready_helper_returns_try_style_result() {
     let stdlib = Arc::new(Mutex::new(MockStdLib::default()));
     let mut engine = RocoEngine::new(stdlib);

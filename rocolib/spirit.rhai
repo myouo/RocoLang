@@ -143,39 +143,23 @@ fn try_recover_all_spirits_low_frequency_hospital() {
         return #{ ok: true, code: 0, message: "empty bag; skipped low-frequency hospital recovery" };
     }
 
-    let team_basis_points = 0;
+    let skill_ids = [];
     for spirit_info in bag.spirits {
-        let spirit_basis_points = 0;
-        if spirit_info.hp > 0 {
-            let current_power_pp = 0;
-            let maximum_power_pp = 0;
-            for skill in spirit_info.skills {
-                const skill_info = lookup::skill_info(skill.skill_id);
-                const is_power_skill = skill_info.power != "--"
-                    && skill_info.power != ""
-                    && skill_info.power != "0";
-                if is_power_skill {
-                    let maximum_pp = skill.max_pp;
-                    if maximum_pp <= 0 {
-                        maximum_pp = skill_info.pp_max;
-                    }
-                    if maximum_pp > 0 {
-                        let current_pp = skill.pp;
-                        if current_pp < 0 {
-                            current_pp = 0;
-                        } else if current_pp > maximum_pp {
-                            current_pp = maximum_pp;
-                        }
-                        current_power_pp = current_power_pp + current_pp;
-                        maximum_power_pp = maximum_power_pp + maximum_pp;
-                    }
-                }
-            }
-            if maximum_power_pp > 0 {
-                spirit_basis_points = current_power_pp * 10000 / maximum_power_pp;
-            }
+        for skill in spirit_info.skills {
+            skill_ids.push(skill.skill_id);
         }
+    }
+    const skill_infos = lookup::skill_infos(skill_ids);
+    const average_basis_points = low_frequency_team_power_pp_basis_points(
+        bag.spirits,
+        skill_infos
+    );
 
+    for spirit_info in bag.spirits {
+        const spirit_basis_points = low_frequency_spirit_power_pp_basis_points(
+            spirit_info,
+            skill_infos
+        );
         print(
             "low-frequency hospital PP: position="
                 + spirit_info.position
@@ -187,10 +171,8 @@ fn try_recover_all_spirits_low_frequency_hospital() {
                 + spirit_basis_points / 100
                 + "%"
         );
-        team_basis_points = team_basis_points + spirit_basis_points;
     }
 
-    const average_basis_points = team_basis_points / spirit_count;
     print(
         "low-frequency hospital team power PP="
             + average_basis_points / 100
@@ -203,6 +185,63 @@ fn try_recover_all_spirits_low_frequency_hospital() {
     }
 
     return try_recover_all_spirits_hospital();
+}
+
+fn low_frequency_team_power_pp_basis_points(spirits, skill_infos) {
+    if len(spirits) == 0 {
+        return 10000;
+    }
+    let total_basis_points = 0;
+    for spirit_info in spirits {
+        total_basis_points = total_basis_points
+            + low_frequency_spirit_power_pp_basis_points(spirit_info, skill_infos);
+    }
+    return total_basis_points / len(spirits);
+}
+
+fn low_frequency_spirit_power_pp_basis_points(spirit_info, skill_infos) {
+    if spirit_info.hp <= 0 {
+        return 0;
+    }
+
+    let current_power_pp = 0;
+    let maximum_power_pp = 0;
+    for skill in spirit_info.skills {
+        const skill_info = find_static_skill_info(skill_infos, skill.skill_id);
+        if skill_info.found && is_power_skill_value(skill_info.power) {
+            let maximum_pp = skill.max_pp;
+            if maximum_pp <= 0 {
+                maximum_pp = skill_info.pp_max;
+            }
+            if maximum_pp > 0 {
+                let current_pp = skill.pp;
+                if current_pp < 0 {
+                    current_pp = 0;
+                } else if current_pp > maximum_pp {
+                    current_pp = maximum_pp;
+                }
+                current_power_pp = current_power_pp + current_pp;
+                maximum_power_pp = maximum_power_pp + maximum_pp;
+            }
+        }
+    }
+    if maximum_power_pp == 0 {
+        return 0;
+    }
+    return current_power_pp * 10000 / maximum_power_pp;
+}
+
+fn find_static_skill_info(skill_infos, skill_id) {
+    for skill_info in skill_infos {
+        if skill_info.id == skill_id {
+            return #{ found: true, power: skill_info.power, pp_max: skill_info.pp_max };
+        }
+    }
+    return #{ found: false, power: "", pp_max: 0 };
+}
+
+fn is_power_skill_value(power) {
+    return power != "--" && power != "" && power != "0";
 }
 
 fn try_auto_recover_all_spirits(is_vip) {
