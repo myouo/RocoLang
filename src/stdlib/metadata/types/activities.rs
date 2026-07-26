@@ -575,6 +575,7 @@ pub(super) fn doc(type_name: &str) -> Option<(&'static str, Vec<StdlibFieldDoc>)
             vec![
                 field("result_code", "int", "服务器返回结果码。"),
                 field("message", "string", "服务器返回信息。"),
+                field("diamond", "int", "洛克钻数量。"),
                 field("vip", "int", "VIP 状态。"),
                 field("magic", "int", "当前召唤魔法值。"),
                 field("count", "int", "当前召唤次数。"),
@@ -582,34 +583,67 @@ pub(super) fn doc(type_name: &str) -> Option<(&'static str, Vec<StdlibFieldDoc>)
                 field("pools", "SummonPoolState[]", "召唤池状态列表。"),
                 field("config_pools", "SummonPoolConfig[]", "召唤池配置列表。"),
                 field("exchange_groups", "SummonExchangeGroup[]", "兑换组列表。"),
+                field(
+                    "recycle_states",
+                    "SummonRecycleState[]",
+                    "回收兑换状态列表。",
+                ),
                 field("rewards", "SummonRewardItem[]", "奖励列表。"),
                 field("records", "SummonRecord[]", "召唤记录列表。"),
             ]
         }),
         "SummonPoolState" => ("召唤池当前状态。", {
             vec![
+                field(
+                    "pool_index",
+                    "int",
+                    "一基召唤池序号，也是 CGI version 参数。",
+                ),
                 field("version", "int", "召唤池版本。"),
                 field("token_item_id", "int", "抽取消耗物品 ID。"),
                 field("token_count", "int", "抽取消耗数量。"),
                 field("today_draw_count", "int", "今日抽取次数。"),
+                field("times", "int", "召唤累计计数。"),
+                field("show", "int", "召唤池展示状态。"),
                 field("wish_index", "int", "当前祈愿项索引。"),
                 field("succeeded", "bool", "是否已达成召唤目标。"),
-                field("end_time", "int", "召唤池结束时间。"),
             ]
         }),
         "SummonPoolConfig" => ("召唤池配置。", {
             vec![
+                field(
+                    "pool_index",
+                    "int",
+                    "一基召唤池序号，也是 CGI version 参数。",
+                ),
                 field("version", "int", "召唤池版本。"),
                 field("title", "string", "召唤池标题。"),
                 field("vip_limit", "int", "VIP 限制。"),
+                field("start_time", "int", "召唤池开始时间。"),
                 field("end_time", "int", "召唤池结束时间。"),
                 field("daily_max", "int", "每日抽取上限。"),
-                field("token_item_id", "int", "抽取消耗物品 ID。"),
                 field("recommend", "string", "推荐说明。"),
                 field("info", "string", "召唤池说明。"),
                 field("reward_text", "string", "奖励说明。"),
-                field("rewards", "SummonRewardItem[]", "奖励列表。"),
-                field("wish_candidates", "SummonRewardItem[]", "祈愿候选列表。"),
+                field("rewards", "SummonPoolReward[]", "召唤池奖励配置列表。"),
+            ]
+        }),
+        "SummonPoolReward" => ("召唤池奖励配置。", {
+            vec![
+                field("name", "string", "奖励名称。"),
+                field("id", "int", "奖励 ID。"),
+                field("item_type", "int", "奖励类型。"),
+                field("count", "int", "奖励数量。"),
+                field("probability_type", "int", "概率分组。"),
+                field("add", "int", "附加数量。"),
+                field("wishable", "bool", "是否可作为许愿目标。"),
+            ]
+        }),
+        "SummonRecycleState" => ("召唤回收兑换状态。", {
+            vec![
+                field("version", "int", "回收配置版本。"),
+                field("day_times", "int[]", "各项今日兑换次数。"),
+                field("counts", "int[]", "各类回收物持有数量。"),
             ]
         }),
         "SummonExchangeGroup" => ("召唤兑换组。", {
@@ -642,6 +676,7 @@ pub(super) fn doc(type_name: &str) -> Option<(&'static str, Vec<StdlibFieldDoc>)
             vec![
                 field("pool_version", "int", "召唤池版本。"),
                 field("title", "string", "召唤池标题。"),
+                field("name", "string", "实际获得的奖励名称。"),
                 field("id", "int", "奖励 ID。"),
                 field("item_type", "int", "奖励类型。"),
                 field("count", "int", "奖励数量。"),

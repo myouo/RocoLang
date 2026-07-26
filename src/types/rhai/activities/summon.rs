@@ -7,23 +7,26 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
     register_getters!(
         engine,
         SummonPoolState,
+        pool_index,
         version,
         token_item_id,
         token_count,
         today_draw_count,
+        times,
+        show,
         wish_index,
         succeeded,
-        end_time,
     );
     register_getters!(
         engine,
         SummonPoolConfig,
+        pool_index,
         version,
         title,
         vip_limit,
+        start_time,
         end_time,
         daily_max,
-        token_item_id,
         recommend,
         info,
         reward_text,
@@ -31,8 +34,23 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
     engine.register_get("rewards", |value: &mut SummonPoolConfig| {
         to_array(&value.rewards)
     });
-    engine.register_get("wish_candidates", |value: &mut SummonPoolConfig| {
-        to_array(&value.wish_candidates)
+    register_getters!(
+        engine,
+        SummonPoolReward,
+        name,
+        id,
+        item_type,
+        count,
+        probability_type,
+        add,
+        wishable,
+    );
+    register_getters!(engine, SummonRecycleState, version);
+    engine.register_get("day_times", |value: &mut SummonRecycleState| {
+        to_array(&value.day_times)
+    });
+    engine.register_get("counts", |value: &mut SummonRecycleState| {
+        to_array(&value.counts)
     });
     register_getters!(
         engine,
@@ -56,6 +74,7 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
         SummonRecord,
         pool_version,
         title,
+        name,
         id,
         item_type,
         count,
@@ -68,6 +87,7 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
         SummonInfo,
         result_code,
         message,
+        diamond,
         vip,
         magic,
         count,
@@ -79,6 +99,9 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
     });
     engine.register_get("exchange_groups", |value: &mut SummonInfo| {
         to_array(&value.exchange_groups)
+    });
+    engine.register_get("recycle_states", |value: &mut SummonInfo| {
+        to_array(&value.recycle_states)
     });
     engine.register_get("rewards", |value: &mut SummonInfo| to_array(&value.rewards));
     engine.register_get("records", |value: &mut SummonInfo| to_array(&value.records));
