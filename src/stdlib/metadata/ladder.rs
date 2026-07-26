@@ -22,6 +22,15 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
         ),
         super::stdlib_doc!(
             "ladder",
+            "cancel_match",
+            return_type: "ActionResult",
+            "取消普通天梯的匹配等待。",
+            params: [],
+            returns: "服务端接受则 ok=true，否则返回业务失败信息。",
+            examples: ["let result = ladder::cancel_match();"]
+        ),
+        super::stdlib_doc!(
+            "ladder",
             "recover_spirits",
             return_type: "bool",
             "恢复普通天梯相关宠物状态。",

@@ -1,8 +1,10 @@
 pub mod combat;
 pub mod game;
 pub mod incubative_machine;
+pub mod king_fight;
 pub mod ladder;
 pub mod pet_egg;
+pub mod pk;
 pub mod reclaim_goods;
 pub mod scene;
 pub mod spirit;

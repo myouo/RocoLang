@@ -118,6 +118,14 @@ pub trait RocoSpiritStdLib: Send {
         unsupported("ladder::query_rank")
     }
 
+    fn ladder_cancel_match(&mut self) -> Result<ActionResult> {
+        unsupported("ladder::cancel_match")
+    }
+
+    fn king_fight_cancel_match(&mut self) -> Result<ActionResult> {
+        unsupported("king_fight::cancel_match")
+    }
+
     fn ladder_try_recover_spirits(&mut self) -> Result<ActionResult> {
         match self.ladder_recover_spirits() {
             Ok(true) => Ok(ActionResult::ok()),
@@ -136,6 +144,10 @@ pub trait RocoSpiritStdLib: Send {
 
     fn type_ladder_query_rank(&mut self) -> Result<TypeLadderRankInfo> {
         unsupported("type_ladder::query_rank")
+    }
+
+    fn type_ladder_cancel_match(&mut self) -> Result<ActionResult> {
+        unsupported("type_ladder::cancel_match")
     }
 
     fn type_ladder_try_recover_spirits(&mut self) -> Result<ActionResult> {

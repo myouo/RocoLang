@@ -4,33 +4,6 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
     vec![
         super::stdlib_doc!(
             "combat",
-            "invite_pk",
-            return_type: "BattleInfo",
-            "向指定玩家发起 PK 邀请。",
-            params: ["target_uin" => "目标玩家 uin。"],
-            returns: "战斗邀请信息。",
-            examples: ["let battle = combat::invite_pk(123456);"]
-        ),
-        super::stdlib_doc!(
-            "combat",
-            "accept_pk",
-            return_type: "bool",
-            "接受当前 PK 邀请。",
-            params: [],
-            returns: "接受成功返回 true。",
-            examples: ["combat::accept_pk();"]
-        ),
-        super::stdlib_doc!(
-            "combat",
-            "reject_pk",
-            return_type: "bool",
-            "拒绝当前 PK 邀请。",
-            params: [],
-            returns: "拒绝成功返回 true。",
-            examples: ["combat::reject_pk();"]
-        ),
-        super::stdlib_doc!(
-            "combat",
             "start_combat",
             return_type: "bool",
             "发起一场战斗。",

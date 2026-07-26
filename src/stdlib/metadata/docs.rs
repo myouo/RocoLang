@@ -59,6 +59,7 @@ fn detailed_stdlib_function_details() -> Vec<StdlibFunctionDetails> {
     details.extend(ice_crystal::docs());
     details.extend(incubative_machine::docs());
     details.extend(jump_machine::docs());
+    details.extend(king_fight::docs());
     details.extend(leo::docs());
     details.extend(ladder::docs());
     details.extend(magic_pioneer::docs());
@@ -70,6 +71,7 @@ fn detailed_stdlib_function_details() -> Vec<StdlibFunctionDetails> {
     details.extend(mountain_sea::docs());
     details.extend(mystery_fusion::docs());
     details.extend(pet_egg::docs());
+    details.extend(pk::docs());
     details.extend(pet_training::docs());
     details.extend(pisces::docs());
     details.extend(play_guide::docs());

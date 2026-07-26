@@ -8,6 +8,7 @@ use crate::stdlib::RocoStdLib;
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     register_stdlib_fn_0!(module, stdlib, "query_info", ladder_query_info);
     register_stdlib_fn_0!(module, stdlib, "query_rank", ladder_query_rank);
+    register_stdlib_fn_0!(module, stdlib, "cancel_match", ladder_cancel_match);
     register_stdlib_fn_0!(module, stdlib, "recover_spirits", ladder_recover_spirits);
     {
         let stdlib = stdlib.clone();

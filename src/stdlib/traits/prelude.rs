@@ -16,7 +16,9 @@ pub trait RocoStdLib:
     + RocoActivityStdLib
     + RocoLookupStdLib
     + RocoCombatStdLib
+    + RocoPkStdLib
     + RocoFriendStdLib
+    + RocoRoleStdLib
     + RocoSpiritBookStdLib
     + RocoSystemStdLib
     + RocoTaskStdLib
@@ -34,7 +36,9 @@ impl<T> RocoStdLib for T where
         + RocoActivityStdLib
         + RocoLookupStdLib
         + RocoCombatStdLib
+        + RocoPkStdLib
         + RocoFriendStdLib
+        + RocoRoleStdLib
         + RocoSpiritBookStdLib
         + RocoSystemStdLib
         + RocoTaskStdLib

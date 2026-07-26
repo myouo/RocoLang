@@ -17,18 +17,6 @@ pub trait RocoCombatStdLib: Send {
             actions: self.get_combat_actions()?,
         })
     }
-    fn invite_pk(&mut self, _target_uin: i64) -> Result<BattleInfo> {
-        unsupported("combat::invite_pk")
-    }
-
-    fn accept_pk(&mut self) -> Result<bool> {
-        unsupported("combat::accept_pk")
-    }
-
-    fn reject_pk(&mut self) -> Result<bool> {
-        unsupported("combat::reject_pk")
-    }
-
     fn use_skill(&mut self, _skill_id: i64) -> Result<bool> {
         unsupported("combat::use_skill")
     }

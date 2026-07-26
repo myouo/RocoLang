@@ -6,7 +6,7 @@ use roco_lang::{
     RocoIncubativeMachineStdLib, RocoLeoActivityStdLib, RocoLibraActivityStdLib, RocoLookupStdLib,
     RocoMagicPioneerActivityStdLib, RocoManorActivityStdLib, RocoNewsActivityStdLib,
     RocoOptionalI64, RocoPetEggStdLib, RocoPetTrainingActivityStdLib, RocoPiscesActivityStdLib,
-    RocoReclaimGoodsStdLib, RocoRemoteStateStdLib, RocoRuntimeStdLib,
+    RocoPkStdLib, RocoReclaimGoodsStdLib, RocoRemoteStateStdLib, RocoRuntimeStdLib,
     RocoSagittariusActivityStdLib, RocoScorpioActivityStdLib, RocoSpiritBookStdLib,
     RocoSpiritStdLib, RocoSystemStdLib, RocoTaskStdLib, RocoTaurusActivityStdLib,
     RocoThreeStartersActivityStdLib, RocoTowerActivityStdLib, RocoVirgoActivityStdLib, RoundResult,
@@ -210,26 +210,6 @@ impl RocoCombatStdLib for MockStdLib {
         Ok(Default::default())
     }
 
-    fn invite_pk(&mut self, target_uin: i64) -> Result<BattleInfo> {
-        println!("Inviting PK with {}", target_uin);
-        Ok(BattleInfo {
-            battle_id: "test_battle".to_string(),
-            my_uin: 12345,
-            rival_uin: target_uin,
-            started: true,
-        })
-    }
-
-    fn accept_pk(&mut self) -> Result<bool> {
-        println!("Accepting PK");
-        Ok(true)
-    }
-
-    fn reject_pk(&mut self) -> Result<bool> {
-        println!("Rejecting PK");
-        Ok(true)
-    }
-
     fn use_skill(&mut self, skill_id: i64) -> Result<bool> {
         println!("Using skill {}", skill_id);
         self.rival_hp -= 20;
@@ -372,6 +352,28 @@ impl RocoCombatStdLib for MockStdLib {
     }
 }
 
+impl RocoPkStdLib for MockStdLib {
+    fn pk_invite(&mut self, target_uin: i64) -> Result<BattleInfo> {
+        println!("Inviting PK with {}", target_uin);
+        Ok(BattleInfo {
+            battle_id: "test_battle".to_string(),
+            my_uin: 12345,
+            rival_uin: target_uin,
+            started: true,
+        })
+    }
+
+    fn pk_accept(&mut self) -> Result<bool> {
+        println!("Accepting PK");
+        Ok(true)
+    }
+
+    fn pk_reject(&mut self) -> Result<bool> {
+        println!("Rejecting PK");
+        Ok(true)
+    }
+}
+
 impl RocoSystemStdLib for MockStdLib {
     fn sleep(&mut self, ms: i64) -> Result<()> {
         println!("Sleeping for {}ms", ms);
@@ -477,3 +479,4 @@ impl RocoAdventureActivityStdLib for MockStdLib {}
 
 impl RocoSpiritBookStdLib for MockStdLib {}
 impl roco_lang::RocoFriendStdLib for MockStdLib {}
+impl roco_lang::RocoRoleStdLib for MockStdLib {}

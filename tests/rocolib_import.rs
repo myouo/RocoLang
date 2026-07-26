@@ -13,14 +13,15 @@ use roco_lang::{
     RocoLibraActivityStdLib, RocoLookupStdLib, RocoMagicPioneerActivityStdLib,
     RocoManorActivityStdLib, RocoNetResponseParseSource, RocoNetResponseParseTarget,
     RocoNetworkError, RocoNewsActivityStdLib, RocoPetEggStdLib, RocoPetTrainingActivityStdLib,
-    RocoPiscesActivityStdLib, RocoProtocolParseErrorType, RocoProtocolParseFailureKind,
-    RocoReclaimGoodsStdLib, RocoRemoteStateStdLib, RocoRequestContext, RocoReturnCodeKind,
-    RocoReturnCodeRejection, RocoRewardKind, RocoRuntimeStdLib, RocoSagittariusActivityStdLib,
-    RocoScorpioActivityStdLib, RocoScriptErrorKind, RocoScriptLocation, RocoServerRejectedError,
-    RocoSpiritBookStdLib, RocoSpiritStdLib, RocoSystemStdLib, RocoTaskStdLib,
-    RocoTaurusActivityStdLib, RocoThreeStartersActivityStdLib, RocoTowerActivityStdLib,
-    RocoVirgoActivityStdLib, SceneRoleInfo, ScriptActivityName, ScriptActivityOperationError,
-    ScriptActivityOptionField, ScriptBridgeError, ScriptBridgeFailure, ScriptCombatActionError,
+    RocoPiscesActivityStdLib, RocoPkStdLib, RocoProtocolParseErrorType,
+    RocoProtocolParseFailureKind, RocoReclaimGoodsStdLib, RocoRemoteStateStdLib,
+    RocoRequestContext, RocoReturnCodeKind, RocoReturnCodeRejection, RocoRewardKind,
+    RocoRuntimeStdLib, RocoSagittariusActivityStdLib, RocoScorpioActivityStdLib,
+    RocoScriptErrorKind, RocoScriptLocation, RocoServerRejectedError, RocoSpiritBookStdLib,
+    RocoSpiritStdLib, RocoSystemStdLib, RocoTaskStdLib, RocoTaurusActivityStdLib,
+    RocoThreeStartersActivityStdLib, RocoTowerActivityStdLib, RocoVirgoActivityStdLib,
+    SceneRoleInfo, ScriptActivityName, ScriptActivityOperationError, ScriptActivityOptionField,
+    ScriptBridgeError, ScriptBridgeFailure, ScriptCombatActionError,
     ScriptCombatCommandFailureKind, ScriptCombatIntentKind, ScriptCombatPhase,
     ScriptCombatProtocolError, ScriptCombatRuntimeError, ScriptCombatWaitError,
     ScriptFunctionContextError, ScriptHttpResponseName, ScriptLookupEntity, ScriptLookupError,
@@ -184,6 +185,18 @@ impl RocoRuntimeStdLib for MockStdLib {
 }
 
 impl RocoSpiritStdLib for MockStdLib {
+    fn ladder_cancel_match(&mut self) -> Result<ActionResult> {
+        Ok(ActionResult::ok())
+    }
+
+    fn king_fight_cancel_match(&mut self) -> Result<ActionResult> {
+        Ok(ActionResult::ok())
+    }
+
+    fn type_ladder_cancel_match(&mut self) -> Result<ActionResult> {
+        Ok(ActionResult::ok())
+    }
+
     fn start_combat(
         &mut self,
         server_type: i64,
@@ -1638,6 +1651,29 @@ fn enum_like_modules_expose_combat_constants() {
 
 impl RocoCombatStdLib for MockStdLib {}
 
+impl RocoPkStdLib for MockStdLib {
+    fn pk_cancel_waiting(&mut self) -> Result<ActionResult> {
+        Ok(ActionResult::ok())
+    }
+}
+
+#[test]
+fn matchmaking_cancel_functions_return_action_results() {
+    let stdlib = Arc::new(Mutex::new(MockStdLib::default()));
+    let mut engine = RocoEngine::new(stdlib);
+
+    let _ = engine
+        .eval(
+            r#"
+                system::assert(pk::cancel_waiting().ok, "PK cancel failed");
+                system::assert(ladder::cancel_match().ok, "ladder cancel failed");
+                system::assert(king_fight::cancel_match().ok, "king fight cancel failed");
+                system::assert(type_ladder::cancel_match().ok, "type ladder cancel failed");
+            "#,
+        )
+        .expect("matchmaking cancel APIs should be registered");
+}
+
 impl RocoSystemStdLib for MockStdLib {
     fn random_int(&mut self, min_inclusive: i64, max_inclusive: i64) -> Result<i64> {
         assert!(min_inclusive <= max_inclusive);
@@ -1916,6 +1952,7 @@ impl RocoMagicPioneerActivityStdLib for MockStdLib {}
 
 impl RocoAdventureActivityStdLib for MockStdLib {}
 impl roco_lang::RocoFriendStdLib for MockStdLib {}
+impl roco_lang::RocoRoleStdLib for MockStdLib {}
 
 impl RocoAriesActivityStdLib for MockStdLib {}
 impl RocoLibraActivityStdLib for MockStdLib {}

@@ -8,9 +8,6 @@ use crate::stdlib::util::{
 use crate::stdlib::RocoStdLib;
 
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
-    register_stdlib_fn_1!(module, stdlib, "invite_pk", invite_pk, target_uin: i64);
-    register_stdlib_fn_0!(module, stdlib, "accept_pk", accept_pk);
-    register_stdlib_fn_0!(module, stdlib, "reject_pk", reject_pk);
     register_stdlib_fn_4!(
         module,
         stdlib,
