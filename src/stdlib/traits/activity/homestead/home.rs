@@ -1,8 +1,24 @@
 use super::super::super::*;
 
 pub trait RocoHomeActivityStdLib: Send {
+    fn home_enter(&mut self) -> Result<i64> {
+        unsupported("home::enter")
+    }
+
+    fn home_visit_friend(&mut self, _friend_uin: i64) -> Result<i64> {
+        unsupported("home::visit_friend")
+    }
+
     fn home_get_overview(&mut self, _area_id: i64) -> Result<HomeOverview> {
         unsupported("home::get_overview")
+    }
+
+    fn home_get_friend_overview(
+        &mut self,
+        _friend_uin: i64,
+        _area_id: i64,
+    ) -> Result<HomeOverview> {
+        unsupported("home::get_friend_overview")
     }
 
     fn home_get_friend_list(&mut self) -> Result<Vec<HomeFriendSummary>> {

@@ -12,7 +12,7 @@ struct MyStdLib {
 }
 
 impl RocoStdLib for MyStdLib {
-    fn move_to_scene(&mut self, scene_id: i64, timeout_ms: i64) -> Result<i64> {
+    fn move_to_scene(&mut self, scene_id: i64) -> Result<i64> {
         if timeout_ms <= 0 {
             return Err(RocoError::InvalidParam("timeout_ms must be positive".into()));
         }
@@ -38,7 +38,7 @@ let stdlib = Arc::new(Mutex::new(MyStdLib { scene_id: 1 }));
 let mut engine = RocoEngine::new(stdlib);
 
 let script = r#"
-    let scene_id = scene::move_to_scene(102, 5000);
+    let scene_id = scene::move_to_scene(102);
     print("moved to scene: " + scene_id);
 "#;
 
@@ -74,8 +74,8 @@ Query APIs should normally return typed values directly and raise errors on miss
 `stdlib_function_docs()` exposes a `context` field for every registered function. Its values are `any`, `activeCombat`, `combatActiveOrTerminal`, and `outOfCombat`; embedding hosts should enforce the same `StdlibFunctionContext` and documentation consumers should display it. `combatActiveOrTerminal` is intended for action-and-wait APIs that must tolerate the action settling the battle before the call returns.
 
 - Native APIs are exposed under namespaces such as `scene::`, `combat::`, `spirit::`, `lookup::`, `profile::`, `game::`, `session::`, and `system::`.
-- `scene::move_to_scene(scene_id: i64, timeout_ms: i64) -> i64` switches scene and returns the confirmed scene id. Failures are raised as script errors.
-- `scene::try_move_to_scene(scene_id: i64, timeout_ms: i64) -> ActionResult` is the non-throwing operation form.
+- `scene::move_to_scene(scene_id: i64) -> i64` switches scene and returns the confirmed scene id. Failures are raised as script errors.
+- `scene::try_move_to_scene(scene_id: i64) -> ActionResult` is the non-throwing operation form.
 - Query methods return typed values directly.
 - Action methods return `bool` when the operation has no richer result yet.
 - `lookup::skill_infos([ids])` and `lookup::spirit_infos([ids])` preserve input order and raise if any id is missing.

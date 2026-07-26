@@ -8,22 +8,17 @@ use crate::stdlib::RocoStdLib;
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("move_to_scene", move |scene_id: i64, timeout_ms: i64| {
+        module.set_native_fn("move_to_scene", move |scene_id: i64| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.move_to_scene(scene_id, timeout_ms)
-                .map_err(to_rhai_error)
+            lib.move_to_scene(scene_id).map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn(
-            "try_move_to_scene",
-            move |scene_id: i64, timeout_ms: i64| {
-                let mut lib = lock_stdlib(&stdlib)?;
-                lib.try_move_to_scene(scene_id, timeout_ms)
-                    .map_err(to_rhai_error)
-            },
-        );
+        module.set_native_fn("try_move_to_scene", move |scene_id: i64| {
+            let mut lib = lock_stdlib(&stdlib)?;
+            lib.try_move_to_scene(scene_id).map_err(to_rhai_error)
+        });
     }
     {
         let stdlib = stdlib.clone();

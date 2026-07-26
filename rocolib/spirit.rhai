@@ -264,20 +264,18 @@ fn try_auto_recover_all_spirits(is_vip) {
 
 fn try_recover_all_spirits_hospital() {
     const HOSPITAL_SCENE_ID = 57;
-    const MOVE_TIMEOUT_MS = 30000;
-
     let current_scene = scene::get_current_scene();
     if current_scene == HOSPITAL_SCENE_ID {
         return spirit::try_recover_all_spirits_at_hospital();
     }
 
-    let move_result = scene::try_move_to_scene(HOSPITAL_SCENE_ID, MOVE_TIMEOUT_MS);
+    let move_result = scene::try_move_to_scene(HOSPITAL_SCENE_ID);
     if !move_result.ok {
         return move_result;
     }
 
     let recover_result = spirit::try_recover_all_spirits_at_hospital();
-    let restore_result = scene::try_move_to_scene(current_scene, MOVE_TIMEOUT_MS);
+    let restore_result = scene::try_move_to_scene(current_scene);
     if !restore_result.ok {
         return #{
             ok: false,

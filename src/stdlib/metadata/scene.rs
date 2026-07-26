@@ -15,19 +15,19 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
             "scene",
             "move_to_scene",
             return_type: "bool",
-            "移动到指定场景，并等待场景切换完成。",
-            params: ["scene_id" => "目标场景 ID。", "timeout_ms" => "等待超时时间，单位毫秒。"],
-            returns: "移动成功返回 true。",
-            examples: ["scene::move_to_scene(72, 30000);"]
+            "提交场景切换并返回服务端确认的场景 ID。",
+            params: ["scene_id" => "目标场景 ID。"],
+            returns: "服务端确认的场景 ID。",
+            examples: ["scene::move_to_scene(72);"]
         ),
         super::stdlib_doc!(
             "scene",
             "try_move_to_scene",
             return_type: "ActionResult",
             "尝试移动到指定场景，失败时返回结构化结果。",
-            params: ["scene_id" => "目标场景 ID。", "timeout_ms" => "等待超时时间，单位毫秒。"],
+            params: ["scene_id" => "目标场景 ID。"],
             returns: "操作结果。",
-            examples: ["let result = scene::try_move_to_scene(72, 30000);"]
+            examples: ["let result = scene::try_move_to_scene(72);"]
         ),
         super::stdlib_doc!(
             "scene",

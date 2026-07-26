@@ -9,6 +9,14 @@ use crate::stdlib::util::{
 use crate::stdlib::RocoStdLib;
 
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
+    register_stdlib_fn_0!(module, stdlib, "enter", manor_enter);
+    register_stdlib_fn_1!(
+        module,
+        stdlib,
+        "visit_friend",
+        manor_visit_friend,
+        friend_uin: i64
+    );
     {
         let stdlib = stdlib.clone();
         module.set_native_fn("get_ground_info", move || {
@@ -16,12 +24,28 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
             lib.manor_get_ground_info().map_err(to_rhai_error)
         });
     }
+    register_stdlib_fn_1!(
+        module,
+        stdlib,
+        "get_friend_ground_info",
+        manor_get_friend_ground_info,
+        friend_uin: i64
+    );
     {
         let stdlib = stdlib.clone();
         module.set_native_fn("get_seed_bag", move || {
             let mut lib = lock_stdlib(&stdlib)?;
             lib.manor_get_seed_bag()
                 .map(|items| to_array(&items))
+                .map_err(to_rhai_error)
+        });
+    }
+    {
+        let stdlib = stdlib.clone();
+        module.set_native_fn("get_friend_plant_status", move |friend_uin: i64| {
+            let mut lib = lock_stdlib(&stdlib)?;
+            lib.manor_get_friend_plant_status(friend_uin)
+                .map(|statuses| to_array(&statuses))
                 .map_err(to_rhai_error)
         });
     }

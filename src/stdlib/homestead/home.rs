@@ -3,12 +3,29 @@ use std::sync::{Arc, Mutex};
 use rhai::Module;
 
 use crate::stdlib::util::{
-    lock_stdlib, register_stdlib_fn_1, register_stdlib_fn_2, to_array, to_rhai_error,
+    lock_stdlib, register_stdlib_fn_0, register_stdlib_fn_1, register_stdlib_fn_2, to_array,
+    to_rhai_error,
 };
 use crate::stdlib::RocoStdLib;
 
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
+    register_stdlib_fn_0!(module, stdlib, "enter", home_enter);
+    register_stdlib_fn_1!(
+        module,
+        stdlib,
+        "visit_friend",
+        home_visit_friend,
+        friend_uin: i64
+    );
     register_stdlib_fn_1!(module, stdlib, "get_overview", home_get_overview, area_id: i64);
+    register_stdlib_fn_2!(
+        module,
+        stdlib,
+        "get_friend_overview",
+        home_get_friend_overview,
+        friend_uin: i64,
+        area_id: i64
+    );
     {
         let stdlib = stdlib.clone();
         module.set_native_fn("get_friend_list", move || {

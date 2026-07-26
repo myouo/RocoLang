@@ -27,7 +27,7 @@ impl ErrorTestStdLib {
 }
 
 impl RocoRuntimeStdLib for ErrorTestStdLib {
-    fn move_to_scene(&mut self, scene_id: i64, timeout_ms: i64) -> Result<i64> {
+    fn move_to_scene(&mut self, scene_id: i64) -> Result<i64> {
         if self.should_fail {
             Err(RocoError::ServerRejected(
                 RocoServerRejectedError::HttpResponse {
@@ -35,7 +35,7 @@ impl RocoRuntimeStdLib for ErrorTestStdLib {
                 },
             ))
         } else {
-            println!("Moving to scene {} (timeout: {}ms)", scene_id, timeout_ms);
+            println!("Moving to scene {}", scene_id);
             Ok(scene_id)
         }
     }
@@ -287,7 +287,7 @@ fn main() -> Result<()> {
     println!("=== Test 1: Normal execution ===");
     let script1 = r#"
         system::log("Test normal execution");
-        scene::move_to_scene(42, 5000);
+        scene::move_to_scene(42);
         let hp = combat::get_my_hp();
         system::log("HP: " + hp);
         true
@@ -307,7 +307,7 @@ fn main() -> Result<()> {
         system::log("Test error handling");
 
         try {
-            scene::move_to_scene(99, 5000);
+            scene::move_to_scene(99);
             system::log("This should not print");
         } catch (err) {
             system::log("Caught error: " + err);

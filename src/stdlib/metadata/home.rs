@@ -4,12 +4,42 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
     vec![
         super::stdlib_doc!(
             "home",
+            "enter",
+            return_type: "int",
+            "进入自己的家园场景。",
+            params: [],
+            returns: "服务端确认的家园场景 ID。",
+            examples: ["home::enter();"]
+        ),
+        super::stdlib_doc!(
+            "home",
+            "visit_friend",
+            return_type: "int",
+            "拜访指定好友的家园场景。",
+            params: ["friend_uin" => "好友 UIN。"],
+            returns: "服务端确认的家园场景 ID。",
+            examples: ["home::visit_friend(123456);"]
+        ),
+        super::stdlib_doc!(
+            "home",
             "get_overview",
             return_type: "HomeOverview",
             "查询当前角色指定区域的家园概览。",
             params: ["area_id" => "家园区域 ID。"],
             returns: "家园等级、经验、能量、家具和星工场信息。",
             examples: ["let overview = home::get_overview(1);"]
+        ),
+        super::stdlib_doc!(
+            "home",
+            "get_friend_overview",
+            return_type: "HomeOverview",
+            "查询好友指定区域的家园概览。",
+            params: [
+                "friend_uin" => "好友 UIN。",
+                "area_id" => "家园区域 ID。"
+            ],
+            returns: "好友家园的等级、经验、能量、家具和星工场信息。",
+            examples: ["let overview = home::get_friend_overview(123456, 1);"]
         ),
         super::stdlib_doc!(
             "home",

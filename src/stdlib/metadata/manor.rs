@@ -4,12 +4,39 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
     vec![
         super::stdlib_doc!(
             "manor",
+            "enter",
+            return_type: "int",
+            "进入自己的农场场景。",
+            params: [],
+            returns: "服务端确认的农场场景 ID。",
+            examples: ["manor::enter();"]
+        ),
+        super::stdlib_doc!(
+            "manor",
+            "visit_friend",
+            return_type: "int",
+            "拜访指定好友的农场场景。",
+            params: ["friend_uin" => "好友 UIN。"],
+            returns: "服务端确认的农场场景 ID。",
+            examples: ["manor::visit_friend(123456);"]
+        ),
+        super::stdlib_doc!(
+            "manor",
             "get_ground_info",
             return_type: "ManorGroundInfo",
             "查询家园农场土地信息。",
             params: [],
             returns: "土地信息。",
             examples: ["let ground = manor::get_ground_info();"]
+        ),
+        super::stdlib_doc!(
+            "manor",
+            "get_friend_ground_info",
+            return_type: "ManorGroundInfo",
+            "查询好友农场的土地信息。",
+            params: ["friend_uin" => "好友 UIN。"],
+            returns: "好友的土地信息。",
+            examples: ["let ground = manor::get_friend_ground_info(123456);"]
         ),
         super::stdlib_doc!(
             "manor",
@@ -28,6 +55,15 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
             params: [],
             returns: "农场状态列表。",
             examples: ["let statuses = manor::get_plant_status();"]
+        ),
+        super::stdlib_doc!(
+            "manor",
+            "get_friend_plant_status",
+            return_type: "ManorPlantStatus[]",
+            "查询好友农场的成熟、虫害和杂草状态。",
+            params: ["friend_uin" => "好友 UIN。"],
+            returns: "好友农场状态列表。",
+            examples: ["let statuses = manor::get_friend_plant_status(123456);"]
         ),
         super::stdlib_doc!(
             "manor",

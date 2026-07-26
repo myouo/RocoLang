@@ -2,18 +2,18 @@ use super::*;
 
 /// Runtime APIs for scene, profile, game pause, mini-game, session state, and user info.
 pub trait RocoRuntimeStdLib: Send {
-    fn move_to_scene(&mut self, _scene_id: i64, _timeout_ms: i64) -> Result<i64> {
+    fn move_to_scene(&mut self, _scene_id: i64) -> Result<i64> {
         unsupported("scene::move_to_scene")
     }
 
-    fn try_move_to_scene(&mut self, scene_id: i64, timeout_ms: i64) -> Result<ActionResult> {
+    fn try_move_to_scene(&mut self, scene_id: i64) -> Result<ActionResult> {
         match self.get_current_scene() {
             Ok(current_scene) if current_scene == scene_id => return Ok(ActionResult::ok()),
             Ok(_) => {}
             Err(error) => return Ok(ActionResult::failed_with_error(error)),
         }
 
-        match self.move_to_scene(scene_id, timeout_ms) {
+        match self.move_to_scene(scene_id) {
             Ok(confirmed_scene) if confirmed_scene == scene_id => Ok(ActionResult::ok()),
             Ok(confirmed_scene) => Ok(ActionResult::failed(format!(
                 "server confirmed scene {}, expected {}",

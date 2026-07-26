@@ -1,14 +1,26 @@
 use super::super::super::*;
 
 pub trait RocoManorActivityStdLib: Send {
+    fn manor_enter(&mut self) -> Result<i64> {
+        unsupported("manor::enter")
+    }
+    fn manor_visit_friend(&mut self, _friend_uin: i64) -> Result<i64> {
+        unsupported("manor::visit_friend")
+    }
     fn manor_get_ground_info(&mut self) -> Result<ManorInfo> {
         unsupported("manor::get_ground_info")
+    }
+    fn manor_get_friend_ground_info(&mut self, _friend_uin: i64) -> Result<ManorInfo> {
+        unsupported("manor::get_friend_ground_info")
     }
     fn manor_get_seed_bag(&mut self) -> Result<Vec<ManorItemCount>> {
         unsupported("manor::get_seed_bag")
     }
     fn manor_get_plant_status(&mut self) -> Result<Vec<ManorPlantStatus>> {
         unsupported("manor::get_plant_status")
+    }
+    fn manor_get_friend_plant_status(&mut self, _friend_uin: i64) -> Result<Vec<ManorPlantStatus>> {
+        unsupported("manor::get_friend_plant_status")
     }
     fn manor_reclaim(&mut self, _ground_id: i64) -> Result<ManorReclaimResult> {
         unsupported("manor::reclaim")

@@ -34,8 +34,8 @@ impl MockStdLib {
 }
 
 impl RocoRuntimeStdLib for MockStdLib {
-    fn move_to_scene(&mut self, scene_id: i64, timeout_ms: i64) -> Result<i64> {
-        println!("Moving to scene {} (timeout: {}ms)", scene_id, timeout_ms);
+    fn move_to_scene(&mut self, scene_id: i64) -> Result<i64> {
+        println!("Moving to scene {}", scene_id);
         self.scene_id = scene_id;
         Ok(scene_id)
     }
@@ -402,7 +402,7 @@ fn main() -> Result<()> {
         system::log("Starting battle script");
 
         // Move to the battle scene.
-        scene::move_to_scene(42, 5000);
+        scene::move_to_scene(42);
 
         // Battle loop.
         let round = 0;
