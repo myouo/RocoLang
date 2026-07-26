@@ -117,6 +117,9 @@ pub enum RocoProtocolParseReason {
     UnmappedFightEventTag {
         tag: u8,
     },
+    UnknownCombatFieldEffect {
+        raw_id: u8,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -331,6 +334,7 @@ impl RocoProtocolParseReason {
             Self::MissingSpiritSkinTail => "missing_spirit_skin_tail",
             Self::CombatSpiritInvalidSex { .. } => "combat_spirit_invalid_sex",
             Self::UnmappedFightEventTag { .. } => "unmapped_fight_event_tag",
+            Self::UnknownCombatFieldEffect { .. } => "unknown_combat_field_effect",
         }
     }
 
@@ -445,6 +449,9 @@ impl RocoProtocolParseReason {
                 format!("combat spirit sex parse failed: unknown spirit sex: {value}")
             }
             Self::UnmappedFightEventTag { tag } => format!("unmapped fight result tag {tag}"),
+            Self::UnknownCombatFieldEffect { raw_id } => {
+                format!("unknown combat field effect id {raw_id}")
+            }
         }
     }
 
