@@ -9,8 +9,22 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
         candidate_index,
         spirit_id,
         catch_time,
+        level,
+        stats,
+        innate_stats,
+        postnatal_stats,
         condition_code,
         condition_name
+    );
+    register_getters!(
+        engine,
+        MultiEvolutionCandidateStats,
+        full_hp,
+        near_attack,
+        near_armor,
+        far_attack,
+        far_armor,
+        speed
     );
     register_getters!(
         engine,
@@ -22,20 +36,63 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
     );
     register_getters!(
         engine,
-        MultiEvolutionInfo,
+        MultiEvolutionCandidatesInfo,
+        result_code,
+        message,
+        request_context
+    );
+    engine.register_get("candidates", |value: &mut MultiEvolutionCandidatesInfo| {
+        to_array(&value.candidates)
+    });
+    register_getters!(
+        engine,
+        MultiEvolutionElementEvolveResult,
         result_code,
         message,
         request_context,
         pet_id,
-        result_side,
-        item_id,
-        count,
-        available
+        evolution_result
     );
-    engine.register_get("candidates", |value: &mut MultiEvolutionInfo| {
-        to_array(&value.candidates)
-    });
-    engine.register_get("rewards", |value: &mut MultiEvolutionInfo| {
+    register_getters!(
+        engine,
+        MultiEvolutionGrassStageResult,
+        result_code,
+        message,
+        request_context
+    );
+    register_getters!(
+        engine,
+        MultiEvolutionGrassEvolveResult,
+        result_code,
+        message,
+        request_context,
+        pet_id
+    );
+    register_getters!(
+        engine,
+        MultiEvolutionBoosterItemInfo,
+        result_code,
+        message,
+        request_context,
+        item_id,
+        count
+    );
+    register_getters!(
+        engine,
+        MultiEvolutionRewardsInfo,
+        result_code,
+        message,
+        request_context
+    );
+    engine.register_get("rewards", |value: &mut MultiEvolutionRewardsInfo| {
         to_array(&value.rewards)
     });
+    register_getters!(
+        engine,
+        MultiEvolutionRewardAvailabilityInfo,
+        result_code,
+        message,
+        request_context,
+        available
+    );
 }

@@ -2,20 +2,20 @@ use roco_lang::{
     ActionResult, AquariusBagCandidate, AquariusFirstInfo, AquariusRewardItem,
     AquariusSecondExchangeInfo, CapricornSecondInfo, CapricornSecondTask,
     CapricornTeamOperationInfo, CapricornTeamPlayer, CapricornTeamSnapshot, CapricornThirdInfo,
-    DiamondTearInfo, FourSeasonsInfo, IceCrystalBattleInfo, IceCrystalInfo, MultiEvolutionInfo,
-    MultiEvolutionRewardItem, Result, RocoAdventureActivityStdLib, RocoAlchemyActivityStdLib,
-    RocoAquariusActivityStdLib, RocoAriesActivityStdLib, RocoCancerActivityStdLib,
-    RocoCapricornActivityStdLib, RocoCombatStdLib, RocoDebugBreakpoint, RocoDebugCommand,
-    RocoDebugConfig, RocoDebugEvent, RocoDebugHooks, RocoDisplayItem, RocoEngine, RocoError,
-    RocoErrorDetail, RocoErrorInfo, RocoEvolutionActivityStdLib, RocoGeminiActivityStdLib,
-    RocoHomeActivityStdLib, RocoHttpBridgeErrorKind, RocoHttpBusinessRejection,
-    RocoIncubativeMachineStdLib, RocoInvalidParamError, RocoLeoActivityStdLib,
-    RocoLibraActivityStdLib, RocoLookupStdLib, RocoMagicPioneerActivityStdLib,
-    RocoManorActivityStdLib, RocoNetResponseParseSource, RocoNetResponseParseTarget,
-    RocoNetworkError, RocoNewsActivityStdLib, RocoPetEggStdLib, RocoPetTrainingActivityStdLib,
-    RocoPiscesActivityStdLib, RocoPkStdLib, RocoProtocolParseErrorType,
-    RocoProtocolParseFailureKind, RocoReclaimGoodsStdLib, RocoRemoteStateStdLib,
-    RocoRequestContext, RocoReturnCodeKind, RocoReturnCodeRejection, RocoRewardKind,
+    DiamondTearInfo, FourSeasonsInfo, IceCrystalBattleInfo, IceCrystalInfo,
+    MultiEvolutionElementEvolveResult, Result, RocoAdventureActivityStdLib,
+    RocoAlchemyActivityStdLib, RocoAquariusActivityStdLib, RocoAriesActivityStdLib,
+    RocoCancerActivityStdLib, RocoCapricornActivityStdLib, RocoCombatStdLib, RocoDebugBreakpoint,
+    RocoDebugCommand, RocoDebugConfig, RocoDebugEvent, RocoDebugHooks, RocoDisplayItem, RocoEngine,
+    RocoError, RocoErrorDetail, RocoErrorInfo, RocoEvolutionActivityStdLib,
+    RocoGeminiActivityStdLib, RocoHomeActivityStdLib, RocoHttpBridgeErrorKind,
+    RocoHttpBusinessRejection, RocoIncubativeMachineStdLib, RocoInvalidParamError,
+    RocoLeoActivityStdLib, RocoLibraActivityStdLib, RocoLookupStdLib,
+    RocoMagicPioneerActivityStdLib, RocoManorActivityStdLib, RocoNetResponseParseSource,
+    RocoNetResponseParseTarget, RocoNetworkError, RocoNewsActivityStdLib, RocoPetEggStdLib,
+    RocoPetTrainingActivityStdLib, RocoPiscesActivityStdLib, RocoPkStdLib,
+    RocoProtocolParseErrorType, RocoProtocolParseFailureKind, RocoReclaimGoodsStdLib,
+    RocoRemoteStateStdLib, RocoRequestContext, RocoReturnCodeKind, RocoReturnCodeRejection,
     RocoRuntimeStdLib, RocoSagittariusActivityStdLib, RocoScorpioActivityStdLib,
     RocoScriptErrorKind, RocoScriptLocation, RocoServerRejectedError, RocoSpiritBookStdLib,
     RocoSpiritStdLib, RocoSystemStdLib, RocoTaskStdLib, RocoTaurusActivityStdLib,
@@ -314,6 +314,7 @@ impl RocoSpiritStdLib for MockStdLib {
             skills: vec![SpiritSkillInfo {
                 skill_id,
                 pp: 10,
+                max_pp: 10,
                 inherited: false,
             }],
         })
@@ -432,6 +433,21 @@ fn persistent_daily_memory_apis_are_available_to_scripts() {
             "#,
         )
         .expect("persistent daily memory APIs should be exposed to scripts");
+}
+
+#[test]
+fn spirit_skill_max_pp_is_available_to_scripts() {
+    let stdlib = Arc::new(Mutex::new(MockStdLib::default()));
+    let mut engine = RocoEngine::new(stdlib);
+
+    let _ = engine
+        .eval(
+            r#"
+                let detail = spirit::get_storage_spirit_detail(1, 30);
+                system::assert(detail.skills[0].max_pp == 10, "max PP mismatch");
+            "#,
+        )
+        .expect("spirit skill max PP should be exposed to scripts");
 }
 
 #[test]
@@ -1927,23 +1943,13 @@ impl RocoEvolutionActivityStdLib for MockStdLib {
         _catch_time: i64,
         _item_count: i64,
         _fire_score: i64,
-    ) -> Result<MultiEvolutionInfo> {
-        Ok(MultiEvolutionInfo {
+    ) -> Result<MultiEvolutionElementEvolveResult> {
+        Ok(MultiEvolutionElementEvolveResult {
             result_code: 0,
             message: String::new(),
             request_context: RocoRequestContext::from_raw("multi_evolution.fire_evolve"),
-            candidates: Vec::new(),
-            rewards: vec![MultiEvolutionRewardItem {
-                reward_id: 1,
-                reward_kind: RocoRewardKind::Item,
-                raw_reward_type: 0,
-                count: 2,
-            }],
-            pet_id: roco_lang::RocoOptionalI64::present(3092),
-            result_side: roco_lang::RocoOptionalI64::missing(),
-            item_id: roco_lang::RocoOptionalI64::missing(),
-            count: 0,
-            available: false,
+            pet_id: 3092,
+            evolution_result: 1,
         })
     }
 }

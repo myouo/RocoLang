@@ -130,6 +130,7 @@ pub(super) fn doc(type_name: &str) -> Option<(&'static str, Vec<StdlibFieldDoc>)
             vec![
                 field("skill_id", "int", "技能 ID。"),
                 field("pp", "int", "当前 PP。"),
+                field("max_pp", "int", "最大 PP；来源未携带时为 0。"),
                 field("inherited", "bool", "是否为遗传技能。"),
             ],
         ),

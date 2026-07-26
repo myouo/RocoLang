@@ -19,6 +19,8 @@ pub struct SpiritInfo {
 pub struct SpiritSkillInfo {
     pub skill_id: i64,
     pub pp: i64,
+    /// Maximum PP, or zero when the source protocol does not carry it.
+    pub max_pp: i64,
     pub inherited: bool,
 }
 

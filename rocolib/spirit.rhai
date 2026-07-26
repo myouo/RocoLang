@@ -124,11 +124,85 @@ fn try_recover_all_spirits_by_mode(recovery_mode, is_vip) {
         return try_recover_all_spirits_hospital();
     }
 
+    if recovery_mode == "low-frequency-hospital" {
+        return try_recover_all_spirits_low_frequency_hospital();
+    }
+
     if recovery_mode == "money" {
         return try_recover_all_spirits_money();
     }
 
     return try_auto_recover_all_spirits(is_vip);
+}
+
+fn try_recover_all_spirits_low_frequency_hospital() {
+    const RECOVERY_THRESHOLD_BASIS_POINTS = 2000;
+    const bag = spirit::get_spirit_bag();
+    const spirit_count = len(bag.spirits);
+    if spirit_count == 0 {
+        return #{ ok: true, code: 0, message: "empty bag; skipped low-frequency hospital recovery" };
+    }
+
+    let team_basis_points = 0;
+    for spirit_info in bag.spirits {
+        let spirit_basis_points = 0;
+        if spirit_info.hp > 0 {
+            let current_power_pp = 0;
+            let maximum_power_pp = 0;
+            for skill in spirit_info.skills {
+                const skill_info = lookup::skill_info(skill.skill_id);
+                const is_power_skill = skill_info.power != "--"
+                    && skill_info.power != ""
+                    && skill_info.power != "0";
+                if is_power_skill {
+                    let maximum_pp = skill.max_pp;
+                    if maximum_pp <= 0 {
+                        maximum_pp = skill_info.pp_max;
+                    }
+                    if maximum_pp > 0 {
+                        let current_pp = skill.pp;
+                        if current_pp < 0 {
+                            current_pp = 0;
+                        } else if current_pp > maximum_pp {
+                            current_pp = maximum_pp;
+                        }
+                        current_power_pp = current_power_pp + current_pp;
+                        maximum_power_pp = maximum_power_pp + maximum_pp;
+                    }
+                }
+            }
+            if maximum_power_pp > 0 {
+                spirit_basis_points = current_power_pp * 10000 / maximum_power_pp;
+            }
+        }
+
+        print(
+            "low-frequency hospital PP: position="
+                + spirit_info.position
+                + " hp="
+                + spirit_info.hp
+                + "/"
+                + spirit_info.max_hp
+                + " power_pp="
+                + spirit_basis_points / 100
+                + "%"
+        );
+        team_basis_points = team_basis_points + spirit_basis_points;
+    }
+
+    const average_basis_points = team_basis_points / spirit_count;
+    print(
+        "low-frequency hospital team power PP="
+            + average_basis_points / 100
+            + "% threshold="
+            + RECOVERY_THRESHOLD_BASIS_POINTS / 100
+            + "%"
+    );
+    if average_basis_points >= RECOVERY_THRESHOLD_BASIS_POINTS {
+        return #{ ok: true, code: 0, message: "power skill PP is sufficient; skipped hospital recovery" };
+    }
+
+    return try_recover_all_spirits_hospital();
 }
 
 fn try_auto_recover_all_spirits(is_vip) {

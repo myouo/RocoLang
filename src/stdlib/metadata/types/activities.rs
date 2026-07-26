@@ -1,5 +1,19 @@
 use super::{bag_candidate_fields, exchange_display_item_fields, field, StdlibFieldDoc};
 
+fn common_result_fields(mut fields: Vec<StdlibFieldDoc>) -> Vec<StdlibFieldDoc> {
+    let mut common = vec![
+        field("result_code", "int", "服务器返回结果码。"),
+        field("message", "string", "服务器返回信息。"),
+        field(
+            "request_context",
+            "RocoRequestContext",
+            "结构化请求上下文。",
+        ),
+    ];
+    common.append(&mut fields);
+    common
+}
+
 pub(super) fn doc(type_name: &str) -> Option<(&'static str, Vec<StdlibFieldDoc>)> {
     Some(match type_name {
         "ThreeStartersField" => (
@@ -872,7 +886,7 @@ pub(super) fn doc(type_name: &str) -> Option<(&'static str, Vec<StdlibFieldDoc>)
                 field("rewards", "IceCrystalRewardItem[]", "奖励列表。"),
             ]
         }),
-        "MultiEvolutionInfo" => ("多元进化返回信息。", {
+        "MultiEvolutionCandidatesInfo" => ("多元进化候选宠物查询结果。", {
             vec![
                 field("result_code", "int", "服务器返回结果码。"),
                 field("message", "string", "服务器返回信息。"),
@@ -882,13 +896,35 @@ pub(super) fn doc(type_name: &str) -> Option<(&'static str, Vec<StdlibFieldDoc>)
                     "结构化请求上下文。",
                 ),
                 field("candidates", "MultiEvolutionCandidate[]", "候选宠物列表。"),
-                field("rewards", "MultiEvolutionRewardItem[]", "奖励列表。"),
-                field("pet_id", "RocoOptionalI64", "进化结果宠物 ID。"),
-                field("result_side", "RocoOptionalI64", "水系进化结果侧。"),
-                field("item_id", "RocoOptionalI64", "助燃道具 ID。"),
-                field("count", "int", "道具数量或服务器返回计数。"),
-                field("available", "bool", "奖励是否可领取。"),
             ]
+        }),
+        "MultiEvolutionElementEvolveResult" => ("火系或水系多元进化结果。", {
+            common_result_fields(vec![
+                field("pet_id", "int", "进化结果宠物 ID。"),
+                field("evolution_result", "int", "服务端返回的进化结果值。"),
+            ])
+        }),
+        "MultiEvolutionGrassStageResult" => ("草系多元进化第一阶段结果。", {
+            common_result_fields(vec![])
+        }),
+        "MultiEvolutionGrassEvolveResult" => ("草系多元进化最终结果。", {
+            common_result_fields(vec![field("pet_id", "int", "进化结果宠物 ID。")])
+        }),
+        "MultiEvolutionBoosterItemInfo" => ("火系多元进化增压剂库存。", {
+            common_result_fields(vec![
+                field("item_id", "int", "增压剂物品 ID。"),
+                field("count", "int", "拥有数量。"),
+            ])
+        }),
+        "MultiEvolutionRewardsInfo" => ("火系多元进化奖励领取结果。", {
+            common_result_fields(vec![field(
+                "rewards",
+                "MultiEvolutionRewardItem[]",
+                "奖励列表。",
+            )])
+        }),
+        "MultiEvolutionRewardAvailabilityInfo" => ("火系多元进化奖励可领取状态。", {
+            common_result_fields(vec![field("available", "bool", "奖励是否可领取。")])
         }),
         "CancerSharpScorpionInfo" => ("巨蟹宫尖角蜘蛛状态。", {
             let fields = vec![

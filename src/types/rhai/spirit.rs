@@ -16,7 +16,7 @@ pub(super) fn register_rhai_getters(engine: &mut Engine) {
         max_hp
     );
     engine.register_get("skills", |value: &mut SpiritInfo| to_array(&value.skills));
-    register_getters!(engine, SpiritSkillInfo, skill_id, pp, inherited);
+    register_getters!(engine, SpiritSkillInfo, skill_id, pp, max_pp, inherited);
     register_getters!(
         engine,
         SkillPoolSkillInfo,
