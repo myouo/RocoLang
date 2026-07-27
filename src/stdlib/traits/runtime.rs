@@ -31,6 +31,27 @@ pub trait RocoRuntimeStdLib: Send {
         unsupported("scene::get_scene_spirits")
     }
 
+    fn try_claim_game_award(
+        &mut self,
+        _award_id: i64,
+        _condition: i64,
+        _reward_type: i64,
+    ) -> Result<ActionResult> {
+        unsupported("scene::try_claim_game_award")
+    }
+
+    fn try_mine(&mut self, _command: i64, _mining_type: i64) -> Result<ActionResult> {
+        unsupported("scene::try_mine")
+    }
+
+    fn try_challenge_lewei(&mut self) -> Result<ActionResult> {
+        unsupported("scene::try_challenge_lewei")
+    }
+
+    fn try_hit_monster(&mut self) -> Result<ActionResult> {
+        unsupported("scene::try_hit_monster")
+    }
+
     fn get_cached_scene_roles(&mut self) -> Result<Vec<SceneRoleInfo>> {
         unsupported("role::get_cached_scene_roles")
     }
