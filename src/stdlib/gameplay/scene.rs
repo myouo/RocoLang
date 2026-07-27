@@ -36,4 +36,35 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
                 .map_err(to_rhai_error)
         });
     }
+    {
+        let stdlib = stdlib.clone();
+        module.set_native_fn(
+            "try_claim_game_award",
+            move |award_id: i64, condition: i64, reward_type: i64| {
+                let mut lib = lock_stdlib(&stdlib)?;
+                lib.try_claim_game_award(award_id, condition, reward_type)
+                    .map_err(to_rhai_error)
+            },
+        );
+    }
+    {
+        let stdlib = stdlib.clone();
+        module.set_native_fn("try_mine", move |command: i64, mining_type: i64| {
+            let mut lib = lock_stdlib(&stdlib)?;
+            lib.try_mine(command, mining_type).map_err(to_rhai_error)
+        });
+    }
+    {
+        let stdlib = stdlib.clone();
+        module.set_native_fn("try_challenge_lewei", move || {
+            let mut lib = lock_stdlib(&stdlib)?;
+            lib.try_challenge_lewei().map_err(to_rhai_error)
+        });
+    }
+    {
+        module.set_native_fn("try_hit_monster", move || {
+            let mut lib = lock_stdlib(&stdlib)?;
+            lib.try_hit_monster().map_err(to_rhai_error)
+        });
+    }
 }
