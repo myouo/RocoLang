@@ -1,6 +1,6 @@
 use roco_lang::{
     ActionResult, AquariusBagCandidate, AquariusFirstInfo, AquariusRewardItem,
-    AquariusSecondExchangeInfo, CapricornSecondInfo, CapricornSecondTask,
+    AquariusSecondExchangeInfo, BagItemInfo, CapricornSecondInfo, CapricornSecondTask,
     CapricornTeamOperationInfo, CapricornTeamPlayer, CapricornTeamSnapshot, CapricornThirdInfo,
     DiamondTearInfo, FourSeasonsInfo, IceCrystalBattleInfo, IceCrystalInfo,
     MultiEvolutionElementEvolveResult, Result, RocoAdventureActivityStdLib,
@@ -616,6 +616,11 @@ fn imports_built_in_role_cache_helpers() {
                 system::assert(len(roles) == 1, "cached role count mismatch");
                 system::assert(roles[0].uin == 470926678, "cached role uin mismatch");
                 system::assert(!roles[0].is_in_combat, "cached role combat state mismatch");
+
+                let items = role::get_items();
+                system::assert(len(items) == 2, "role item count mismatch");
+                system::assert(items[0].item_id == 67239959, "role item id mismatch");
+                system::assert(items[0].count == 999, "role item stack mismatch");
 
                 let found = roco_role::find_cached_scene_role(470926678);
                 system::assert(found.found, "target role must be found in cache");
@@ -2001,7 +2006,20 @@ impl RocoMagicPioneerActivityStdLib for MockStdLib {}
 
 impl RocoAdventureActivityStdLib for MockStdLib {}
 impl roco_lang::RocoFriendStdLib for MockStdLib {}
-impl roco_lang::RocoRoleStdLib for MockStdLib {}
+impl roco_lang::RocoRoleStdLib for MockStdLib {
+    fn get_items(&mut self) -> Result<Vec<BagItemInfo>> {
+        Ok(vec![
+            BagItemInfo {
+                item_id: 67_239_959,
+                count: 999,
+            },
+            BagItemInfo {
+                item_id: 67_239_970,
+                count: 12,
+            },
+        ])
+    }
+}
 
 impl RocoAriesActivityStdLib for MockStdLib {}
 impl RocoLibraActivityStdLib for MockStdLib {}

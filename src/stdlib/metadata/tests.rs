@@ -75,6 +75,12 @@ fn every_registered_stdlib_function_has_runtime_context_metadata() {
         StdlibFunctionContext::OutOfCombat
     );
     assert_eq!(
+        find_stdlib_function_doc("role", "get_items")
+            .expect("role::get_items should be documented")
+            .context,
+        StdlibFunctionContext::OutOfCombat
+    );
+    assert_eq!(
         find_stdlib_function_doc("combat", "get_action_snapshot")
             .expect("combat::get_action_snapshot should be documented")
             .context,

@@ -491,6 +491,7 @@ pub const FUNCTIONS: &[StdlibFunctionRegistration] = &[
     StdlibFunctionRegistration::new("remote_state", "update_npc_value", "remote_state::update_npc_value(npc_id: int, value: int)"),
     StdlibFunctionRegistration::new("remote_state", "update_scene_data", "remote_state::update_scene_data(scene_id: int, values: blob)"),
     StdlibFunctionRegistration::new("role", "get_cached_scene_roles", "role::get_cached_scene_roles()"),
+    StdlibFunctionRegistration::new("role", "get_items", "role::get_items()"),
     StdlibFunctionRegistration::new("role", "try_change_avatar", "role::try_change_avatar(avatar: array)"),
     StdlibFunctionRegistration::new("role", "try_change_avatar_slot", "role::try_change_avatar_slot(avatar_position: int, avatar_id: int)"),
     StdlibFunctionRegistration::new("sagittarius", "first_add_map", "sagittarius::first_add_map()"),

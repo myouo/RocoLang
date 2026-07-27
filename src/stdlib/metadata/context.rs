@@ -60,6 +60,10 @@ pub(super) fn classify_function_context(
         return StdlibFunctionContext::Any;
     }
 
+    if module == "role" && name == "get_items" {
+        return StdlibFunctionContext::OutOfCombat;
+    }
+
     if matches!(
         module,
         "combat_result"

@@ -8,6 +8,15 @@ use crate::stdlib::RocoStdLib;
 pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<T>>) {
     {
         let stdlib = stdlib.clone();
+        module.set_native_fn("get_items", move |context: rhai::NativeCallContext| {
+            let mut lib = lock_stdlib(&stdlib)?;
+            lib.get_items()
+                .map(|items| to_array(&items))
+                .map_err(|error| to_rhai_error_in_context(error, &context))
+        });
+    }
+    {
+        let stdlib = stdlib.clone();
         module.set_native_fn(
             "get_cached_scene_roles",
             move |context: rhai::NativeCallContext| {

@@ -4,6 +4,15 @@ pub fn docs() -> Vec<StdlibFunctionDetails> {
     vec![
         super::stdlib_doc!(
             "role",
+            "get_items",
+            return_type: "BagItemInfo[]",
+            "查询人物普通背包中的全部物品。",
+            params: [],
+            returns: "普通背包物品列表，每项包含 item_id 和 count。",
+            examples: ["let items = role::get_items();"]
+        ),
+        super::stdlib_doc!(
+            "role",
             "get_cached_scene_roles",
             return_type: "SceneRoleInfo[]",
             "获取当前缓存的场景角色列表。",
