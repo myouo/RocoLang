@@ -66,7 +66,7 @@ pub(super) fn classify_function_context(
             | "combat_status"
             | "game"
             | "lookup"
-            | "memory"
+            | "daily_memory"
             | "personality"
             | "profile"
             | "remote_state"

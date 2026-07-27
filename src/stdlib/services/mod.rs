@@ -1,6 +1,6 @@
+pub mod daily_memory;
 pub mod friend;
 pub mod lookup;
-pub mod memory;
 pub mod profile;
 pub mod remote_state;
 pub mod role;

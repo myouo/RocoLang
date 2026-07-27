@@ -39,7 +39,7 @@ pub(crate) fn register_modules<T: RocoStdLib + 'static>(
     register_stdlib_module!(engine, stdlib, friend);
     register_stdlib_module!(engine, stdlib, remote_state);
     register_stdlib_module!(engine, stdlib, session);
-    register_stdlib_module!(engine, stdlib, memory);
+    register_stdlib_module!(engine, stdlib, daily_memory);
     register_stdlib_module!(engine, stdlib, profile);
     register_stdlib_module!(engine, stdlib, role);
     register_stdlib_module!(engine, stdlib, game);

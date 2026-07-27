@@ -10,137 +10,137 @@ pub fn register<T: RocoStdLib + 'static>(module: &mut Module, stdlib: Arc<Mutex<
         let stdlib = stdlib.clone();
         module.set_native_fn("today", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_today().map_err(to_rhai_error)
+            lib.daily_memory_today().map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_clear", move || {
+        module.set_native_fn("clear", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_clear().map_err(to_rhai_error)
+            lib.daily_memory_clear().map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_combat_observed_started", move || {
+        module.set_native_fn("combat_observed_started", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_combat_observed_started()
+            lib.daily_memory_combat_observed_started()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_combat_observed_completed", move || {
+        module.set_native_fn("combat_observed_completed", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_combat_observed_completed()
+            lib.daily_memory_combat_observed_completed()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_combat_tracking_since", move || {
+        module.set_native_fn("combat_tracking_since", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_combat_tracking_since()
+            lib.daily_memory_combat_tracking_since()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_combat_limit_reached", move || {
+        module.set_native_fn("combat_limit_reached", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_combat_limit_reached()
+            lib.daily_memory_combat_limit_reached()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_combat_limit", move || {
+        module.set_native_fn("combat_limit", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_combat_limit().map_err(to_rhai_error)
+            lib.daily_memory_combat_limit().map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_combat_limit_return_code", move || {
+        module.set_native_fn("combat_limit_return_code", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_combat_limit_return_code()
+            lib.daily_memory_combat_limit_return_code()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_combat_limit_message", move || {
+        module.set_native_fn("combat_limit_message", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_combat_limit_message()
+            lib.daily_memory_combat_limit_message()
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_get_int", move |key: &str, default_value: i64| {
+        module.set_native_fn("get_int", move |key: &str, default_value: i64| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_get_int(key, default_value)
+            lib.daily_memory_get_int(key, default_value)
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_set_int", move |key: &str, value: i64| {
+        module.set_native_fn("set_int", move |key: &str, value: i64| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_set_int(key, value).map_err(to_rhai_error)
+            lib.daily_memory_set_int(key, value).map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_increment_int", move |key: &str, delta: i64| {
+        module.set_native_fn("increment_int", move |key: &str, delta: i64| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_increment_int(key, delta)
+            lib.daily_memory_increment_int(key, delta)
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_get_string", move |key: &str, default_value: &str| {
+        module.set_native_fn("get_string", move |key: &str, default_value: &str| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_get_string(key, default_value)
+            lib.daily_memory_get_string(key, default_value)
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_set_string", move |key: &str, value: &str| {
+        module.set_native_fn("set_string", move |key: &str, value: &str| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_set_string(key, value)
+            lib.daily_memory_set_string(key, value)
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_get_bool", move |key: &str, default_value: bool| {
+        module.set_native_fn("get_bool", move |key: &str, default_value: bool| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_get_bool(key, default_value)
+            lib.daily_memory_get_bool(key, default_value)
                 .map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_set_bool", move |key: &str, value: bool| {
+        module.set_native_fn("set_bool", move |key: &str, value: bool| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_set_bool(key, value).map_err(to_rhai_error)
+            lib.daily_memory_set_bool(key, value).map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_delete", move |key: &str| {
+        module.set_native_fn("delete", move |key: &str| {
             let mut lib = lock_stdlib(&stdlib)?;
-            lib.memory_daily_delete(key).map_err(to_rhai_error)
+            lib.daily_memory_delete(key).map_err(to_rhai_error)
         });
     }
     {
         let stdlib = stdlib.clone();
-        module.set_native_fn("daily_list_keys", move || {
+        module.set_native_fn("list_keys", move || {
             let mut lib = lock_stdlib(&stdlib)?;
-            let keys = lib.memory_daily_list_keys().map_err(to_rhai_error)?;
+            let keys = lib.daily_memory_list_keys().map_err(to_rhai_error)?;
             let mut map = Map::new();
             for (key, value_type) in keys {
                 map.insert(

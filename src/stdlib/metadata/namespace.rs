@@ -46,7 +46,7 @@ pub(super) fn label(module: &str) -> &str {
         "game" => "游戏控制命令",
         "task" => "任务相关命令",
         "remote_state" => "远程状态命令",
-        "memory" => "内存状态命令",
+        "daily_memory" => "每日记忆命令",
         "ladder" => "天梯相关命令",
         "king_fight" => "王者争夺战命令",
         "type_ladder" => "属性天梯命令",
